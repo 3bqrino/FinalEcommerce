@@ -11,65 +11,56 @@
   width: 100%;
 }
 
+/* =========================================
+   HEADER
+========================================= */
+
 .list-header {
   display: flex;
-
   align-items: flex-end;
   justify-content: space-between;
-
   gap: 15px;
-
   margin-bottom: 14px;
-
   padding-bottom: 13px;
-
   border-bottom: 1px solid #e6e6df;
 }
 
 .list-header > div > span {
   color: #9a9c92;
-
   font-size: 12px;
-
   font-weight: 900;
-
   letter-spacing: 0.12em;
 }
 
 .list-header h2 {
   margin: 5px 0 0;
-
   color: #30312c;
-
   font-family: "Space Grotesk", sans-serif;
-
   font-size: 18px;
-
   letter-spacing: -0.03em;
 }
+
+/* =========================================
+   ADD BUTTON
+========================================= */
 
 .add-btn {
   min-height: 38px;
 
   display: inline-flex;
-
   align-items: center;
   justify-content: center;
 
   padding: 0 14px;
 
   border: 1px solid #ccd6ae;
-
   border-radius: 6px;
 
   background: #f5f8eb;
-
   color: #627248;
 
   font-size: 12px;
-
   font-weight: 900;
-
   letter-spacing: 0.06em;
 
   text-decoration: none;
@@ -79,32 +70,34 @@
 
 .add-btn:hover {
   background: #eaf0da;
-
   border-color: #bcc99a;
 }
 
+/* =========================================
+   PRODUCTS GRID
+========================================= */
+
 .products-grid {
   display: grid;
-
   grid-template-columns: repeat(2, minmax(0, 1fr));
-
   gap: 12px;
 }
+
+/* =========================================
+   STATES
+========================================= */
 
 .state {
   min-height: 210px;
 
   display: flex;
-
   align-items: center;
   justify-content: center;
-
   flex-direction: column;
 
   gap: 8px;
 
   border: 1px solid #e2e2dc;
-
   border-radius: 9px;
 
   background: #fff;
@@ -114,25 +107,19 @@
 
 .state > i {
   margin-bottom: 5px;
-
   color: #a8aaa2;
-
   font-size: 25px;
 }
 
 .state strong {
   color: #45463f;
-
   font-size: 12px;
-
   font-weight: 900;
-
   letter-spacing: 0.05em;
 }
 
 .state span {
   color: #9a9b94;
-
   font-size: 12px;
 }
 
@@ -141,28 +128,22 @@
   min-height: 34px;
 
   display: inline-flex;
-
   align-items: center;
   justify-content: center;
 
   margin-top: 5px;
-
   padding: 0 12px;
 
   border: 1px solid #d9dccd;
-
   border-radius: 5px;
 
   background: #f7f8f3;
-
   color: #68765a;
 
   font-size: 12px;
-
   font-weight: 900;
 
   text-decoration: none;
-
   cursor: pointer;
 }
 
@@ -170,20 +151,151 @@
   color: #74463d;
 }
 
+/* =========================================
+   PAGINATION WRAPPER
+========================================= */
+
+.pagination-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-top: 28px;
+  padding-top: 18px;
+
+  border-top: 1px solid #e6e6df;
+}
+
+/* =========================================
+   PAGINATION INFO
+========================================= */
+
+.pagination-info {
+  color: #96988f;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.pagination-info strong {
+  color: #35362f;
+}
+
+/* =========================================
+   PAGINATION
+========================================= */
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* =========================================
+   PAGINATION BUTTONS
+========================================= */
+
+.pagination button {
+  width: 38px;
+  height: 38px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #dedfd8;
+  border-radius: 5px;
+
+  background: #fff;
+  color: #575950;
+
+  font-size: 11px;
+  font-weight: 900;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: #f5f8eb;
+  border-color: #ccd6ae;
+  color: #627248;
+  transform: translateY(-1px);
+}
+
+/* =========================================
+   ACTIVE PAGE
+========================================= */
+
+.pagination-number.active {
+  background: #30312c;
+  border-color: #30312c;
+  color: #fff;
+}
+
+/* =========================================
+   ARROWS
+========================================= */
+
+.pagination-arrow {
+  font-size: 10px !important;
+}
+
+/* =========================================
+   DISABLED
+========================================= */
+
+.pagination button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
 @media (max-width: 850px) {
   .products-grid {
     grid-template-columns: 1fr;
   }
 }
 
+@media (max-width: 650px) {
+  .pagination-wrapper {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .pagination-info {
+    order: 2;
+  }
+
+  .pagination {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 @media (max-width: 550px) {
   .list-header {
     align-items: flex-start;
-
     flex-direction: column;
   }
 
   .add-btn {
     width: 100%;
+  }
+
+  .pagination button {
+    width: 34px;
+    height: 34px;
   }
 }

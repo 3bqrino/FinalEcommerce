@@ -1,7 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
-
 import { RouterLink } from "@angular/router";
-
 import { ProductService } from "../../../core/services/product.service";
 import { IProduct } from "../../../core/models/product.model";
 import { environment } from "../../../../environments/environment";
@@ -29,11 +27,12 @@ export class LowStock implements OnInit {
   }
 
   getLowStock(): void {
-    this.productService.getAllProductsForAdmin().subscribe({
-      next: (products) => {
+    this.errorMessage = "";
+
+    this.productService.getLowStockProducts().subscribe({
+      next: (products: IProduct[]) => {
         this.products = products
-          .filter((product) => product.stock < this.stockLimit)
-          .sort((a, b) => a.stock - b.stock)
+          .sort((a: IProduct, b: IProduct) => a.stock - b.stock)
           .slice(0, 4);
 
         this._cdr.detectChanges();

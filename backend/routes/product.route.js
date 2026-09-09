@@ -45,10 +45,8 @@ router.get(
   "/admin/all",
   authenticate,
   authorize("admin"),
-  pagination(Product, {
-    isDeleted: false,
-  }),
-  getAllProductsForAdmin,
+  pagination(Product, { isDeleted: false }),
+  getAllProductsForAdmin
 );
 
 router.get(

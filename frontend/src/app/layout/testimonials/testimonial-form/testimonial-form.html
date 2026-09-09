@@ -1,7 +1,11 @@
 <section class="testimonial-page">
   <header class="testimonial-header">
     <div class="header-top">
-      <button type="button" class="back-button" (click)="backToAccount()">
+      <button
+        type="button"
+        class="back-button"
+        (click)="backToAccount()"
+      >
         <span class="back-icon">
           <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
         </span>
@@ -13,7 +17,7 @@
     </div>
 
     <div class="header-copy">
-      <span class="eyebrow"> CUSTOMER FEEDBACK </span>
+      <span class="eyebrow">CUSTOMER FEEDBACK</span>
 
       <h1>
         SHARE YOUR
@@ -39,25 +43,42 @@
       </div>
     </div>
 
+    <!-- ERROR MESSAGE -->
     @if (errorMessage) {
-    <div class="message error">
-      <span class="message-icon">
-        <i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>
-      </span>
+      <div class="message error">
+        <span class="message-icon">
+          <i
+            class="fa-solid fa-circle-exclamation"
+            aria-hidden="true"
+          ></i>
+        </span>
 
-      <span> {{ errorMessage }} </span>
-    </div>
-    } @if (successMessage) {
-    <div class="message success">
-      <span class="message-icon">
-        <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-      </span>
-
-      <span> {{ successMessage }} </span>
-    </div>
+        <span>{{ errorMessage }}</span>
+      </div>
     }
 
-    <div class="form-content" [formGroup]="testimonialForm">
+    <!-- SUCCESS MESSAGE -->
+    @if (successMessage) {
+      <div class="message success">
+        <span class="message-icon">
+          <i
+            class="fa-solid fa-circle-check"
+            aria-hidden="true"
+          ></i>
+        </span>
+
+        <span>{{ successMessage }}</span>
+      </div>
+    }
+
+    <!-- FORM -->
+    <form
+      class="form-content"
+      [formGroup]="testimonialForm"
+      (ngSubmit)="submitTestimonial()"
+    >
+
+      <!-- RATING -->
       <div class="field rating-field">
         <div class="field-heading">
           <div>
@@ -68,62 +89,106 @@
             </span>
           </div>
 
-          @if (rating > 0) {
-          <span class="rating-value"> {{ rating }} / 5 </span>
+          @if (testimonialForm.controls.rating.value > 0) {
+            <span class="rating-value">
+              {{ testimonialForm.controls.rating.value }} / 5
+            </span>
           }
         </div>
 
-        <div class="rating-options" role="radiogroup" aria-label="Your rating">
+        <div
+          class="rating-options"
+          role="radiogroup"
+          aria-label="Your rating"
+        >
           @for (star of [1, 2, 3, 4, 5]; track star) {
-          <button
-            type="button"
-            class="star-button"
-            [class.active]="star <= rating"
-            [attr.aria-label]="'Rate ' + star + ' stars'"
-            [attr.aria-checked]="star === rating"
-            role="radio"
-            (click)="setRating(star)"
-          >
-            <i class="fa-solid fa-star" aria-hidden="true"></i>
-          </button>
+            <button
+              type="button"
+              class="star-button"
+              [class.active]="
+                star <= testimonialForm.controls.rating.value
+              "
+              [attr.aria-label]="'Rate ' + star + ' stars'"
+              [attr.aria-checked]="
+                star === testimonialForm.controls.rating.value
+              "
+              role="radio"
+              (click)="setRating(star)"
+            >
+              <i
+                class="fa-solid fa-star"
+                aria-hidden="true"
+              ></i>
+            </button>
           }
         </div>
 
         <div class="rating-caption">
-          @if (rating === 0) {
-          <span>Select your rating</span>
-          } @else if (rating === 1) {
-          <span>We're sorry your experience wasn't great.</span>
-          } @else if (rating === 2) {
-          <span>We'd love to make your next experience better.</span>
-          } @else if (rating === 3) {
-          <span>Thank you for sharing your feedback.</span>
-          } @else if (rating === 4) {
-          <span>We're glad you enjoyed your experience.</span>
-          } @else {
-          <span>We're happy you loved NATURAL.</span>
+          @switch (testimonialForm.controls.rating.value) {
+
+            @case (0) {
+              <span>Select your rating</span>
+            }
+
+            @case (1) {
+              <span>
+                We're sorry your experience wasn't great.
+              </span>
+            }
+
+            @case (2) {
+              <span>
+                We'd love to make your next experience better.
+              </span>
+            }
+
+            @case (3) {
+              <span>
+                Thank you for sharing your feedback.
+              </span>
+            }
+
+            @case (4) {
+              <span>
+                We're glad you enjoyed your experience.
+              </span>
+            }
+
+            @case (5) {
+              <span>
+                We're happy you loved NATURAL.
+              </span>
+            }
+
           }
         </div>
       </div>
 
+      <!-- COMMENT -->
       <div class="field comment-field">
         <div class="field-heading">
           <div>
             <label>YOUR TESTIMONIAL</label>
 
-            <span class="field-helper"> Share your experience with us </span>
+            <span class="field-helper">
+              Share your experience with us
+            </span>
           </div>
 
-          <span class="character-count"> {{ comment.length }} / 1000 </span>
+          <span class="character-count">
+            {{ testimonialForm.controls.comment.value.length }} / 1000
+          </span>
         </div>
 
         <div class="textarea-wrap">
           <span class="textarea-icon">
-            <i class="fa-solid fa-pen" aria-hidden="true"></i>
+            <i
+              class="fa-solid fa-pen"
+              aria-hidden="true"
+            ></i>
           </span>
 
           <textarea
-            name="comment"
             formControlName="comment"
             rows="8"
             maxlength="1000"
@@ -131,31 +196,44 @@
           ></textarea>
         </div>
       </div>
-    </div>
 
-    <div class="form-actions">
-      <button type="button" class="cancel-button" (click)="backToAccount()">
-        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+      <!-- ACTIONS -->
+      <div class="form-actions">
+        <button
+          type="button"
+          class="cancel-button"
+          (click)="backToAccount()"
+        >
+          <i
+            class="fa-solid fa-arrow-left"
+            aria-hidden="true"
+          ></i>
 
-        <span>CANCEL</span>
-      </button>
+          <span>CANCEL</span>
+        </button>
 
-      <button
-        type="button"
-        class="submit-button"
-        [disabled]="isSubmitting"
-        (click)="submitTestimonial()"
-      >
-        @if (isSubmitting) {
-        <span>SUBMITTING...</span>
+        <button
+          type="submit"
+          class="submit-button"
+          [disabled]="isSubmitting"
+        >
+          @if (isSubmitting) {
+            <span>SUBMITTING...</span>
 
-        <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>
-        } @else {
-        <span>SUBMIT TESTIMONIAL</span>
+            <i
+              class="fa-solid fa-spinner fa-spin"
+              aria-hidden="true"
+            ></i>
+          } @else {
+            <span>SUBMIT TESTIMONIAL</span>
 
-        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-        }
-      </button>
-    </div>
+            <i
+              class="fa-solid fa-arrow-right"
+              aria-hidden="true"
+            ></i>
+          }
+        </button>
+      </div>
+    </form>
   </section>
 </section>

@@ -1,11 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
-
 import { RouterLink } from "@angular/router";
-
 import { IProduct } from "../../../core/models/product.model";
-
 import { ProductService } from "../../../core/services/product.service";
-
 import { ProductCard } from "../product-card/product-card";
 
 @Component({
@@ -17,8 +13,12 @@ import { ProductCard } from "../product-card/product-card";
 })
 export class ProductList implements OnInit {
   products: IProduct[] = [];
-
   errorMessage = "";
+
+  currentPage = 1;
+  pageSize = 20;
+  totalProducts = 0;
+  totalPages = 0;
 
   constructor(
     private productService: ProductService,
@@ -26,30 +26,37 @@ export class ProductList implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.productService.products$.subscribe((products) => {
-      this.products = products;
-
-      this._cdr.detectChanges();
-    });
-
-    this.getProducts();
+    this.getProducts(1);
   }
 
-  getProducts(): void {
+  getProducts(page: number = 1): void {
     this.errorMessage = "";
 
-    this.productService.getAllProductsForAdmin().subscribe({
-      error: (err) => {
-        this.errorMessage = err?.error?.message || "Failed to load products.";
+    this.productService
+      .getAllProductsForAdmin(page, this.pageSize)
+      .subscribe({
+        next: (result) => {
+          this.products = result.products;
 
-        this._cdr.detectChanges();
-      },
-    });
+          this.currentPage = result.pagination.page;
+          this.pageSize = result.pagination.limit;
+          this.totalProducts = result.pagination.total;
+          this.totalPages = result.pagination.totalPages;
+
+          this._cdr.detectChanges();
+        },
+
+        error: (err) => {
+          this.errorMessage =
+            err?.error?.message || "Failed to load products.";
+
+          this._cdr.detectChanges();
+        },
+      });
   }
 
   toggleActive(event: { id: string; isActive: boolean }): void {
     const formData = new FormData();
-
     formData.append("isActive", String(event.isActive));
 
     this.productService.updateProduct(event.id, formData).subscribe({
@@ -64,7 +71,6 @@ export class ProductList implements OnInit {
 
   toggleNewArrival(event: { id: string; isNewArrival: boolean }): void {
     const formData = new FormData();
-
     formData.append("isNewArrival", String(event.isNewArrival));
 
     this.productService.updateProduct(event.id, formData).subscribe({
@@ -79,7 +85,6 @@ export class ProductList implements OnInit {
 
   toggleTopSeller(event: { id: string; isTopSeller: boolean }): void {
     const formData = new FormData();
-
     formData.append("isTopSeller", String(event.isTopSeller));
 
     this.productService.updateProduct(event.id, formData).subscribe({
@@ -94,11 +99,45 @@ export class ProductList implements OnInit {
 
   deleteProduct(id: string): void {
     this.productService.deleteProduct(id).subscribe({
+      next: () => {
+        // لو حذفنا آخر منتج في الصفحة الحالية
+        // نرجع للصفحة السابقة لو الصفحة بقت فاضية
+        if (this.products.length === 1 && this.currentPage > 1) {
+          this.getProducts(this.currentPage - 1);
+          return;
+        }
+
+        this.getProducts(this.currentPage);
+      },
+
       error: (err) => {
-        this.errorMessage = err?.error?.message || "Failed to delete product.";
+        this.errorMessage =
+          err?.error?.message || "Failed to delete product.";
 
         this._cdr.detectChanges();
       },
     });
+  }
+
+  getStartIndex(): number {
+    if (this.totalProducts === 0) {
+      return 0;
+    }
+
+    return (this.currentPage - 1) * this.pageSize + 1;
+  }
+
+  getEndIndex(): number {
+    return Math.min(
+      this.currentPage * this.pageSize,
+      this.totalProducts,
+    );
+  }
+
+  getPages(): number[] {
+    return Array.from(
+      { length: this.totalPages },
+      (_, index) => index + 1,
+    );
   }
 }

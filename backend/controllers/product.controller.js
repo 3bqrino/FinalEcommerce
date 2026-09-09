@@ -177,42 +177,27 @@ exports.getAllProducts = catchAsync(async (req, res) => {
 exports.getAllProductsForAdmin = catchAsync(async (req, res) => {
   const paginated = res.paginatedResult;
 
-  const products = paginated
-    ? await Product.populate(paginated.results, [
-        {
-          path: "category",
-          select: "name slug",
-        },
-        {
-          path: "subCategory",
-          select: "name slug",
-        },
-      ])
-    : await populateProduct(
-        Product.find({
-          isDeleted: false,
-        }).sort({
-          createdAt: -1,
-        }),
-      );
+  const products = await Product.populate(paginated.results, [
+    {
+      path: "category",
+      select: "name slug",
+    },
+    {
+      path: "subCategory",
+      select: "name slug",
+    },
+  ]);
 
   res.status(200).json({
     message: "Products fetched successfully",
-
     data: {
       products,
-
-      pagination: paginated
-        ? {
-            page: paginated.page,
-
-            limit: paginated.limit,
-
-            totalPages: paginated.totalPages,
-
-            total: paginated.total,
-          }
-        : undefined,
+      pagination: {
+        page: paginated.page,
+        limit: paginated.limit,
+        totalPages: paginated.totalPages,
+        total: paginated.total,
+      },
     },
   });
 });

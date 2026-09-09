@@ -1,14 +1,11 @@
 import { ChangeDetectorRef, Component } from "@angular/core";
-
 import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from "@angular/forms";
-
 import { Router } from "@angular/router";
-
 import { TestimonialService } from "../../../core/services/testimonial.service";
 
 @Component({
@@ -19,82 +16,90 @@ import { TestimonialService } from "../../../core/services/testimonial.service";
   styleUrl: "./testimonial-form.css",
 })
 export class TestimonialForm {
-  comment = "";
-
-  rating = 0;
-
   errorMessage = "";
-
   successMessage = "";
-
   isSubmitting = false;
 
   testimonialForm = new FormGroup({
-    comment: new FormControl("", {
+    comment: new FormControl<string>("", {
       nonNullable: true,
-      validators: [Validators.required, Validators.maxLength(1000)],
-      updateOn: "change",
+      validators: [
+        Validators.required,
+        Validators.maxLength(1000),
+      ],
     }),
-    rating: new FormControl(0, {
+
+    rating: new FormControl<number>(0, {
       nonNullable: true,
-      validators: [Validators.min(1), Validators.max(5)],
-      updateOn: "change",
+      validators: [
+        Validators.required,
+        Validators.min(1),
+        Validators.max(5),
+      ],
     }),
   });
 
   constructor(
     private testimonialService: TestimonialService,
     private router: Router,
-    private _cdr: ChangeDetectorRef,
+    private cdr: ChangeDetectorRef
   ) {}
 
   setRating(rating: number): void {
-    this.rating = rating;
+    if (rating < 1 || rating > 5) {
+      return;
+    }
+
     this.testimonialForm.controls.rating.setValue(rating);
+    this.testimonialForm.controls.rating.markAsTouched();
 
     this.errorMessage = "";
+    this.successMessage = "";
 
-    this._cdr.detectChanges();
+    this.cdr.detectChanges();
   }
 
   submitTestimonial(): void {
-    this.testimonialForm.markAllAsTouched();
     this.errorMessage = "";
-
     this.successMessage = "";
 
-    if (this.testimonialForm.invalid || !this.rating || !this.comment.trim()) {
-      if (!this.rating) {
-        this.errorMessage = "Please select a rating";
-      } else {
-        this.errorMessage = "Please write your testimonial";
-      }
-      this._cdr.detectChanges();
+    const commentControl = this.testimonialForm.controls.comment;
+    const ratingControl = this.testimonialForm.controls.rating;
+
+    const comment = commentControl.value.trim();
+    const rating = ratingControl.value;
+
+    if (!rating || rating < 1 || rating > 5) {
+      this.errorMessage = "Please select a rating.";
+      ratingControl.markAsTouched();
+      this.cdr.detectChanges();
       return;
     }
 
-    if (!this.rating) {
-      this.errorMessage = "Please select a rating";
-
-      this._cdr.detectChanges();
-
+    if (!comment) {
+      this.errorMessage = "Please write your testimonial.";
+      commentControl.markAsTouched();
+      this.cdr.detectChanges();
       return;
     }
 
-    if (!this.comment.trim()) {
-      this.errorMessage = "Please write your testimonial";
+    if (comment.length > 1000) {
+      this.errorMessage =
+        "Your testimonial must be 1000 characters or less.";
 
-      this._cdr.detectChanges();
-
+      commentControl.markAsTouched();
+      this.cdr.detectChanges();
       return;
     }
 
     this.isSubmitting = true;
 
-    this._cdr.detectChanges();
+    commentControl.setValue(comment);
+
+    this.cdr.detectChanges();
 
     this.testimonialService
-      .createTestimonial(this.comment.trim(), this.rating)
+      .createTestimonial(comment, rating)
       .subscribe({
         next: () => {
           this.isSubmitting = false;
@@ -102,23 +107,27 @@ export class TestimonialForm {
           this.successMessage =
             "Your testimonial has been submitted successfully and is waiting for review.";
 
-          this.comment = "";
+          this.errorMessage = "";
 
-          this.rating = 0;
-          this.testimonialForm.reset({ comment: "", rating: 0 });
+          this.testimonialForm.reset({
+            comment: "",
+            rating: 0,
+          });
 
-          this._cdr.detectChanges();
+          this.cdr.detectChanges();
         },
 
         error: (err) => {
-          console.log("Create testimonial error:", err);
+          console.error("Create testimonial error:", err);
 
           this.isSubmitting = false;
 
           this.errorMessage =
-            err?.error?.message || "Failed to submit testimonial";
+            err?.error?.message ||
+            err?.message ||
+            "Failed to submit testimonial. Please try again.";
 
-          this._cdr.detectChanges();
+          this.cdr.detectChanges();
         },
       });
   }

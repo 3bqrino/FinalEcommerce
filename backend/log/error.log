@@ -7533,3 +7533,946 @@ MulterError: File too large
     at writeOrBuffer (node:internal/streams/writable:570:12)
     at _write (node:internal/streams/writable:499:10)
     at Writable.write (node:internal/streams/writable:508:10) 
+09-09-2026 19:01:58 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:02:01 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:02:03 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:02:03 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:02:03 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:02:34 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:02:40 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:02:40 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:04:07 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:04:08 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:04:17 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:04:22 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:04:25 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:04:26 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:12:09 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:12:48 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:12:49 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:12:52 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:12:52 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:12:52 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:13:13 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:13:16 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:13:27 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:13:29 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:13:38 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:13:40 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:13:49 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:13:52 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:14:07 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:14:38 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:14:52 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:14:58 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:15:10 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:15:15 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:15:25 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:15:48 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:15:57 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:16:00 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:16:36 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:16:38 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:16:45 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:16:48 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:16:57 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:17:24 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:17:30 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:17:35 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:17:37 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:18:03 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:18:17 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:18:20 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:18:25 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:18:28 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:18:33 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:18:38 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:18:45 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:18:56 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:19:21 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:19:24 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:19:31 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:19:34 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:19:41 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:19:43 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:20:03 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:20:09 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:20:16 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:20:24 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:20:27 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:20:39 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:20:42 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:21:50 | ERROR | Error found | 404 | GET /api/v1/home/footer : Footer not found | user: guest 
+Error: Footer not found
+    at D:\finalProject\v1.2\backend\controllers\footer.home.controller.js:43:17
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5) 
+09-09-2026 19:21:50 | ERROR | Error found | 404 | GET /api/v1/home/promo-banner : Promo banner not found | user: guest 
+Error: Promo banner not found
+    at D:\finalProject\v1.2\backend\controllers\promo-banner.home.controller.js:12:17
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5) 
+09-09-2026 19:30:28 | ERROR | Error found | 404 | GET /api/v1/home/promo-banner : Promo banner not found | user: guest 
+Error: Promo banner not found
+    at D:\finalProject\v1.2\backend\controllers\promo-banner.home.controller.js:12:17
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5) 
+09-09-2026 19:30:28 | ERROR | Error found | 404 | GET /api/v1/home/footer : Footer not found | user: guest 
+Error: Footer not found
+    at D:\finalProject\v1.2\backend\controllers\footer.home.controller.js:43:17
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5) 
+09-09-2026 19:30:34 | ERROR | Error found | 404 | GET /api/v1/home/promo-banner : Promo banner not found | user: guest 
+Error: Promo banner not found
+    at D:\finalProject\v1.2\backend\controllers\promo-banner.home.controller.js:12:17
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5) 
+09-09-2026 19:31:44 | ERROR | Error found | 404 | GET /api/v1/home/footer : Footer not found | user: guest 
+Error: Footer not found
+    at D:\finalProject\v1.2\backend\controllers\footer.home.controller.js:43:17
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5) 
+09-09-2026 19:32:01 | ERROR | Error found | 404 | GET /api/v1/home/footer : Footer not found | user: guest 
+Error: Footer not found
+    at D:\finalProject\v1.2\backend\controllers\footer.home.controller.js:43:17
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5) 
+09-09-2026 19:50:54 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:55:39 | ERROR | Error found | 404 | GET /api/v1/products/slug/seed-t-shirt-6 : Product not found | user: guest 
+Error: Product not found
+    at D:\finalProject\v1.2\backend\controllers\product.controller.js:232:17
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5) 
+09-09-2026 19:55:41 | ERROR | Error found | 404 | GET /api/v1/products/slug/seed-t-shirt-6 : Product not found | user: guest 
+Error: Product not found
+    at D:\finalProject\v1.2\backend\controllers\product.controller.js:232:17
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5) 
+09-09-2026 19:55:51 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:55:57 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:57:38 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:57:42 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 19:59:11 | ERROR | Error found | 404 | GET /files/test-product.jpg : Can't find /files/test-product.jpg on this server | user: guest 
+Error: Can't find /files/test-product.jpg on this server
+    at D:\finalProject\v1.2\backend\server.js:110:8
+    at Layer.handleRequest (D:\finalProject\v1.2\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\finalProject\v1.2\backend\node_modules\router\index.js:342:13)
+    at D:\finalProject\v1.2\backend\node_modules\router\index.js:297:9
+    at processParams (D:\finalProject\v1.2\backend\node_modules\router\index.js:582:12)
+    at next (D:\finalProject\v1.2\backend\node_modules\router\index.js:291:5)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\serve-static\index.js:120:7)
+    at SendStream.emit (node:events:509:20)
+    at SendStream.error (D:\finalProject\v1.2\backend\node_modules\send\index.js:168:17)
+    at SendStream.onStatError (D:\finalProject\v1.2\backend\node_modules\send\index.js:315:12) 
+09-09-2026 20:31:36 | ERROR | Error found | 403 | POST /api/v1/auth/login : Invalid email or password | user: guest 
+Error: Invalid email or password
+    at D:\finalProject\v1.2\backend\controllers\auth.controller.js:104:17
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5) 
+09-09-2026 20:31:42 | ERROR | Error found | 403 | POST /api/v1/auth/login : Invalid email or password | user: guest 
+Error: Invalid email or password
+    at D:\finalProject\v1.2\backend\controllers\auth.controller.js:104:17 

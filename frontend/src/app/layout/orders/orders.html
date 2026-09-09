@@ -1,0 +1,301 @@
+<section class="orders-page">
+  <header class="orders-hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <span>ACCOUNT</span>
+        <i>/</i>
+        <span>ORDERS</span>
+      </div>
+
+      <h1>
+        YOUR
+        <span>ORDER ARCHIVE.</span>
+      </h1>
+
+      <p>
+        Every order, every step, all in one place. Track your latest purchases
+        and revisit your history.
+      </p>
+    </div>
+
+    <div class="hero-meta">
+      <div class="hero-meta-label">
+        ORDER HISTORY
+      </div>
+
+      <div class="hero-meta-number">
+        {{ orders.length.toString().padStart(2, '0') }}
+      </div>
+
+      <div class="hero-meta-line"></div>
+
+      <div class="hero-meta-caption">
+        PURCHASES
+      </div>
+    </div>
+  </header>
+
+  @if (errorMessage) {
+    <section class="state-panel error-panel">
+      <div class="state-mark error-mark">
+        !
+      </div>
+
+      <div class="state-copy">
+        <span>SYSTEM MESSAGE</span>
+
+        <strong>
+          {{ errorMessage }}
+        </strong>
+      </div>
+
+      <button
+        type="button"
+        class="state-action"
+        (click)="loadOrders()"
+      >
+        RETRY
+      </button>
+    </section>
+  }
+
+  @if (!errorMessage && orders.length === 0) {
+    <section class="empty-orders">
+      <div class="empty-main">
+        <span class="section-kicker">
+          ORDER ARCHIVE
+        </span>
+
+        <h2>
+          NOTHING
+          <span>HERE YET.</span>
+        </h2>
+
+        <p>
+          Your future purchases will appear here. Start exploring the latest
+          NATURAL collection.
+        </p>
+
+        <a
+          routerLink="/home"
+          class="shop-button"
+        >
+          <span>CONTINUE SHOPPING</span>
+          <strong>↗</strong>
+        </a>
+      </div>
+    </section>
+  }
+
+  @if (!errorMessage && orders.length > 0) {
+    <main class="orders-content">
+      <div class="orders-section-head">
+        <div>
+          <span class="section-kicker">
+            PURCHASE HISTORY
+          </span>
+
+          <h2>
+            RECENT ORDERS
+          </h2>
+        </div>
+
+        <span class="section-total">
+          TOTAL : {{ orders.length }}
+        </span>
+      </div>
+
+      <div class="orders-list">
+        @for (order of orders; track order._id) {
+          <article
+            class="order-card"
+            [class.order-delivered]="order.status === 'delivered'"
+            [class.order-cancelled]="order.status === 'cancelled'"
+            [class.order-refunded]="order.status === 'refunded'"
+          >
+            <div class="order-body">
+              <div class="order-head">
+                <div class="order-identity">
+                  <span class="order-kicker">
+                    ORDER NUMBER
+                  </span>
+
+                  <h3>
+                    #{{ order._id.slice(-6).toUpperCase() }}
+                  </h3>
+                </div>
+
+                <div
+                  class="order-status"
+                  [class.pending]="order.status === 'pending'"
+                  [class.confirmed]="order.status === 'confirmed'"
+                  [class.processing]="order.status === 'processing'"
+                  [class.shipped]="order.status === 'shipped'"
+                  [class.delivered]="order.status === 'delivered'"
+                  [class.cancelled]="order.status === 'cancelled'"
+                  [class.refunded]="order.status === 'refunded'"
+                >
+                  <span class="status-dot"></span>
+
+                  {{ getStatusLabel(order.status) }}
+                </div>
+              </div>
+
+              <div class="status-track">
+                <div
+                  class="track-node"
+                  [class.active]="
+                    order.status === 'pending' ||
+                    order.status === 'confirmed' ||
+                    order.status === 'processing' ||
+                    order.status === 'shipped' ||
+                    order.status === 'delivered'
+                  "
+                >
+                  <span></span>
+                  <small>PLACED</small>
+                </div>
+
+                <div class="track-line"></div>
+
+                <div
+                  class="track-node"
+                  [class.active]="
+                    order.status === 'confirmed' ||
+                    order.status === 'processing' ||
+                    order.status === 'shipped' ||
+                    order.status === 'delivered'
+                  "
+                >
+                  <span></span>
+                  <small>CONFIRMED</small>
+                </div>
+
+                <div class="track-line"></div>
+
+                <div
+                  class="track-node"
+                  [class.active]="
+                    order.status === 'processing' ||
+                    order.status === 'shipped' ||
+                    order.status === 'delivered'
+                  "
+                >
+                  <span></span>
+                  <small>PROCESSING</small>
+                </div>
+
+                <div class="track-line"></div>
+
+                <div
+                  class="track-node"
+                  [class.active]="
+                    order.status === 'shipped' ||
+                    order.status === 'delivered'
+                  "
+                >
+                  <span></span>
+                  <small>SHIPPED</small>
+                </div>
+
+                <div class="track-line"></div>
+
+                <div
+                  class="track-node"
+                  [class.active]="order.status === 'delivered'"
+                >
+                  <span></span>
+                  <small>DELIVERED</small>
+                </div>
+              </div>
+
+              <div class="order-data">
+                <div class="data-block">
+                  <span>PLACED</span>
+
+                  <strong>
+                    {{
+                      order.createdAt
+                        ? (order.createdAt | date: 'dd MMM yyyy')
+                        : '—'
+                    }}
+                  </strong>
+
+                  @if (order.createdAt) {
+                    <small>
+                      {{ order.createdAt | date: 'hh:mm a' }}
+                    </small>
+                  }
+                </div>
+
+                <div class="data-block">
+                  <span>ITEMS</span>
+
+                  <strong>
+                    {{
+                      getItemsCount(order)
+                        .toString()
+                        .padStart(2, '0')
+                    }}
+                  </strong>
+
+                  <small>
+                    PRODUCTS
+                  </small>
+                </div>
+
+                <div class="data-block">
+                  <span>TOTAL</span>
+
+                  <strong>
+                    {{ order.totalAmount | number: '1.0-2' }}
+                  </strong>
+
+                  <small>
+                    EGP
+                  </small>
+                </div>
+              </div>
+
+              <div class="order-footer">
+                <div class="footer-note">
+                  <span class="footer-dot"></span>
+
+                  <span>
+                    {{
+                      order.status === 'delivered'
+                        ? 'ORDER COMPLETED'
+                        : order.status === 'cancelled'
+                          ? 'ORDER CANCELLED'
+                          : order.status === 'refunded'
+                            ? 'ORDER REFUNDED'
+                            : 'ORDER IN PROGRESS'
+                    }}
+                  </span>
+                </div>
+
+                <a
+                  [routerLink]="['/orders', order._id]"
+                  class="view-order"
+                >
+                  <span>VIEW ORDER</span>
+                  <strong>→</strong>
+                </a>
+              </div>
+            </div>
+          </article>
+        }
+      </div>
+    </main>
+
+  }
+  <div class="orders-footer-nav">
+    <a
+      routerLink="/home"
+      class="back-orders"
+    >
+      <span class="back-orders-arrow">←</span>
+      <span>BACK TO SHOP</span>
+    </a>
+  </div>
+</section>

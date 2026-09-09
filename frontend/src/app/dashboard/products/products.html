@@ -1,0 +1,68 @@
+<section class="products-page">
+  <header class="products-header">
+    <div>
+      <h1>
+        PRODUCT
+        <strong>MANAGEMENT.</strong>
+      </h1>
+
+      <p>Manage your catalog, inventory and product visibility.</p>
+    </div>
+  </header>
+
+  @if (errorMessage) {
+
+  <div class="message error-message">
+    <span> {{ errorMessage }} </span>
+
+    <button type="button" (click)="getProducts()">RETRY</button>
+  </div>
+
+  }
+
+  <div class="product-stats">
+    <article class="stat-card">
+      <span> TOTAL PRODUCTS </span>
+
+      <strong> {{ totalProducts }} </strong>
+    </article>
+
+    <article class="stat-card">
+      <span> ACTIVE </span>
+
+      <strong> {{ activeProducts }} </strong>
+    </article>
+
+    <article class="stat-card">
+      <span> INACTIVE </span>
+
+      <strong> {{ inactiveProducts }} </strong>
+    </article>
+
+    <article class="stat-card">
+      <span> LOW STOCK </span>
+
+      <strong> {{ lowStockProducts }} </strong>
+    </article>
+
+    <article class="stat-card">
+      <span> OUT OF STOCK </span>
+
+      <strong> {{ outOfStockProducts }} </strong>
+    </article>
+
+    <article class="stat-card featured">
+      <span> NEW ARRIVALS </span>
+
+      <strong> {{ newArrivalProducts }} </strong>
+    </article>
+
+    <article class="stat-card featured-light">
+      <span> TOP SELLERS </span>
+
+      <strong> {{ topSellerProducts }} </strong>
+    </article>
+  </div>
+
+  <app-product-list></app-product-list>
+</section>

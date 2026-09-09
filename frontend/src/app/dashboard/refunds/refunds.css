@@ -1,0 +1,120 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.refunds-page {
+  width: 100%;
+}
+
+.page-header {
+  margin-bottom: 28px;
+}
+
+.eyebrow {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: #95ad00;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.15em;
+}
+
+.page-header h1 {
+  margin: 0;
+
+  color: #151515;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: clamp(40px, 4vw, 60px);
+
+  line-height: 0.95;
+
+  letter-spacing: -0.05em;
+}
+
+.page-header h1 strong {
+  color: #95ad00;
+}
+
+.page-header p {
+  margin: 13px 0 0;
+
+  color: #85857f;
+
+  font-size: 15px;
+}
+
+.refund-stats {
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 10px;
+
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  padding: 17px;
+
+  border: 1px solid #e1e1db;
+
+  border-radius: 9px;
+
+  background: #ffffff;
+}
+
+.stat-card span {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #a0a099;
+
+  font-size: 12px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.1em;
+}
+
+.stat-card strong {
+  color: #24241f;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 26px;
+}
+
+.stat-card.featured {
+  border-color: #c8ff1a;
+
+  background: #f8fce9;
+}
+
+.stat-card.featured strong {
+  color: #6f8300;
+}
+
+@media (max-width: 800px) {
+  .refund-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 450px) {
+  .refund-stats {
+    grid-template-columns: 1fr;
+  }
+}

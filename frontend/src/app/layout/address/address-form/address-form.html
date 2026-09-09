@@ -1,0 +1,178 @@
+<section class="address-form-page">
+  <header class="form-header">
+    <div class="header-copy">
+      <button type="button" class="back-button" (click)="cancel()">
+        <span>←</span> BACK TO ADDRESSES
+      </button>
+      <span class="eyebrow">Address Management</span>
+      <h1>{{ isEditMode ? 'EDIT' : 'ADD' }} <strong>ADDRESS.</strong></h1>
+      <p>
+        {{ isEditMode ? 'Update your delivery address details.' : 'Add a new
+        delivery address to your account.' }}
+      </p>
+    </div>
+  </header>
+
+  @if (errorMessage) {
+  <div class="error-box">
+    <span>!</span>
+    <p>{{ errorMessage }}</p>
+  </div>
+  }
+
+  <form
+    class="form-card"
+    [formGroup]="addressForm"
+    (ngSubmit)="saveAddress()"
+    novalidate
+  >
+    <div class="card-top">
+      <div>
+        <span class="card-kicker">DELIVERY DETAILS</span>
+        <h2>{{ isEditMode ? 'Update address' : 'New address' }}</h2>
+      </div>
+      <span class="required-note">* REQUIRED</span>
+    </div>
+
+    <div
+      class="field full"
+      [class.has-error]="name.invalid && (name.touched || submitted)"
+      [class.has-success]="name.valid && name.touched"
+    >
+      <label for="name">ADDRESS NAME</label>
+      <input
+        id="name"
+        type="text"
+        formControlName="name"
+        placeholder="Home"
+        autocomplete="off"
+      />
+      @if (name.invalid && (name.touched || submitted)) {
+      <div class="field-error">
+        @if (name.errors?.['required']) {
+        <span>Address name is required.</span>
+        } @if (name.errors?.['minlength']) {
+        <span>Address name must be at least 2 characters.</span>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-grid">
+      <div
+        class="field"
+        [class.has-error]="governorate.invalid && (governorate.touched || submitted)"
+        [class.has-success]="governorate.valid && governorate.touched"
+      >
+        <label for="governorate">GOVERNORATE</label>
+        <input
+          id="governorate"
+          type="text"
+          formControlName="governorate"
+          placeholder="Cairo"
+          autocomplete="address-level1"
+        />
+        @if (governorate.invalid && (governorate.touched || submitted)) {
+        <div class="field-error">
+          @if (governorate.errors?.['required']) {
+          <span>Governorate is required.</span>
+          }
+        </div>
+        }
+      </div>
+
+      <div
+        class="field"
+        [class.has-error]="city.invalid && (city.touched || submitted)"
+        [class.has-success]="city.valid && city.touched"
+      >
+        <label for="city">CITY</label>
+        <input
+          id="city"
+          type="text"
+          formControlName="city"
+          placeholder="Nasr City"
+          autocomplete="address-level2"
+        />
+        @if (city.invalid && (city.touched || submitted)) {
+        <div class="field-error">
+          @if (city.errors?.['required']) {
+          <span>City is required.</span>
+          }
+        </div>
+        }
+      </div>
+
+      <div
+        class="field"
+        [class.has-error]="street.invalid && (street.touched || submitted)"
+        [class.has-success]="street.valid && street.touched"
+      >
+        <label for="street">STREET</label>
+        <input
+          id="street"
+          type="text"
+          formControlName="street"
+          placeholder="Main Street"
+          autocomplete="street-address"
+        />
+        @if (street.invalid && (street.touched || submitted)) {
+        <div class="field-error">
+          @if (street.errors?.['required']) {
+          <span>Street is required.</span>
+          }
+        </div>
+        }
+      </div>
+
+      <div
+        class="field"
+        [class.has-error]="building.invalid && (building.touched || submitted)"
+        [class.has-success]="building.valid && building.touched"
+      >
+        <label for="building">BUILDING</label>
+        <input
+          id="building"
+          type="text"
+          formControlName="building"
+          placeholder="20"
+          autocomplete="off"
+        />
+        @if (building.invalid && (building.touched || submitted)) {
+        <div class="field-error">
+          @if (building.errors?.['required']) {
+          <span>Building is required.</span>
+          }
+        </div>
+        }
+      </div>
+    </div>
+
+    <label class="default-address">
+      <input type="checkbox" formControlName="isDefault" />
+      <span class="checkbox-ui"></span>
+      <span class="default-copy">
+        <strong>Set as default address</strong>
+        <small>Use this address automatically during checkout.</small>
+      </span>
+    </label>
+
+    <div class="form-actions">
+      <button type="button" class="cancel-button" (click)="cancel()">
+        CANCEL
+      </button>
+
+      <button
+        type="submit"
+        class="save-button"
+        [disabled]="addressForm.invalid || isSubmitting"
+      >
+        <span
+          >{{ isSubmitting ? 'SAVING...' : isEditMode ? 'UPDATE ADDRESS' : 'SAVE
+          ADDRESS' }}</span
+        >
+        <span class="arrow">→</span>
+      </button>
+    </div>
+  </form>
+</section>

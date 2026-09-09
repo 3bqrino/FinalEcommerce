@@ -1,0 +1,189 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.product-list {
+  width: 100%;
+}
+
+.list-header {
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-bottom: 14px;
+
+  padding-bottom: 13px;
+
+  border-bottom: 1px solid #e6e6df;
+}
+
+.list-header > div > span {
+  color: #9a9c92;
+
+  font-size: 12px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.12em;
+}
+
+.list-header h2 {
+  margin: 5px 0 0;
+
+  color: #30312c;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 18px;
+
+  letter-spacing: -0.03em;
+}
+
+.add-btn {
+  min-height: 38px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 14px;
+
+  border: 1px solid #ccd6ae;
+
+  border-radius: 6px;
+
+  background: #f5f8eb;
+
+  color: #627248;
+
+  font-size: 12px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.06em;
+
+  text-decoration: none;
+
+  transition: 0.18s ease;
+}
+
+.add-btn:hover {
+  background: #eaf0da;
+
+  border-color: #bcc99a;
+}
+
+.products-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+.state {
+  min-height: 210px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+  border: 1px solid #e2e2dc;
+
+  border-radius: 9px;
+
+  background: #fff;
+
+  text-align: center;
+}
+
+.state > i {
+  margin-bottom: 5px;
+
+  color: #a8aaa2;
+
+  font-size: 25px;
+}
+
+.state strong {
+  color: #45463f;
+
+  font-size: 12px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.05em;
+}
+
+.state span {
+  color: #9a9b94;
+
+  font-size: 12px;
+}
+
+.state a,
+.state button {
+  min-height: 34px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 5px;
+
+  padding: 0 12px;
+
+  border: 1px solid #d9dccd;
+
+  border-radius: 5px;
+
+  background: #f7f8f3;
+
+  color: #68765a;
+
+  font-size: 12px;
+
+  font-weight: 900;
+
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.error-state strong {
+  color: #74463d;
+}
+
+@media (max-width: 850px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 550px) {
+  .list-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .add-btn {
+    width: 100%;
+  }
+}

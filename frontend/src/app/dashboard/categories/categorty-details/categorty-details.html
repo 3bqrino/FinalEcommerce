@@ -1,0 +1,51 @@
+<section class="category-details-page">
+  <header class="details-header">
+    <button type="button" class="back-btn" (click)="goBack()">
+      BACK TO CATEGORIES
+    </button>
+  </header>
+
+  @if (errorMessage) {
+
+  <div class="state-card">{{ errorMessage }}</div>
+
+  } @if (category) {
+
+  <section class="details-card">
+    <div class="category-image">
+      @if (category.image) {
+
+      <img [src]="getImageUrl(category.image)" [alt]="category.name" />
+
+      }
+    </div>
+
+    <div class="category-info">
+      <span class="label"> CATEGORY </span>
+
+      <h2>{{ category.name }}</h2>
+
+      <span class="label"> SLUG </span>
+
+      <p>{{ category.slug }}</p>
+
+      <span class="label"> DESCRIPTION </span>
+
+      <p>{{ category.description }}</p>
+
+      <div class="status">{{ category.isActive ? 'ACTIVE' : 'INACTIVE' }}</div>
+
+      <div class="actions">
+        <button type="button" class="edit-btn" (click)="editCategory()">
+          EDIT
+        </button>
+
+        <button type="button" class="delete-btn" (click)="deleteCategory()">
+          DELETE
+        </button>
+      </div>
+    </div>
+  </section>
+
+  }
+</section>

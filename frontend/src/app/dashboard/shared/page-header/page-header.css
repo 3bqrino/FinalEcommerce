@@ -1,0 +1,43 @@
+.page-header h1 {
+  margin: 0;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  color: #161616;
+
+  font-size: clamp(34px, 4vw, 54px);
+
+  line-height: 0.95;
+
+  font-weight: 700;
+
+  letter-spacing: -0.055em;
+}
+
+.page-eyebrow {
+  color: #94b000;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.18em;
+
+  text-transform: uppercase;
+}
+
+.page-header p {
+  margin-top: 10px;
+
+  color: #7f7f79;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 13px;
+
+  font-weight: 400;
+
+  line-height: 1.6;
+}

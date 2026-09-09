@@ -1,0 +1,99 @@
+<section class="top-sell-section">
+  <header class="top-sell-header">
+    <div class="header-left">
+      <span class="eyebrow">BEST SELLING</span>
+      <h2>WHAT EVERYONE <strong>IS WEARING.</strong></h2>
+      <p>Our most wanted pieces, ranked by the people who wear them.</p>
+    </div>
+
+    <div class="header-right">
+      <span>TOP SELLERS</span>
+    </div>
+  </header>
+
+  @if (products.length > 0) { @if (products[0]; as featuredProduct) {
+  <article class="seller-hero">
+    <div class="hero-info">
+      <div class="hero-rank">
+        <span>#1</span>
+        <small>TOP SELLER</small>
+      </div>
+
+      <div class="hero-copy">
+        <h3>
+          <a [routerLink]="['/product', featuredProduct.slug]">
+            {{ featuredProduct.name }}
+          </a>
+        </h3>
+
+        <p>{{ featuredProduct.description }}</p>
+      </div>
+
+      <div class="hero-bottom">
+        <div class="hero-price">
+          <span>PRICE</span>
+          <strong>LE {{ featuredProduct.price }}</strong>
+        </div>
+
+        <a
+          class="hero-button"
+          [routerLink]="['/product', featuredProduct.slug]"
+        >
+          SHOP NOW
+        </a>
+      </div>
+    </div>
+
+    <a class="hero-image" [routerLink]="['/product', featuredProduct.slug]">
+      <img
+        [src]="featuredProduct.image"
+        [alt]="featuredProduct.name"
+        loading="lazy"
+      />
+      <div class="hero-image-overlay"></div>
+      <div class="hero-image-top">
+        <span>BEST SELLER</span>
+      </div>
+      <div class="hero-image-bottom">
+        <span>VIEW PRODUCT</span>
+        <span class="circle-arrow">↗</span>
+      </div>
+    </a>
+  </article>
+  }
+
+  <div class="ranking-rail">
+    @for (product of products; track product._id; let i = $index) {
+    <article class="ranking-item" [class.active]="i === 0">
+      <a class="ranking-image" [routerLink]="['/product', product.slug]">
+        <img [src]="product.image" [alt]="product.name" loading="lazy" />
+      </a>
+
+      <div class="ranking-number">
+        {{ (i + 1).toString().padStart(2, '0') }}
+      </div>
+
+      <div class="ranking-info">
+        <span>{{ i === 0 ? '#1 BEST SELLER' : 'TOP SELLER' }}</span>
+        <h4>
+          <a [routerLink]="['/product', product.slug]">{{ product.name }}</a>
+        </h4>
+      </div>
+
+      <div class="ranking-price">LE {{ product.price }}</div>
+
+      <a
+        class="ranking-arrow"
+        [routerLink]="['/product', product.slug]"
+        aria-label="View product"
+      >
+      </a>
+    </article>
+    }
+  </div>
+  } @else if (errorMessage) {
+  <div class="state error-state">{{ errorMessage }}</div>
+  } @else {
+  <div class="state">No top sellers available.</div>
+  }
+</section>

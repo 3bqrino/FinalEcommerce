@@ -1,0 +1,203 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.products-page {
+  width: 100%;
+}
+
+.products-header {
+  margin-bottom: 26px;
+}
+
+.eyebrow {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: #8d9e62;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.14em;
+}
+
+.products-header h1 {
+  margin: 0;
+
+  color: #20221d;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: clamp(36px, 4vw, 56px);
+
+  line-height: 0.95;
+
+  letter-spacing: -0.05em;
+}
+
+.products-header h1 strong {
+  color: #82945f;
+}
+
+.products-header p {
+  margin: 12px 0 0;
+
+  max-width: 560px;
+
+  color: #888981;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+}
+
+.message {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-bottom: 18px;
+
+  padding: 12px 14px;
+
+  border: 1px solid #dfdfd7;
+
+  border-radius: 7px;
+
+  font-size: 12px;
+}
+
+.error-message {
+  border-color: #e4cec8;
+
+  background: #faf4f2;
+
+  color: var(--color-error);
+}
+
+.message button {
+  min-height: 32px;
+
+  padding: 0 12px;
+
+  border: 1px solid currentColor;
+
+  border-radius: 5px;
+
+  background: transparent;
+
+  color: inherit;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+.product-stats {
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 9px;
+
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  min-height: 88px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  padding: 15px;
+
+  border: 1px solid #e1e1da;
+
+  border-radius: 8px;
+
+  background: #fff;
+}
+
+.stat-card span {
+  color: #989990;
+
+  font-size: 12px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.1em;
+}
+
+.stat-card strong {
+  color: #2e3029;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 24px;
+
+  line-height: 1;
+}
+
+.stat-card.featured {
+  border-color: #d0dda7;
+
+  background: #f6f9ed;
+}
+
+.stat-card.featured strong {
+  color: #6e814d;
+}
+
+.stat-card.featured-light {
+  border-color: #e0e4d8;
+
+  background: #fafbf7;
+}
+
+.stat-card.featured-light strong {
+  color: #606d54;
+}
+
+@media (max-width: 1000px) {
+  .product-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .product-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 450px) {
+  .product-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .message {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .message button {
+    width: 100%;
+  }
+}

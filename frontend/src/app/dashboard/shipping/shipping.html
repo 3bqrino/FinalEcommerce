@@ -1,0 +1,52 @@
+<section class="shipping-page" [formGroup]="shippingForm">
+  <header class="page-header">
+    <div>
+      <span class="eyebrow"> NATURAL / SETTINGS </span>
+
+      <h1>SHIPPING <strong>FEE.</strong></h1>
+
+      <p>Manage the delivery fee for customer orders.</p>
+    </div>
+  </header>
+
+  @if (errorMessage) {
+
+  <div class="message-box error-box">{{ errorMessage }}</div>
+
+  } @if (successMessage) {
+
+  <div class="message-box success-box">{{ successMessage }}</div>
+
+  } @if (shipping) {
+
+  <section class="shipping-card">
+    <div class="current-fee">
+      <span> CURRENT SHIPPING FEE </span>
+
+      <strong> {{ shipping.shippingFee }} EGP </strong>
+    </div>
+
+    <div class="field">
+      <label for="shippingFee"> SHIPPING FEE </label>
+
+      <div class="input-wrap">
+        <input
+          id="shippingFee"
+          name="shippingFee"
+          type="number"
+          min="0"
+          step="1"
+          formControlName="shippingFee"
+        />
+
+        <span> EGP </span>
+      </div>
+    </div>
+
+    <button type="button" class="save-button" (click)="updateShipping()">
+      SAVE SHIPPING FEE
+    </button>
+  </section>
+
+  }
+</section>

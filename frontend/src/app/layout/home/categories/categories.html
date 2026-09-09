@@ -1,0 +1,69 @@
+<section class="categories-section">
+  <div class="section-head">
+    <span class="section-line"></span>
+
+    <h2>Categories</h2>
+
+    <span class="section-line"></span>
+  </div>
+
+  @if (categories.length > 0) {
+    <div class="categories-list">
+      @for (category of categories; track category._id) {
+        <div class="category-group">
+          <a
+            class="category-card"
+            [routerLink]="['/category', category.slug]"
+          >
+            <div class="category-image">
+              @if (category.image) {
+                <img
+                  [src]="category.image"
+                  [alt]="category.name"
+                  loading="lazy"
+                />
+              } @else {
+                <div class="image-placeholder">
+                  {{ category.name }}
+                </div>
+              }
+            </div>
+
+            <div class="category-content">
+              <h3>{{ category.name }}</h3>
+
+              @if (category.description) {
+                <p>{{ category.description }}</p>
+              }
+            </div>
+          </a>
+
+          @if (getCategorySubcategories(category._id).length > 0) {
+            <div class="subcategory-area">
+              <div class="subcategory-list">
+                @for (
+                  subcategory of getCategorySubcategories(category._id);
+                  track subcategory._id
+                ) {
+                  <a
+                    class="subcategory-btn"
+                    [routerLink]="['/category', category.slug]"
+                    [queryParams]="{
+                      subcategory: subcategory.slug
+                    }"
+                  >
+                    <span>{{ subcategory.name }}</span>
+                  </a>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="state">
+      No categories available.
+    </div>
+  }
+</section>

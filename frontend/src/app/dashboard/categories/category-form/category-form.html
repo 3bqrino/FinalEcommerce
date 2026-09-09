@@ -1,0 +1,232 @@
+<section class="category-form-page" [formGroup]="categoryForm">
+  <header class="form-header">
+    <div class="header-copy">
+      <div class="title-row">
+        <h1>
+          {{ isEditMode ? 'EDIT' : 'ADD' }}
+          <span>CATEGORY.</span>
+        </h1>
+
+        @if (isEditMode) {
+
+        <span class="edit-badge"> EDITING </span>
+
+        } @else {
+
+        <span class="edit-badge new"> NEW CATEGORY </span>
+
+        }
+      </div>
+
+      <p>
+        {{ isEditMode ? 'Update category information and store visibility.' :
+        'Create a new category for your store.' }}
+      </p>
+    </div>
+
+    <button type="button" class="back-btn" (click)="cancel()">
+      BACK TO CATEGORIES
+    </button>
+  </header>
+
+  @if (errorMessage) {
+
+  <div class="error-box">
+    <span class="error-icon"> ! </span>
+
+    <div>
+      <strong> Something went wrong </strong>
+
+      <p>{{ errorMessage }}</p>
+    </div>
+  </div>
+
+  }
+
+  <main class="category-form-layout">
+    <div class="form-main-column">
+      <section class="form-panel">
+        <div class="panel-header">
+          <div class="panel-index">01</div>
+
+          <div>
+            <span class="panel-kicker"> BASIC INFORMATION </span>
+
+            <h2>CATEGORY <span>DETAILS.</span></h2>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="category-name"> CATEGORY NAME </label>
+
+            <input
+              id="category-name"
+              type="text"
+              formControlName="name"
+              placeholder="e.g. New Arrivals"
+            />
+
+            <small> The public name customers will see. </small>
+          </div>
+
+          <div class="field">
+            <label for="category-slug"> SLUG </label>
+
+            <input
+              id="category-slug"
+              type="text"
+              formControlName="slug"
+              placeholder="new-arrivals"
+            />
+
+            <small> Used in the category URL. </small>
+          </div>
+
+          <div class="field full">
+            <label for="category-description"> DESCRIPTION </label>
+
+            <textarea
+              id="category-description"
+              formControlName="description"
+              placeholder="Write a short description for this collection..."
+            ></textarea>
+
+            <small> Keep it clear and useful for your customers. </small>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-panel">
+        <div class="panel-header">
+          <div class="panel-index">02</div>
+
+          <div>
+            <span class="panel-kicker"> VISUAL IDENTITY </span>
+
+            <h2>CATEGORY <span>IMAGE.</span></h2>
+          </div>
+        </div>
+
+        <div class="image-upload-area">
+          <div class="image-preview">
+            @if (imagePreview) {
+
+            <img [src]="imagePreview" [alt]="name || 'Category image'" />
+
+            <div class="preview-overlay">
+              <span> CURRENT IMAGE </span>
+            </div>
+
+            } @else {
+
+            <div class="empty-preview">
+              <span class="upload-icon"> + </span>
+
+              <strong> NO IMAGE </strong>
+
+              <small> Upload a category image </small>
+            </div>
+
+            }
+          </div>
+
+          <div class="upload-content">
+            <span class="upload-label"> CATEGORY IMAGE </span>
+
+            <h3>Add a visual for this category.</h3>
+
+            <p>
+              Use a clean product or collection image. JPG, JPEG, PNG and WEBP
+              are supported.
+            </p>
+
+            <label class="upload-btn">
+              <span> CHOOSE IMAGE </span>
+
+              <input
+                type="file"
+                accept=".jpg,.jpeg,.png,.webp"
+                (change)="onImageChange($event)"
+                hidden
+              />
+            </label>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <aside class="form-side-column">
+      <section class="status-panel">
+        <div class="panel-header compact">
+          <div class="panel-index">03</div>
+
+          <div>
+            <span class="panel-kicker"> STORE VISIBILITY </span>
+
+            <h2>STATUS.</h2>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          class="status-control"
+          [class.active]="isActive"
+          [class.inactive]="!isActive"
+          (click)="toggleActive()"
+        >
+          <span class="status-switch">
+            <span class="status-dot"></span>
+          </span>
+
+          <span class="status-content">
+            <strong>
+              {{ isActive ? 'ACTIVE CATEGORY' : 'INACTIVE CATEGORY' }}
+            </strong>
+
+            <small>
+              {{ isActive ? 'Visible on the public website.' : 'Hidden from the
+              public website.' }}
+            </small>
+          </span>
+
+          <span class="status-arrow"> </span>
+        </button>
+      </section>
+
+      <section class="summary-panel">
+        <span class="panel-kicker"> PREVIEW </span>
+
+        <h3>CATEGORY <span>SUMMARY.</span></h3>
+
+        <div class="summary-item">
+          <span> NAME </span>
+
+          <strong> {{ name || 'Category name' }} </strong>
+        </div>
+
+        <div class="summary-item">
+          <span> SLUG </span>
+
+          <strong> {{ slug || 'category-slug' }} </strong>
+        </div>
+
+        <div class="summary-item">
+          <span> VISIBILITY </span>
+
+          <strong> {{ isActive ? 'VISIBLE' : 'HIDDEN' }} </strong>
+        </div>
+      </section>
+    </aside>
+  </main>
+
+  <footer class="form-actions">
+    <button type="button" class="cancel-btn" (click)="cancel()">CANCEL</button>
+
+    <button type="button" class="save-btn" (click)="saveCategory()">
+      <span> {{ isEditMode ? 'UPDATE CATEGORY' : 'SAVE CATEGORY' }} </span>
+
+      <span class="save-arrow"> → </span>
+    </button>
+  </footer>
+</section>

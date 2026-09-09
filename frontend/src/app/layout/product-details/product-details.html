@@ -1,0 +1,370 @@
+<section class="product-page">
+  @if (errorMessage) {
+    <div class="product-error">
+      <div class="error-kicker">
+        PRODUCT / ERROR
+      </div>
+
+      <h1>
+        PRODUCT
+        <strong>NOT FOUND.</strong>
+      </h1>
+
+      <p>
+        {{ errorMessage }}
+      </p>
+
+      <a
+        routerLink="/home"
+        class="back-home"
+      >
+        <i
+          class="fa-solid fa-arrow-left"
+          aria-hidden="true"
+        ></i>
+
+        <span>BACK TO HOME</span>
+      </a>
+    </div>
+  } @else if (product) {
+    <nav
+      class="breadcrumb"
+      aria-label="Breadcrumb"
+    >
+      <a routerLink="/home">
+        HOME
+      </a>
+
+      <span>/</span>
+
+      @if (getCategorySlug()) {
+        <a
+          [routerLink]="['/category', getCategorySlug()]"
+        >
+          {{ getCategoryName() }}
+        </a>
+      } @else {
+        <span>
+          {{ getCategoryName() }}
+        </span>
+      }
+
+      <span>/</span>
+
+      <strong>
+        {{ product.name }}
+      </strong>
+    </nav>
+
+    <main class="product-layout">
+      <section class="product-media">
+        <div class="main-image-wrapper">
+          <div class="image-top-meta">
+            @if (product.isNewArrival) {
+              <span class="product-badge new-product">
+                <i
+                  class="fa-solid fa-sparkles"
+                  aria-hidden="true"
+                ></i>
+
+                <span>NEW</span>
+              </span>
+            }
+          </div>
+
+          <div class="image-bottom-meta">
+            @if (product.isTopSeller && isInStock()) {
+              <span class="product-badge top-product">
+                <i
+                  class="fa-solid fa-fire"
+                  aria-hidden="true"
+                ></i>
+
+                <span>BEST SELLER</span>
+              </span>
+            }
+          </div>
+
+          @if (!isInStock()) {
+            <span class="product-badge out-product">
+              <i
+                class="fa-solid fa-circle-xmark"
+                aria-hidden="true"
+              ></i>
+
+              <span>OUT OF STOCK</span>
+            </span>
+          }
+
+          <img
+            class="main-image"
+            [src]="product.image"
+            [alt]="product.name"
+          />
+
+          <div class="image-corner">
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="product-info">
+        <div class="product-header">
+          <div class="product-category">
+            <span>
+              {{ getCategoryName() }}
+            </span>
+
+            @if (getSubCategoryName()) {
+              <i>/</i>
+
+              <span>
+                {{ getSubCategoryName() }}
+              </span>
+            }
+          </div>
+        </div>
+
+        <div class="product-overline">
+          PRODUCT DETAILS
+        </div>
+
+        <h1 class="product-title">
+          {{ product.name }}
+        </h1>
+
+        <div class="product-price-block">
+          <span class="price-label">
+            PRICE
+          </span>
+
+          <div class="price-value">
+            <span>LE</span>
+
+            <strong>
+              {{ product.price }}
+            </strong>
+          </div>
+        </div>
+
+        <div
+          class="stock-status"
+          [class.out]="!isInStock()"
+        >
+          <span class="stock-indicator">
+            <span></span>
+          </span>
+
+          <div class="stock-copy">
+            <strong>
+              {{ isInStock() ? 'IN STOCK' : 'OUT OF STOCK' }}
+            </strong>
+
+            @if (isInStock()) {
+              <span>
+                {{ product.stock }} available
+              </span>
+            } @else {
+              <span>
+                Currently unavailable
+              </span>
+            }
+          </div>
+        </div>
+
+        @if (product.description) {
+          <p class="short-description">
+            {{ product.description }}
+          </p>
+        }
+
+        @if (isInStock()) {
+          <div class="purchase-area">
+            <div class="purchase-label">
+              SELECT QUANTITY
+            </div>
+
+            <div class="action-row">
+              <app-quantity-selector
+                [quantity]="quantity"
+                [max]="getStock()"
+                (quantityChange)="onQuantityChange($event)"
+              ></app-quantity-selector>
+
+              <button
+                type="button"
+                class="add-cart"
+                (click)="addToCart()"
+              >
+                <span class="add-cart-main">
+                  <i
+                    class="fa-solid fa-bag-shopping"
+                    aria-hidden="true"
+                  ></i>
+
+                  <span>
+                    ADD TO CART
+                  </span>
+                </span>
+
+                <span class="add-cart-arrow">
+                  <i
+                    class="fa-solid fa-arrow-right"
+                    aria-hidden="true"
+                  ></i>
+                </span>
+              </button>
+            </div>
+          </div>
+        } @else {
+          <div class="out-of-stock-box">
+            <div class="out-of-stock-icon">
+              <i
+                class="fa-solid fa-ban"
+                aria-hidden="true"
+              ></i>
+            </div>
+
+            <div>
+              <strong>
+                OUT OF STOCK
+              </strong>
+
+              <span>
+                This item is currently unavailable.
+              </span>
+            </div>
+          </div>
+        }
+
+        @if (cartMessage) {
+          <div class="cart-message">
+            <span class="message-dot"></span>
+
+            <span>
+              {{ cartMessage }}
+            </span>
+          </div>
+        }
+
+        <div class="info-sections">
+          <div class="info-section">
+            <div class="info-section-head">
+              <span>
+                DETAILS
+              </span>
+
+              <strong>
+                PRODUCT INFORMATION
+              </strong>
+            </div>
+
+            <div class="info-section-body">
+              <div class="information-row">
+                <span>
+                  CATEGORY
+                </span>
+
+                <strong>
+                  {{ getCategoryName() }}
+                </strong>
+              </div>
+
+              @if (getSubCategoryName()) {
+                <div class="information-row">
+                  <span>
+                    SUBCATEGORY
+                  </span>
+
+                  <strong>
+                    {{ getSubCategoryName() }}
+                  </strong>
+                </div>
+              }
+
+              <div class="information-row">
+                <span>
+                  STOCK
+                </span>
+
+                <strong>
+                  {{ product.stock }}
+                </strong>
+              </div>
+
+              <div class="information-row">
+                <span>
+                  AVAILABILITY
+                </span>
+
+                <strong>
+                  {{ isInStock() ? 'AVAILABLE' : 'SOLD OUT' }}
+                </strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    @if (relatedProducts.length > 0) {
+      <section class="related-products">
+        <div class="related-header">
+          <div class="related-heading">
+            <span class="related-eyebrow">
+              YOU MIGHT LIKE
+            </span>
+
+            <h2>
+              MORE FROM
+              <span>
+                THIS COLLECTION.
+              </span>
+            </h2>
+          </div>
+
+          @if (getCategorySlug()) {
+            <button
+              type="button"
+              class="view-all"
+              (click)="goToCollection()"
+            >
+              <span>
+                VIEW COLLECTION
+              </span>
+
+              <i
+                class="fa-solid fa-arrow-up-right-from-square"
+                aria-hidden="true"
+              ></i>
+            </button>
+          }
+        </div>
+
+        <div class="related-grid">
+          @for (
+            related of relatedProducts;
+            track related._id
+          ) {
+            <app-product-card
+              [product]="related"
+              [categoryName]="getCategoryName()"
+              [categorySlug]="getCategorySlug()"
+              [view]="'grid'"
+            ></app-product-card>
+          }
+        </div>
+      </section>
+    }
+
+    @if (isInStock()) {
+      <app-sticky-cart
+        [product]="product"
+        [quantity]="quantity"
+        (quantityChange)="onQuantityChange($event)"
+        (addToCartRequest)="addToCart()"
+      ></app-sticky-cart>
+    }
+  }
+</section>

@@ -1,0 +1,66 @@
+<article class="refund-card">
+  <div class="card-top">
+    <div class="reference">
+      <span class="number"> REFUND </span>
+
+      <strong> #{{ refund._id.slice(-6).toUpperCase() }} </strong>
+    </div>
+
+    <span
+      class="status"
+      [class.pending]="refund.status === 'pending'"
+      [class.rejected]="refund.status === 'rejected'"
+      [class.refunded]="refund.status === 'refunded'"
+    >
+      {{ getStatusLabel() }}
+    </span>
+  </div>
+
+  <div class="customer">
+    <div class="avatar">{{ getInitial() }}</div>
+
+    <div class="customer-copy">
+      <strong> {{ getCustomerName() }} </strong>
+
+      <span> {{ getCustomerEmail() }} </span>
+    </div>
+  </div>
+
+  <div class="refund-meta">
+    <div>
+      <span> ORDER </span>
+
+      <strong> #{{ getOrderNumber() }} </strong>
+    </div>
+
+    <div>
+      <span> DATE </span>
+
+      <strong> {{ getDate() }} </strong>
+    </div>
+
+    <div>
+      <span> AMOUNT </span>
+
+      <strong class="amount"> {{ refund.amount }} EGP </strong>
+    </div>
+  </div>
+
+  <div class="reason">
+    <span> REASON </span>
+
+    <p>{{ refund.reason }}</p>
+  </div>
+
+  <div class="card-footer">
+    <a
+      [routerLink]="[
+        '/dashboard/refunds',
+        refund._id
+      ]"
+      class="view-btn"
+    >
+      VIEW REFUND
+    </a>
+  </div>
+</article>

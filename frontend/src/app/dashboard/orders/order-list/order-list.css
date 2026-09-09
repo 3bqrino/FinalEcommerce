@@ -1,0 +1,173 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.orders-page {
+  width: 100%;
+}
+
+.page-header {
+  margin-bottom: 30px;
+}
+
+.eyebrow {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: #95ad00;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 0.15em;
+}
+
+.page-header h1 {
+  margin: 0;
+
+  color: #151515;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: clamp(40px, 4vw, 60px);
+
+  line-height: 0.95;
+
+  letter-spacing: -0.05em;
+}
+
+.page-header h1 strong {
+  color: #95ad00;
+}
+
+.page-header p {
+  margin: 13px 0 0;
+
+  color: #85857f;
+
+  font-size: 15px;
+
+  line-height: 1.6;
+}
+
+.orders-list {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 16px;
+}
+
+.state-card {
+  min-height: 260px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 20px;
+
+  padding: 30px;
+
+  border: 1px solid #e1e1db;
+
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  text-align: center;
+
+  color: #777771;
+}
+
+.state-card > div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+.state-card strong {
+  color: #353530;
+
+  font-size: 13px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.05em;
+}
+
+.state-card span {
+  color: #999991;
+
+  font-size: 12px;
+}
+
+.error-state {
+  color: var(--color-error);
+}
+
+.error-state strong {
+  color: #7b4237;
+}
+
+.state-card button {
+  min-height: 42px;
+
+  padding: 0 18px;
+
+  border: 1px solid #c8ff1a;
+
+  border-radius: 6px;
+
+  background: #c8ff1a;
+
+  color: #293000;
+
+  font-size: 12px;
+  font-weight: 900;
+
+  letter-spacing: 0.08em;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.state-card button:hover {
+  transform: translateY(-1px);
+
+  box-shadow: var(--shadow-sm);
+}
+
+@media (max-width: 1000px) {
+  .orders-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .page-header h1 {
+    font-size: 42px;
+  }
+
+  .page-header p {
+    font-size: 14px;
+  }
+
+  .orders-list {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 420px) {
+  .page-header h1 {
+    font-size: 36px;
+  }
+}

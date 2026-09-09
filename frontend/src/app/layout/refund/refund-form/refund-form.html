@@ -1,0 +1,79 @@
+<section class="refund-form-page">
+  <header class="page-header">
+    <div class="header-copy">
+      <span class="eyebrow">My Account / Refunds</span>
+      <h1>REQUEST A <strong>REFUND.</strong></h1>
+      <p>Select a delivered order and tell us why you want a refund.</p>
+    </div>
+
+    <button type="button" class="back-btn" (click)="goBack()">← BACK</button>
+  </header>
+
+  @if (errorMessage) {
+  <div class="message error-message">{{ errorMessage }}</div>
+  } @if (successMessage) {
+  <div class="message success-message">{{ successMessage }}</div>
+  }
+
+  <form class="refund-form" [formGroup]="refundForm" (ngSubmit)="submit()">
+    <section class="form-card">
+      <div class="section-head">
+        <h2>SELECT ORDER</h2>
+      </div>
+
+      @if (orders.length === 0) {
+      <div class="empty-orders">
+        <strong>NO DELIVERED ORDERS</strong>
+        <p>Only delivered orders can be refunded.</p>
+      </div>
+      } @if (orders.length > 0) {
+      <label for="orderId">ORDER</label>
+      <select
+        id="orderId"
+        name="orderId"
+        formControlName="selectedOrderId"
+        [disabled]="saving"
+      >
+        <option value="">Select an order</option>
+        @for (order of orders; track order._id) {
+        <option [value]="order._id">
+          #{{ order._id.slice(-6).toUpperCase() }} — {{ order.totalAmount }} EGP
+        </option>
+        }
+      </select>
+      }
+    </section>
+
+    <section class="form-card">
+      <div class="section-head">
+        <h2>REFUND REASON</h2>
+      </div>
+
+      <label for="reason">REASON</label>
+      <textarea
+        id="reason"
+        name="reason"
+        formControlName="reason"
+        [disabled]="saving"
+        rows="7"
+        maxlength="1000"
+        placeholder="Explain why you want to request a refund..."
+      ></textarea>
+
+      <div class="form-hint">
+        Please provide a clear reason for your request.
+      </div>
+    </section>
+
+    <section class="submit-card">
+      <div class="submit-copy">
+        <span>REFUND PROCESS</span>
+        <p>Your request will be reviewed by our team.</p>
+      </div>
+
+      <button type="submit" [disabled]="saving || orders.length === 0">
+        @if (saving) { SUBMITTING... } @else { SUBMIT REFUND REQUEST }
+      </button>
+    </section>
+  </form>
+</section>

@@ -1,0 +1,180 @@
+<section class="order-details-page">
+  <header class="page-header">
+    <div>
+      <span class="eyebrow"> NATURAL / ORDER </span>
+
+      <h1>
+        ORDER
+        <strong>DETAILS.</strong>
+      </h1>
+
+      @if (order) {
+      <p>Order #{{ getOrderNumber() }} · {{ getStatusLabel() }}</p>
+      }
+    </div>
+
+    <button type="button" class="back-button" (click)="goBack()">← BACK</button>
+  </header>
+
+  @if (errorMessage) {
+
+  <div class="state-card error-state">
+    <strong> {{ errorMessage }} </strong>
+
+    @if (order) {
+
+    <button type="button" (click)="getOrder(order._id)">RETRY</button>
+
+    }
+  </div>
+
+  } @if (order) {
+
+  <section class="order-layout">
+    <div class="order-main">
+      <section class="order-card order-overview">
+        <div class="order-top">
+          <div>
+            <span class="section-label"> ORDER </span>
+
+            <h2>#{{ getOrderNumber() }}</h2>
+          </div>
+
+          <span
+            class="status"
+            [class.pending]="
+                order.status === 'pending'
+              "
+            [class.processing]="
+                order.status === 'processing'
+              "
+            [class.confirmed]="
+                order.status === 'confirmed'
+              "
+            [class.shipped]="
+                order.status === 'shipped'
+              "
+            [class.delivered]="
+                order.status === 'delivered'
+              "
+            [class.cancelled]="
+                order.status === 'cancelled'
+              "
+            [class.refunded]="
+                order.status === 'refunded'
+              "
+          >
+            {{ getStatusLabel() }}
+          </span>
+        </div>
+      </section>
+
+      <section class="order-card">
+        <div class="section-heading">
+          <div>
+            <span class="section-number"> 01 </span>
+
+            <h3>CUSTOMER</h3>
+          </div>
+        </div>
+
+        <div class="customer-box">
+          <div class="customer-avatar">
+            {{ order.user.name .charAt(0) .toUpperCase() }}
+          </div>
+
+          <div>
+            <strong> {{ order.user.name }} </strong>
+
+            <span> {{ order.user.email }} </span>
+          </div>
+        </div>
+      </section>
+
+      <section class="order-card">
+        <div class="section-heading">
+          <div>
+            <span class="section-number"> 02 </span>
+
+            <h3>SHIPPING ADDRESS</h3>
+          </div>
+        </div>
+
+        <div class="address-box">
+          <strong> {{ order.shippingAddress.name }} </strong>
+
+          <p>
+            {{ order.shippingAddress.governorate }}, {{
+            order.shippingAddress.city }}
+          </p>
+
+          <p>
+            {{ order.shippingAddress.street }} · Building {{
+            order.shippingAddress.building }}
+          </p>
+        </div>
+      </section>
+
+      <section class="order-card">
+        <div class="section-heading">
+          <div>
+            <span class="section-number"> 03 </span>
+
+            <h3>ORDER ITEMS</h3>
+          </div>
+
+          <span class="item-count"> {{ getItemsCount() }} ITEMS </span>
+        </div>
+
+        <div class="items-list">
+          @for ( item of order.items; track $index ) {
+
+          <article class="order-item">
+            <img [src]="item.image" [alt]="item.name" />
+
+            <div class="item-info">
+              <strong> {{ item.name }} </strong>
+
+              <span> {{ item.quantity }} × {{ item.price }} EGP </span>
+            </div>
+
+            <strong class="item-total"> {{ item.totalPrice }} EGP </strong>
+          </article>
+
+          }
+        </div>
+      </section>
+    </div>
+
+    <aside class="order-sidebar">
+      <section class="order-card totals-card">
+        <span class="section-label"> ORDER SUMMARY </span>
+
+        <div class="total-row">
+          <span> SUBTOTAL </span>
+
+          <strong> {{ order.subtotal }} EGP </strong>
+        </div>
+
+        <div class="total-row">
+          <span> DELIVERY </span>
+
+          <strong> {{ order.deliveryFee }} EGP </strong>
+        </div>
+
+        <div class="total-row final">
+          <span> TOTAL </span>
+
+          <strong> {{ order.totalAmount }} EGP </strong>
+        </div>
+      </section>
+
+      <app-order-status
+        [orderId]="order._id"
+        [currentStatus]="order.status"
+      ></app-order-status>
+    </aside>
+  </section>
+
+  }
+</section>

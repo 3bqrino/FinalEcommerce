@@ -1,0 +1,67 @@
+<div class="overview-grid">
+  <article class="overview-card featured">
+    <div class="card-top">
+      <span>TOTAL SALES</span>
+    </div>
+
+    <div class="card-value">
+      {{ report?.totalSales ?? 0 | number }}
+      <small>EGP</small>
+    </div>
+
+    <div class="card-bottom">
+      <span class="positive">LIVE</span>
+      <small>SALES</small>
+    </div>
+  </article>
+
+  <article class="overview-card">
+    <div class="card-top">
+      <span>TOTAL ORDERS</span>
+    </div>
+
+    <div class="card-value">{{ report?.totalOrders ?? 0 }}</div>
+
+    <div class="card-bottom">
+      <span>LIVE</span>
+      <small>ALL ORDERS</small>
+    </div>
+  </article>
+
+  <article class="overview-card">
+    <div class="card-top">
+      <span>PRODUCTS</span>
+    </div>
+
+    <div class="card-value">{{ report?.totalProducts ?? 0 }}</div>
+
+    <div class="card-bottom">
+      <small>INVENTORY</small>
+    </div>
+  </article>
+
+  <article class="overview-card">
+    <div class="card-top">
+      <span>CUSTOMERS</span>
+    </div>
+
+    <div class="card-value">{{ report?.totalUsers ?? 0 }}</div>
+
+    <div class="card-bottom">
+      <span>LIVE</span>
+      <small>REGISTERED USERS</small>
+    </div>
+  </article>
+
+  <article class="overview-card">
+    <div class="card-top">
+      <span>PENDING ORDERS</span>
+    </div>
+
+    <div class="card-value">{{ report?.pendingOrders ?? 0 }}</div>
+
+    <div class="card-bottom">
+      <span class="warning">ACTION NEEDED</span>
+    </div>
+  </article>
+</div>

@@ -1,0 +1,230 @@
+<section class="checkout-page">
+  <header class="page-header">
+    <div class="header-copy">
+      <button
+        type="button"
+        class="back-link"
+        (click)="backToCart()"
+      >
+        <span class="back-arrow">←</span>
+        <span>BACK TO CART</span>
+      </button>
+
+      <span class="eyebrow">
+        CHECKOUT
+      </span>
+
+      <h1>
+        SELECT
+        <strong>ADDRESS</strong>
+      </h1>
+
+      <p>
+        Choose where you want your order delivered.
+      </p>
+    </div>
+  </header>
+
+  @if (errorMessage) {
+    <div class="error-box" role="alert">
+      <span class="error-icon">!</span>
+
+      <span>
+        {{ errorMessage }}
+      </span>
+    </div>
+  }
+
+  @if (isLoading) {
+    <div class="state-card loading-card">
+      <span class="loader"></span>
+
+      <span>
+        LOADING YOUR ADDRESSES...
+      </span>
+    </div>
+  }
+
+  @if (!isLoading && addresses.length === 0) {
+    <div class="state-card empty-card">
+      <span class="state-kicker">
+        DELIVERY ADDRESS
+      </span>
+
+      <strong>
+        NO ADDRESS FOUND
+      </strong>
+
+      <p>
+        Add a delivery address before placing your order.
+      </p>
+
+      <button
+        type="button"
+        class="primary-button"
+        (click)="addAddress()"
+      >
+        <span>ADD ADDRESS</span>
+        <strong>→</strong>
+      </button>
+    </div>
+  }
+
+  @if (!isLoading && addresses.length > 0) {
+    <section class="address-section">
+      <div class="section-heading">
+        <div>
+          <span>
+            DELIVERY
+          </span>
+
+          <h2>
+            Choose an address
+          </h2>
+        </div>
+
+        <span class="address-count">
+          {{ addresses.length }}
+          {{ addresses.length === 1 ? 'ADDRESS' : 'ADDRESSES' }}
+        </span>
+      </div>
+
+      <div class="address-list">
+        @for (address of addresses; track address._id) {
+          <button
+            type="button"
+            class="address-card"
+            [class.selected]="selectedAddress?._id === address._id"
+            [class.default-address]="address.isDefault"
+            [attr.aria-pressed]="selectedAddress?._id === address._id"
+            (click)="selectAddress(address)"
+          >
+            <div class="address-top">
+              <div class="address-title">
+                <span class="address-label">
+                  ADDRESS
+                </span>
+
+                <strong>
+                  {{ address.name }}
+                </strong>
+              </div>
+
+              <div class="selection-indicator">
+                @if (selectedAddress?._id === address._id) {
+                  <span class="selected-mark">
+                    ✓
+                  </span>
+                } @else {
+                  <span class="radio-circle"></span>
+                }
+              </div>
+            </div>
+
+            @if (address.isDefault) {
+              <div class="default-badge">
+                DEFAULT
+              </div>
+            }
+
+            <div class="address-details">
+              <div class="detail-row">
+                <span>
+                  LOCATION
+                </span>
+
+                <strong>
+                  {{ address.governorate }}, {{ address.city }}
+                </strong>
+              </div>
+
+              <div class="detail-row">
+                <span>
+                  STREET
+                </span>
+
+                <strong>
+                  {{ address.street }}
+                </strong>
+              </div>
+
+              <div class="detail-row">
+                <span>
+                  BUILDING
+                </span>
+
+                <strong>
+                  {{ address.building }}
+                </strong>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              @if (selectedAddress?._id === address._id) {
+                <span class="selected-text">
+                  SELECTED
+                </span>
+              } @else {
+                <span>
+                  SELECT THIS ADDRESS
+                </span>
+              }
+
+              <span class="card-arrow">
+                →
+              </span>
+            </div>
+          </button>
+        }
+      </div>
+
+      @if (shippingFee !== null) {
+        <div class="shipping-summary">
+          <div>
+            <span>
+              DELIVERY FEE
+            </span>
+
+            <strong>
+              Current delivery fee
+            </strong>
+          </div>
+
+          <strong class="shipping-fee-value">
+            LE {{ shippingFee }}
+          </strong>
+        </div>
+      }
+
+      <div class="checkout-actions">
+        <button
+          type="button"
+          class="add-address"
+          (click)="addAddress()"
+        >
+          <span class="add-address-icon">+</span>
+          <span>ADD NEW ADDRESS</span>
+        </button>
+
+        <button
+          type="button"
+          class="order-button"
+          [disabled]="!selectedAddress || isSubmitting"
+          (click)="createOrder()"
+        >
+          <span>
+            {{ isSubmitting ? 'PLACING ORDER...' : 'PLACE ORDER' }}
+          </span>
+
+          @if (!isSubmitting) {
+            <span class="order-arrow">
+              →
+            </span>
+          } @else {
+            <span class="button-loader"></span>
+          }
+        </button>
+      </div>
+    </section>
+  }
+</section>

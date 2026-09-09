@@ -1,0 +1,161 @@
+<section class="testimonial-page">
+  <header class="testimonial-header">
+    <div class="header-top">
+      <button type="button" class="back-button" (click)="backToAccount()">
+        <span class="back-icon">
+          <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+        </span>
+
+        <span>BACK TO ACCOUNT</span>
+      </button>
+
+      <span class="header-index">01 / REVIEW</span>
+    </div>
+
+    <div class="header-copy">
+      <span class="eyebrow"> CUSTOMER FEEDBACK </span>
+
+      <h1>
+        SHARE YOUR
+        <strong>EXPERIENCE.</strong>
+      </h1>
+
+      <p>
+        Tell us what you think about your NATURAL experience. Your testimonial
+        will be reviewed before appearing on the website.
+      </p>
+    </div>
+  </header>
+
+  <section class="testimonial-card">
+    <div class="card-top">
+      <div>
+        <span class="card-kicker">YOUR REVIEW</span>
+        <h2>Write a Testimonial</h2>
+      </div>
+
+      <div class="card-mark">
+        <i class="fa-solid fa-quote-left" aria-hidden="true"></i>
+      </div>
+    </div>
+
+    @if (errorMessage) {
+    <div class="message error">
+      <span class="message-icon">
+        <i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>
+      </span>
+
+      <span> {{ errorMessage }} </span>
+    </div>
+    } @if (successMessage) {
+    <div class="message success">
+      <span class="message-icon">
+        <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+      </span>
+
+      <span> {{ successMessage }} </span>
+    </div>
+    }
+
+    <div class="form-content" [formGroup]="testimonialForm">
+      <div class="field rating-field">
+        <div class="field-heading">
+          <div>
+            <label>YOUR RATING</label>
+
+            <span class="field-helper">
+              How would you rate your experience?
+            </span>
+          </div>
+
+          @if (rating > 0) {
+          <span class="rating-value"> {{ rating }} / 5 </span>
+          }
+        </div>
+
+        <div class="rating-options" role="radiogroup" aria-label="Your rating">
+          @for (star of [1, 2, 3, 4, 5]; track star) {
+          <button
+            type="button"
+            class="star-button"
+            [class.active]="star <= rating"
+            [attr.aria-label]="'Rate ' + star + ' stars'"
+            [attr.aria-checked]="star === rating"
+            role="radio"
+            (click)="setRating(star)"
+          >
+            <i class="fa-solid fa-star" aria-hidden="true"></i>
+          </button>
+          }
+        </div>
+
+        <div class="rating-caption">
+          @if (rating === 0) {
+          <span>Select your rating</span>
+          } @else if (rating === 1) {
+          <span>We're sorry your experience wasn't great.</span>
+          } @else if (rating === 2) {
+          <span>We'd love to make your next experience better.</span>
+          } @else if (rating === 3) {
+          <span>Thank you for sharing your feedback.</span>
+          } @else if (rating === 4) {
+          <span>We're glad you enjoyed your experience.</span>
+          } @else {
+          <span>We're happy you loved NATURAL.</span>
+          }
+        </div>
+      </div>
+
+      <div class="field comment-field">
+        <div class="field-heading">
+          <div>
+            <label>YOUR TESTIMONIAL</label>
+
+            <span class="field-helper"> Share your experience with us </span>
+          </div>
+
+          <span class="character-count"> {{ comment.length }} / 1000 </span>
+        </div>
+
+        <div class="textarea-wrap">
+          <span class="textarea-icon">
+            <i class="fa-solid fa-pen" aria-hidden="true"></i>
+          </span>
+
+          <textarea
+            name="comment"
+            formControlName="comment"
+            rows="8"
+            maxlength="1000"
+            placeholder="Tell us what you loved, what stood out, or what we could improve..."
+          ></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="cancel-button" (click)="backToAccount()">
+        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+
+        <span>CANCEL</span>
+      </button>
+
+      <button
+        type="button"
+        class="submit-button"
+        [disabled]="isSubmitting"
+        (click)="submitTestimonial()"
+      >
+        @if (isSubmitting) {
+        <span>SUBMITTING...</span>
+
+        <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>
+        } @else {
+        <span>SUBMIT TESTIMONIAL</span>
+
+        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        }
+      </button>
+    </div>
+  </section>
+</section>

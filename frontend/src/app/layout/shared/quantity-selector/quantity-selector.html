@@ -1,0 +1,25 @@
+<div class="quantity-selector">
+  <button
+    type="button"
+    class="quantity-btn"
+    (click)="decrease()"
+    [disabled]="quantity <= 1"
+    aria-label="Decrease quantity"
+  >
+    <i class="fa-solid fa-minus" aria-hidden="true"></i>
+  </button>
+
+  <span class="quantity-value">
+    {{ quantity }}
+  </span>
+
+  <button
+    type="button"
+    class="quantity-btn"
+    (click)="increase()"
+    [disabled]="max <= 0 || quantity >= max"
+    aria-label="Increase quantity"
+  >
+    <i class="fa-solid fa-plus" aria-hidden="true"></i>
+  </button>
+</div>

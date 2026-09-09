@@ -1,0 +1,30 @@
+<section class="testimonial-list">
+  @if (errorMessage) {
+
+  <div class="state-card error-state">
+    <strong> {{ errorMessage }} </strong>
+
+    <button type="button" (click)="getTestimonials()">RETRY</button>
+  </div>
+
+  } @if ( !errorMessage && testimonials.length === 0 ) {
+
+  <div class="state-card">
+    <strong> NO TESTIMONIALS FOUND </strong>
+  </div>
+
+  } @if ( !errorMessage && testimonials.length > 0 ) {
+
+  <div class="testimonials-grid">
+    @for ( testimonial of testimonials; track testimonial._id; let i = $index )
+    {
+
+    <app-testimonial-card
+      [testimonial]="testimonial"
+    ></app-testimonial-card>
+
+    }
+  </div>
+
+  }
+</section>

@@ -1,0 +1,112 @@
+<section class="subcategories-page">
+  <header class="subcategories-header">
+    <div class="header-copy">
+      <div class="title-row">
+        <h1>SUBCATEGORY <span>MANAGEMENT.</span></h1>
+      </div>
+
+      <p>Manage the collections inside your store categories.</p>
+    </div>
+
+    <a routerLink="/dashboard/subcategories/add" class="add-subcategory-btn">
+      ADD SUBCATEGORY
+    </a>
+  </header>
+
+  @if (errorMessage) {
+
+  <div class="state-card error">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+
+    <strong> {{ errorMessage }} </strong>
+
+    <button type="button" (click)="getSubcategories()">RETRY</button>
+  </div>
+
+  } @if ( !errorMessage && subcategories.length === 0 ) {
+
+  <div class="state-card">
+    <i class="fa-solid fa-layer-group"></i>
+
+    <strong> NO SUBCATEGORIES FOUND </strong>
+
+    <span> Create your first subcategory. </span>
+
+    <a routerLink="/dashboard/subcategories/add" class="empty-action">
+      ADD SUBCATEGORY
+    </a>
+  </div>
+
+  } @if ( !errorMessage && subcategories.length > 0 ) {
+
+  <section class="subcategories-list">
+    @for ( subcategory of subcategories; track subcategory._id ) {
+
+    <article class="subcategory-row">
+      <div class="subcategory-index">
+        <span></span>
+      </div>
+
+      <div class="subcategory-info">
+        <span class="info-label"> SUBCATEGORY </span>
+
+        <h2>{{ subcategory.name }}</h2>
+
+        <p>/{{ subcategory.slug }}</p>
+      </div>
+
+      <div class="subcategory-category">
+        <span class="info-label"> PARENT CATEGORY </span>
+
+        <strong> {{ getCategoryName( subcategory.category ) }} </strong>
+      </div>
+
+      <div class="subcategory-status">
+        <span
+          class="status"
+          [class.active]="subcategory.isActive"
+          [class.inactive]="!subcategory.isActive"
+        >
+          <span class="status-dot"></span>
+
+          {{ subcategory.isActive ? 'ACTIVE' : 'INACTIVE' }}
+        </span>
+      </div>
+
+      <div class="subcategory-actions">
+        <a
+          [routerLink]="[
+                '/dashboard/subcategories',
+                subcategory._id,
+                'edit'
+              ]"
+          class="edit-btn"
+        >
+          EDIT
+        </a>
+
+        <button
+          type="button"
+          class="delete-btn"
+          (click)="deleteSubcategory(
+                subcategory._id
+              )"
+        >
+          DELETE
+        </button>
+      </div>
+    </article>
+
+    }
+  </section>
+
+  <footer class="subcategories-footer">
+    <span> {{ subcategories.length }} SUBCATEGORIES </span>
+
+    <div></div>
+
+    <span> CURRENT CATALOG </span>
+  </footer>
+
+  }
+</section>

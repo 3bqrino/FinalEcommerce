@@ -1,0 +1,75 @@
+<section class="about-section">
+  @if (about) {
+  <div class="about-wrap">
+    <div class="about-topbar">
+      <span class="top-label">ABOUT US</span>
+    </div>
+
+    <div class="about-main">
+      <div class="about-visual">
+        @if (about.image) {
+        <div class="main-image">
+          <img [src]="about.image" [alt]="about.title" loading="lazy" />
+          <div class="image-overlay"></div>
+        </div>
+        } @else {
+        <div class="image-placeholder">NATURAL</div>
+        } @if (about.secondaryImage) {
+        <div class="secondary-image">
+          <img
+            [src]="about.secondaryImage"
+            [alt]="about.title"
+            loading="lazy"
+          />
+        </div>
+        }
+      </div>
+
+      <div class="about-info">
+        <div class="info-header">
+          <span class="eyebrow">OUR STORY</span>
+        </div>
+
+        <h2>{{ about.title }}</h2>
+        <p class="description">{{ about.description }}</p>
+
+        @if (about.manifesto) {
+        <div class="manifesto">
+          <div class="manifesto-head">
+            <span>THE MANIFESTO</span>
+          </div>
+          <p>{{ about.manifesto }}</p>
+        </div>
+        } @if (about.founderName || about.founderRole || about.founderImage) {
+        <div class="founder">
+          <div class="founder-avatar">
+            @if (about.founderImage) {
+            <img
+              [src]="about.founderImage"
+              [alt]="about.founderName"
+              loading="lazy"
+            />
+            } @else {
+            <span>N</span>
+            }
+          </div>
+
+          <div class="founder-copy">
+            <span class="founder-label">FOUNDED BY</span>
+            @if (about.founderName) {
+            <strong>{{ about.founderName }}</strong>
+            } @if (about.founderRole) {
+            <span class="founder-role">{{ about.founderRole }}</span>
+            }
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+  } @else if (errorMessage) {
+  <div class="state error-state">{{ errorMessage }}</div>
+  } @else {
+  <div class="state">No about information available.</div>
+  }
+</section>

@@ -1,0 +1,503 @@
+<section class="account-page">
+  <header class="account-header">
+    <div class="header-copy">
+      <a routerLink="/home" class="back-home">
+        <span class="back-icon">
+          <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+        </span>
+        <span>BACK TO HOME</span>
+      </a>
+
+      <span class="eyebrow">MY ACCOUNT</span>
+
+      <h1>
+        MY
+        <strong>ACCOUNT.</strong>
+      </h1>
+
+      <p>
+        Manage your profile, security, addresses, refunds and testimonials from
+        one simple place.
+      </p>
+    </div>
+
+    <div class="header-profile-mark">
+      <span>ACCOUNT</span>
+
+      <div class="profile-mark">
+        <i class="fa-regular fa-user" aria-hidden="true"></i>
+      </div>
+
+      <strong>01</strong>
+    </div>
+  </header>
+
+  <div class="account-layout">
+    <aside class="account-sidebar">
+      <div class="sidebar-head">
+        <span>ACCOUNT MENU</span>
+        <i class="fa-solid fa-grip" aria-hidden="true"></i>
+      </div>
+
+      <button
+        type="button"
+        [class.active]="activeSection === 'profile'"
+        (click)="setSection('profile')"
+      >
+        <span class="nav-icon">
+          <i class="fa-regular fa-user" aria-hidden="true"></i>
+        </span>
+
+        <span class="nav-copy">
+          <strong>Personal Information</strong>
+          <small>Profile details</small>
+        </span>
+
+        <span class="nav-arrow">
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </span>
+      </button>
+
+      <button
+        type="button"
+        [class.active]="activeSection === 'security'"
+        (click)="setSection('security')"
+      >
+        <span class="nav-icon">
+          <i class="fa-solid fa-lock" aria-hidden="true"></i>
+        </span>
+
+        <span class="nav-copy">
+          <strong>Password & Security</strong>
+          <small>Account protection</small>
+        </span>
+
+        <span class="nav-arrow">
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </span>
+      </button>
+
+      <button
+        type="button"
+        [class.active]="activeSection === 'addresses'"
+        (click)="setSection('addresses')"
+      >
+        <span class="nav-icon">
+          <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+        </span>
+
+        <span class="nav-copy">
+          <strong>Addresses</strong>
+          <small>Delivery destinations</small>
+        </span>
+
+        <span class="nav-arrow">
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </span>
+      </button>
+
+      <button
+        type="button"
+        [class.active]="activeSection === 'refunds'"
+        (click)="setSection('refunds')"
+      >
+        <span class="nav-icon">
+          <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
+        </span>
+
+        <span class="nav-copy">
+          <strong>My Refunds</strong>
+          <small>Refund requests</small>
+        </span>
+
+        <span class="nav-arrow">
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </span>
+      </button>
+
+      <button
+        type="button"
+        [class.active]="activeSection === 'testimonials'"
+        (click)="setSection('testimonials')"
+      >
+        <span class="nav-icon">
+          <i class="fa-regular fa-star" aria-hidden="true"></i>
+        </span>
+
+        <span class="nav-copy">
+          <strong>My Testimonials</strong>
+          <small>Your reviews</small>
+        </span>
+
+        <span class="nav-arrow">
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </span>
+      </button>
+    </aside>
+
+    <main class="account-content">
+      @if (activeSection === 'profile') {
+
+      <section class="account-card">
+        <div class="card-top">
+          <div class="card-title">
+            <span class="card-kicker">PROFILE</span>
+
+            <h2>Personal Information</h2>
+
+            <p>Keep your personal details accurate and up to date.</p>
+          </div>
+
+          <div class="card-icon">
+            <i class="fa-regular fa-user" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        @if (errorMessage) {
+        <div class="message error">
+          <span class="message-icon">
+            <i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>
+          </span>
+
+          <span>{{ errorMessage }}</span>
+        </div>
+        } @if (successMessage) {
+        <div class="message success">
+          <span class="message-icon">
+            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+          </span>
+
+          <span>{{ successMessage }}</span>
+        </div>
+        }
+
+        <div class="form-grid" [formGroup]="profileForm">
+          <div class="field full">
+            <label>FULL NAME</label>
+
+            <input
+              type="text"
+              name="name"
+              formControlName="name"
+              placeholder="Your full name"
+            />
+          </div>
+
+          <div class="field">
+            <label>EMAIL</label>
+
+            <div class="input-with-icon">
+              <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+
+              <input type="email" name="email" [value]="email" disabled />
+            </div>
+
+            <small>Email cannot be changed.</small>
+          </div>
+
+          <div class="field">
+            <label>PHONE</label>
+
+            <div class="input-with-icon">
+              <i class="fa-solid fa-phone" aria-hidden="true"></i>
+
+              <input
+                type="tel"
+                name="phone"
+                formControlName="phone"
+                placeholder="Phone number"
+              />
+            </div>
+          </div>
+
+          <div class="field">
+            <label>NATIONAL ID</label>
+
+            <div class="input-with-icon">
+              <i class="fa-regular fa-id-card" aria-hidden="true"></i>
+
+              <input
+                type="text"
+                name="nationalId"
+                formControlName="nationalId"
+                placeholder="National ID"
+              />
+            </div>
+          </div>
+
+          <div class="field">
+            <label>GENDER</label>
+
+            <div class="input-with-icon select-wrap">
+              <i class="fa-solid fa-venus-mars" aria-hidden="true"></i>
+
+              <select name="gender" formControlName="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>DATE OF BIRTH</label>
+
+            <div class="input-with-icon">
+              <i class="fa-regular fa-calendar" aria-hidden="true"></i>
+
+              <input
+                type="date"
+                name="dateOfBirth"
+                formControlName="dateOfBirth"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="save-button" (click)="saveProfile()">
+            <span>SAVE CHANGES</span>
+
+            <span class="button-icon">
+              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </span>
+          </button>
+        </div>
+      </section>
+
+      } @if (activeSection === 'security') {
+
+      <section class="account-card">
+        <div class="card-top">
+          <div class="card-title">
+            <span class="card-kicker">SECURITY</span>
+
+            <h2>Password & Security</h2>
+
+            <p>Update your password and keep your account protected.</p>
+          </div>
+
+          <div class="card-icon">
+            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        @if (passwordError) {
+        <div class="message error">
+          <span class="message-icon">
+            <i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>
+          </span>
+
+          <span>{{ passwordError }}</span>
+        </div>
+        } @if (passwordSuccess) {
+        <div class="message success">
+          <span class="message-icon">
+            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+          </span>
+
+          <span>{{ passwordSuccess }}</span>
+        </div>
+        }
+
+        <div class="security-note">
+          <div class="security-icon">
+            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+          </div>
+
+          <div>
+            <strong>Keep your password secure</strong>
+
+            <p>Use a strong password that you do not use anywhere else.</p>
+          </div>
+        </div>
+
+        <div class="form-grid" [formGroup]="passwordForm">
+          <div class="field full">
+            <label>CURRENT PASSWORD</label>
+
+            <div class="input-with-icon">
+              <i class="fa-solid fa-lock" aria-hidden="true"></i>
+
+              <input
+                type="password"
+                name="currentPassword"
+                formControlName="currentPassword"
+                placeholder="Current password"
+              />
+            </div>
+          </div>
+
+          <div class="field">
+            <label>NEW PASSWORD</label>
+
+            <div class="input-with-icon">
+              <i class="fa-solid fa-key" aria-hidden="true"></i>
+
+              <input
+                type="password"
+                name="newPassword"
+                formControlName="newPassword"
+                placeholder="New password"
+              />
+            </div>
+          </div>
+
+          <div class="field">
+            <label>CONFIRM PASSWORD</label>
+
+            <div class="input-with-icon">
+              <i class="fa-solid fa-check" aria-hidden="true"></i>
+
+              <input
+                type="password"
+                name="confirmPassword"
+                formControlName="confirmPassword"
+                placeholder="Confirm password"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="save-button" (click)="savePassword()">
+            <span>CHANGE PASSWORD</span>
+
+            <span class="button-icon">
+              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </span>
+          </button>
+        </div>
+      </section>
+
+      } @if (activeSection === 'addresses') {
+
+      <section class="account-card">
+        <div class="card-top">
+          <div class="card-title">
+            <span class="card-kicker">DELIVERY</span>
+
+            <h2>My Addresses</h2>
+
+            <p>Manage the places where your orders are delivered.</p>
+          </div>
+
+          <div class="card-icon">
+            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <div class="feature-panel">
+          <div class="feature-icon">
+            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+          </div>
+
+          <div class="feature-copy">
+            <span class="feature-kicker">DELIVERY DESTINATIONS</span>
+
+            <strong>Manage your delivery addresses</strong>
+
+            <p>Add, edit, delete or change your default delivery address.</p>
+
+            <a routerLink="/addresses" class="outline-button">
+              <span>MANAGE ADDRESSES</span>
+
+              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      } @if (activeSection === 'refunds') {
+
+      <section class="account-card">
+        <div class="card-top">
+          <div class="card-title">
+            <span class="card-kicker">ORDERS</span>
+
+            <h2>My Refunds</h2>
+
+            <p>Track your refund requests and their current status.</p>
+          </div>
+
+          <div class="card-icon">
+            <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <div class="feature-panel refund-panel">
+          <div class="feature-icon refund-icon">
+            <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
+          </div>
+
+          <div class="feature-copy">
+            <span class="feature-kicker">REFUND CENTER</span>
+
+            <strong>Track your refund requests</strong>
+
+            <p>
+              View refund history, check request status, or submit a new refund
+              request for a delivered order.
+            </p>
+          </div>
+        </div>
+
+        <div class="action-row">
+          <a routerLink="/refund" class="outline-button">
+            <span>VIEW MY REFUNDS</span>
+
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </a>
+
+          <a routerLink="/refund/request" class="primary-button">
+            <span>REQUEST A REFUND</span>
+
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </section>
+
+      } @if (activeSection === 'testimonials') {
+
+      <section class="account-card">
+        <div class="card-top">
+          <div class="card-title">
+            <span class="card-kicker">REVIEWS</span>
+
+            <h2>My Testimonials</h2>
+
+            <p>Share your experience with NATURAL.</p>
+          </div>
+
+          <div class="card-icon">
+            <i class="fa-regular fa-star" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <div class="testimonial-panel">
+          <div class="quote-icon">
+            <i class="fa-solid fa-quote-left" aria-hidden="true"></i>
+          </div>
+
+          <div class="feature-copy">
+            <span class="feature-kicker">YOUR VOICE</span>
+
+            <strong>Share your experience with NATURAL</strong>
+
+            <p>
+              Write a testimonial about your experience and keep track of its
+              status after submission.
+            </p>
+
+            <a routerLink="/testimonials/write" class="primary-button">
+              <span>WRITE A TESTIMONIAL</span>
+
+              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      }
+    </main>
+  </div>
+</section>

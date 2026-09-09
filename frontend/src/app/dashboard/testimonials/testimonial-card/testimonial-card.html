@@ -1,0 +1,113 @@
+@if (testimonial) {
+
+<article class="testimonial-card">
+  <div class="card-top">
+    <div class="review-reference">
+      <span class="review-number">
+       
+      </span>
+
+      <div class="review-id">
+        <span> REVIEW </span>
+
+        <strong> #{{ testimonial._id.slice(-6).toUpperCase() }} </strong>
+      </div>
+    </div>
+
+    <span
+      class="status"
+      [class.accepted]="getStatusClass() === 'accepted'"
+      [class.pending]="getStatusClass() === 'pending'"
+      [class.rejected]="getStatusClass() === 'rejected'"
+    >
+      {{ getStatus() }}
+    </span>
+  </div>
+
+  <div class="customer">
+    <div class="avatar">{{ getInitial() }}</div>
+
+    <div class="customer-info">
+      <strong> {{ testimonial.name }} </strong>
+
+      <span> {{ testimonial.user.email || 'NO EMAIL' }} </span>
+    </div>
+  </div>
+
+  <div class="rating-row">
+    <div class="stars">
+      @for ( star of [1, 2, 3, 4, 5]; track star ) {
+
+      <span
+        [class.active]="
+              star <= testimonial.rating
+            "
+      >
+        ★
+      </span>
+
+      }
+    </div>
+
+    <strong> {{ testimonial.rating.toFixed(1) }} </strong>
+  </div>
+
+  <div class="review-body">
+    <span class="review-label"> CUSTOMER FEEDBACK </span>
+
+    <p>{{ testimonial.comment }}</p>
+  </div>
+
+  <div class="review-date">
+    <span> SUBMITTED </span>
+
+    <strong>
+      {{ testimonial.createdAt ? (testimonial.createdAt | date:'dd MMM yyyy') :
+      '—' }}
+    </strong>
+  </div>
+
+  @if (errorMessage) {
+
+  <div class="card-error">{{ errorMessage }}</div>
+
+  }
+
+  <div class="card-actions">
+    <a
+      [routerLink]="[
+          '/dashboard/testimonials',
+          testimonial._id
+        ]"
+      class="view-btn"
+    >
+      VIEW
+    </a>
+
+    @if ( testimonial.status !== 'accepted' ) {
+
+    <button type="button" class="accept-btn" (click)="accept()">
+      ACCEPT
+
+      <i class="fa-solid fa-check"></i>
+    </button>
+
+    } @if ( testimonial.status !== 'rejected' ) {
+
+    <button type="button" class="reject-btn" (click)="reject()">
+      REJECT
+
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    }
+
+    <button type="button" class="delete-btn" (click)="delete()">
+      DELETE
+
+      <i class="fa-solid fa-trash"></i>
+    </button>
+  </div>
+</article>
+
+}

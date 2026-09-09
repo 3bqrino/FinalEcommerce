@@ -1,0 +1,188 @@
+<section class="homepage-page">
+  <header class="page-header">
+    <div class="header-copy">
+      <span class="eyebrow"> NATURAL / WEBSITE CONTROL </span>
+
+      <h1>
+        HOME
+        <span>CONTROL.</span>
+      </h1>
+
+      <p>Manage the main sections that build your storefront homepage.</p>
+    </div>
+
+    <div class="live-status">
+      <span class="dot"></span>
+
+      <div class="status-copy">
+        <strong>LIVE</strong>
+
+        <small> WEBSITE STATUS </small>
+      </div>
+    </div>
+  </header>
+
+  <section class="sections-panel">
+    <div class="panel-header">
+      <div>
+        <span class="panel-eyebrow"> HOMEPAGE BUILDER </span>
+
+        <h2>
+          PAGE
+          <span>SECTIONS.</span>
+        </h2>
+      </div>
+
+      <span class="section-count"> 04 SECTIONS </span>
+    </div>
+
+    <div class="sections-list">
+      <article class="section-row">
+        <div class="section-number">01</div>
+
+        <div class="section-icon">
+          <i class="fa-solid fa-panorama"></i>
+        </div>
+
+        <div class="section-info">
+          <div class="title-row">
+            <h3>HERO</h3>
+
+            @if (hero?.isActive) {
+
+            <span class="active-badge active"> ACTIVE </span>
+
+            } @else {
+
+            <span class="active-badge inactive"> INACTIVE </span>
+
+            }
+          </div>
+
+          <p>Manage the main hero content, image and campaign message.</p>
+
+          @if (heroError) {
+
+          <small class="error-text"> Unable to load hero data. </small>
+
+          }
+        </div>
+
+        <a routerLink="/dashboard/myWebsite/hero" class="manage-btn">
+          <span> MANAGE </span>
+        </a>
+      </article>
+
+      <article class="section-row">
+        <div class="section-number">02</div>
+
+        <div class="section-icon">
+          <i class="fa-solid fa-bullhorn"></i>
+        </div>
+
+        <div class="section-info">
+          <div class="title-row">
+            <h3>PROMO BANNER</h3>
+
+            @if (promo?.isActive) {
+
+            <span class="active-badge active"> ACTIVE </span>
+
+            } @else {
+
+            <span class="active-badge inactive"> INACTIVE </span>
+
+            }
+          </div>
+
+          <p>Manage promotional text, discount and banner link.</p>
+
+          @if (promoError) {
+
+          <small class="error-text"> Unable to load promo banner data. </small>
+
+          }
+        </div>
+
+        <a routerLink="/dashboard/myWebsite/promo" class="manage-btn">
+          <span> MANAGE </span>
+        </a>
+      </article>
+
+      <article class="section-row">
+        <div class="section-number">03</div>
+
+        <div class="section-icon">
+          <i class="fa-solid fa-circle-info"></i>
+        </div>
+
+        <div class="section-info">
+          <div class="title-row">
+            <h3>ABOUT</h3>
+
+            @if (about?.isActive) {
+
+            <span class="active-badge active"> ACTIVE </span>
+
+            } @else {
+
+            <span class="active-badge inactive"> INACTIVE </span>
+
+            }
+          </div>
+
+          <p>Manage the brand story, manifesto and founder information.</p>
+
+          @if (aboutError) {
+
+          <small class="error-text"> Unable to load about data. </small>
+
+          }
+        </div>
+
+        <a routerLink="/dashboard/myWebsite/about" class="manage-btn">
+          <span> MANAGE </span>
+        </a>
+      </article>
+
+      <article class="section-row">
+        <div class="section-number">04</div>
+
+        <div class="section-icon">
+          <i class="fa-solid fa-panels-top-left"></i>
+        </div>
+
+        <div class="section-info">
+          <div class="title-row">
+            <h3>FOOTER</h3>
+
+            @if (footer?.isActive) {
+
+            <span class="active-badge active"> ACTIVE </span>
+
+            } @else {
+
+            <span class="active-badge inactive"> INACTIVE </span>
+
+            }
+          </div>
+
+          <p>
+            Manage newsletter content, brand links, social media and footer
+            settings.
+          </p>
+
+          @if (footerError) {
+
+          <small class="error-text"> Unable to load footer data. </small>
+
+          }
+        </div>
+
+        <a routerLink="/dashboard/myWebsite/footer" class="manage-btn">
+          <span> MANAGE </span>
+        </a>
+      </article>
+    </div>
+  </section>
+</section>

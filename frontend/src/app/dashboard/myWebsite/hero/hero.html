@@ -1,0 +1,221 @@
+<section class="hero-page">
+
+  <header class="hero-header">
+
+    <div class="header-copy">
+
+      <span class="eyebrow">
+        NATURAL / WEBSITE CONTROL
+      </span>
+
+      <h1>
+        HERO
+        <span>MANAGEMENT.</span>
+      </h1>
+
+      <p>
+        Create and manage the homepage slides displayed in your storefront.
+      </p>
+
+    </div>
+
+    <div class="header-actions">
+
+      <div class="header-status">
+
+        <span
+          class="status-dot active"
+        ></span>
+
+        <div>
+          <strong>
+            {{ activeHeroesCount }}
+          </strong>
+
+          <small>
+            ACTIVE SLIDES
+          </small>
+        </div>
+
+      </div>
+
+      <button
+        type="button"
+        class="add-hero-btn"
+        (click)="addHero()"
+      >
+        ADD NEW SLIDE
+      </button>
+
+    </div>
+
+  </header>
+
+
+  @if (errorMessage) {
+
+    <div class="message error-message">
+      {{ errorMessage }}
+    </div>
+
+  }
+
+
+  @if (isLoading) {
+
+    <section class="hero-state">
+      <span class="state-title">
+        LOADING HEROES
+      </span>
+
+      <p>
+        Loading your homepage slides...
+      </p>
+    </section>
+
+  } @else if (heroes.length === 0) {
+
+    <section class="hero-state empty-state">
+
+      <div class="state-content">
+
+        <span class="state-title">
+          NO HERO SLIDES
+        </span>
+
+        <h2>
+          CREATE YOUR
+          <strong>FIRST SLIDE.</strong>
+        </h2>
+
+        <p>
+          Add a hero slide to start building the homepage slider.
+        </p>
+
+        <button
+          type="button"
+          class="add-hero-btn"
+          (click)="addHero()"
+        >
+          CREATE FIRST SLIDE
+        </button>
+
+      </div>
+
+    </section>
+
+  } @else {
+
+    <section class="hero-summary">
+
+      <div class="summary-item">
+        <span>ALL SLIDES</span>
+        <strong>{{ heroes.length }}</strong>
+      </div>
+
+      <div class="summary-item">
+        <span>ACTIVE</span>
+        <strong>{{ activeHeroesCount }}</strong>
+      </div>
+
+      <div class="summary-item">
+        <span>HIDDEN</span>
+        <strong>{{ inactiveHeroesCount }}</strong>
+      </div>
+
+    </section>
+
+
+    <section class="hero-grid">
+
+      @for (item of heroes; track item._id) {
+
+        <article class="hero-card">
+
+          <div class="hero-card-media">
+
+            <img
+              [src]="item.image"
+              [alt]="item.title"
+            />
+
+            <span
+              class="hero-card-status"
+              [class.active]="item.isActive"
+              [class.inactive]="!item.isActive"
+            >
+              {{ item.isActive ? 'ACTIVE' : 'HIDDEN' }}
+            </span>
+
+          </div>
+
+
+          <div class="hero-card-content">
+
+            @if (item.eyebrow) {
+              <span class="hero-card-eyebrow">
+                {{ item.eyebrow }}
+              </span>
+            }
+
+            <h2>
+              {{ item.title }}
+
+              @if (item.accent) {
+                <strong>
+                  {{ item.accent }}
+                </strong>
+              }
+            </h2>
+
+            @if (item.description) {
+              <p>
+                {{ item.description }}
+              </p>
+            }
+
+          </div>
+
+
+          <div class="hero-card-footer">
+
+            <span class="slide-number">
+              SLIDE {{ $index + 1 }}
+            </span>
+
+            <a
+              class="edit-btn"
+              [routerLink]="[
+                '/dashboard/myWebsite/hero',
+                item._id,
+                'edit'
+              ]"
+            >
+              EDIT
+            </a>
+
+          </div>
+
+        </article>
+
+      }
+
+    </section>
+
+
+    <section class="hero-note">
+
+      <strong>
+        HOW THE SLIDER WORKS
+      </strong>
+
+      <p>
+        All active slides are displayed automatically on the homepage.
+        Hidden slides stay saved but are excluded from the public slider.
+      </p>
+
+    </section>
+
+  }
+
+</section>

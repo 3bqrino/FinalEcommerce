@@ -1,0 +1,174 @@
+<aside class="dashboard-sidebar">
+  <div class="sidebar-brand">
+    <a routerLink="/dashboard" class="brand"> NATURAL<span>.</span> </a>
+    <span class="brand-label">ADMIN CONTROL CENTER</span>
+  </div>
+
+  <div class="sidebar-profile">
+    <div class="profile-avatar" aria-hidden="true">{{ getInitial() }}</div>
+
+    <div class="profile-content">
+      <strong>{{ userName | uppercase }}</strong>
+      <span>{{ userRole | uppercase }}</span>
+    </div>
+
+    <span class="profile-status" aria-label="Active"></span>
+  </div>
+
+  <nav class="sidebar-nav" aria-label="Dashboard navigation">
+    <span class="nav-label">OVERVIEW</span>
+
+    <a
+      routerLink="/dashboard"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="nav-item"
+    >
+      <span class="nav-icon" aria-hidden="true">
+        <i class="fa-solid fa-grid-2"></i>
+      </span>
+      <span class="nav-text">Dashboard</span>
+    </a>
+
+    <span class="nav-label">STORE</span>
+
+    <a
+      routerLink="/dashboard/categories"
+      routerLinkActive="active"
+      class="nav-item"
+    >
+      <span class="nav-icon" aria-hidden="true">
+        <i class="fa-solid fa-layer-group"></i>
+      </span>
+      <span class="nav-text">Categories</span>
+    </a>
+
+    <a
+      routerLink="/dashboard/subcategories"
+      routerLinkActive="active"
+      class="nav-item"
+    >
+      <span class="nav-icon" aria-hidden="true">
+        <i class="fa-solid fa-list"></i>
+      </span>
+      <span class="nav-text">Subcategories</span>
+    </a>
+
+    <a
+      routerLink="/dashboard/products"
+      routerLinkActive="active"
+      class="nav-item"
+    >
+      <span class="nav-icon" aria-hidden="true">
+        <i class="fa-solid fa-box"></i>
+      </span>
+      <span class="nav-text">Products</span>
+    </a>
+
+    <a
+      routerLink="/dashboard/orders"
+      routerLinkActive="active"
+      class="nav-item"
+    >
+      <span class="nav-icon" aria-hidden="true">
+        <i class="fa-solid fa-bag-shopping"></i>
+      </span>
+      <span class="nav-text">Orders</span>
+    </a>
+
+    <span class="nav-label">CUSTOMERS</span>
+
+    <a routerLink="/dashboard/users" routerLinkActive="active" class="nav-item">
+      <span class="nav-icon" aria-hidden="true">
+        <i class="fa-solid fa-users"></i>
+      </span>
+      <span class="nav-text">Users</span>
+    </a>
+
+    <a
+      routerLink="/dashboard/testimonials"
+      routerLinkActive="active"
+      class="nav-item"
+    >
+      <span class="nav-icon" aria-hidden="true">
+        <i class="fa-solid fa-star"></i>
+      </span>
+      <span class="nav-text">Testimonials</span>
+    </a>
+
+    <a
+      routerLink="/dashboard/messages"
+      routerLinkActive="active"
+      class="nav-item"
+    >
+      <span class="nav-icon" aria-hidden="true">
+        <i class="fa-solid fa-envelope"></i>
+      </span>
+      <span class="nav-text">Messages</span>
+      @if (messageCount > 0) {
+      <span class="message-count">
+        {{ messageCount > 99 ? '99+' : messageCount }}
+      </span>
+      }
+    </a>
+
+    <span class="nav-label">MANAGEMENT</span>
+
+    <a
+      routerLink="/dashboard/reports"
+      routerLinkActive="active"
+      class="nav-item"
+    >
+      <span class="nav-icon" aria-hidden="true">
+        <i class="fa-solid fa-chart-line"></i>
+      </span>
+      <span class="nav-text">Reports</span>
+    </a>
+
+    <a
+      routerLink="/dashboard/shipping"
+      routerLinkActive="active"
+      class="nav-item"
+    >
+      <span class="nav-icon" aria-hidden="true">
+        <i class="fa-solid fa-truck"></i>
+      </span>
+      <span class="nav-text">Shipping</span>
+    </a>
+
+    <a
+      routerLink="/dashboard/refunds"
+      routerLinkActive="active"
+      class="nav-item"
+    >
+      <span class="nav-icon" aria-hidden="true">
+        <i class="fa-solid fa-rotate-left"></i>
+      </span>
+      <span class="nav-text">Refunds</span>
+    </a>
+
+    <span class="nav-label">WEBSITE</span>
+
+    <a
+      routerLink="/dashboard/myWebsite"
+      routerLinkActive="active"
+      class="nav-item"
+    >
+      <span class="nav-icon" aria-hidden="true">
+        <i class="fa-solid fa-globe"></i>
+      </span>
+      <span class="nav-text">Homepage</span>
+    </a>
+  </nav>
+
+  <div class="sidebar-bottom">
+    <div class="sidebar-version">
+      <span>AURA FASHION</span>
+      <small>v1.0 / 2026</small>
+    </div>
+
+    <button type="button" class="logout-btn" (click)="logout()">
+      <span>LOGOUT</span>
+    </button>
+  </div>
+</aside>

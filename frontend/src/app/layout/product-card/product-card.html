@@ -1,0 +1,145 @@
+<article
+  class="product-card"
+  [class.grid-card]="view === 'grid'"
+  [class.list-card]="view === 'list'"
+>
+  <div class="product-media">
+    <a
+      class="product-link"
+      [routerLink]="['/product', product.slug]"
+    >
+      <img
+        [src]="imageUrl"
+        [alt]="product.name"
+        loading="lazy"
+      />
+    </a>
+
+    <div class="product-badges">
+      @if (product.isNewArrival) {
+        <span class="product-badge new-badge">
+          <i
+            class="fa-solid fa-sparkles"
+            aria-hidden="true"
+          ></i>
+
+          <span>NEW</span>
+        </span>
+      }
+
+      @if (product.isTopSeller && !isSoldOut) {
+        <span class="product-badge top-badge">
+          <i
+            class="fa-solid fa-fire"
+            aria-hidden="true"
+          ></i>
+
+          <span>BEST SELLER</span>
+        </span>
+      }
+    </div>
+
+    @if (isSoldOut) {
+      <span class="sold-out">
+        <i
+          class="fa-solid fa-circle-xmark"
+          aria-hidden="true"
+        ></i>
+
+        <span>SOLD OUT</span>
+      </span>
+    }
+
+    @if (view === 'grid') {
+      <div class="product-hover">
+        <button
+          type="button"
+          class="quick-view"
+          [routerLink]="['/product', product.slug]"
+        >
+          <i
+            class="fa-regular fa-eye"
+            aria-hidden="true"
+          ></i>
+
+          <span>QUICK VIEW</span>
+        </button>
+
+        <button
+          type="button"
+          class="add-cart-hover"
+          [disabled]="isSoldOut"
+          (click)="addToCart()"
+        >
+          <i
+            class="fa-solid fa-bag-shopping"
+            aria-hidden="true"
+          ></i>
+
+          <span>
+            {{ isSoldOut ? 'SOLD OUT' : 'ADD TO CART' }}
+          </span>
+        </button>
+      </div>
+    }
+  </div>
+
+  <div class="product-content">
+    <h2 class="product-name">
+      <a [routerLink]="['/product', product.slug]">
+        {{ product.name }}
+      </a>
+    </h2>
+
+    <div class="product-price">
+      LE {{ product.price | number: '1.2-2' }}
+    </div>
+
+    @if (view === 'list') {
+      <p class="product-description">
+        {{ product.description }}
+      </p>
+    }
+
+    @if (message) {
+      <div class="cart-message">
+        <span></span>
+
+        {{ message }}
+      </div>
+    }
+  </div>
+
+  @if (view === 'list') {
+    <div class="list-actions">
+      <button
+        type="button"
+        class="list-btn quick-view-list"
+        [routerLink]="['/product', product.slug]"
+      >
+        <i
+          class="fa-regular fa-eye"
+          aria-hidden="true"
+        ></i>
+
+        <span>QUICK VIEW</span>
+      </button>
+
+      <button
+        type="button"
+        class="list-btn add-cart-list"
+        [disabled]="isSoldOut"
+        (click)="addToCart()"
+      >
+        <i
+          class="fa-solid fa-bag-shopping"
+          aria-hidden="true"
+        ></i>
+
+        <span>
+          {{ isSoldOut ? 'SOLD OUT' : 'ADD TO CART' }}
+        </span>
+      </button>
+    </div>
+  }
+</article>

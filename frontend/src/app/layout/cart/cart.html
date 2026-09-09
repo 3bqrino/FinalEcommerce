@@ -1,0 +1,163 @@
+<section class="cart-page">
+  <div class="cart-shell">
+    <header class="cart-page-header">
+      <div>
+        <span class="eyebrow">Shopping Bag</span>
+        <h1>Your Cart</h1>
+      </div>
+      <a routerLink="/home" class="continue-link">Continue Shopping →</a>
+    </header>
+
+    @if (errorMessage) {
+    <div class="cart-error">{{ errorMessage }}</div>
+    } @if (!cart) {
+    <div class="cart-state">Loading your cart...</div>
+    } @else if (cart.items.length === 0) {
+    <div class="cart-empty">
+      <span class="empty-icon">♡</span>
+      <h2>Your cart is empty</h2>
+      <p>Add products to your cart and come back here when you're ready.</p>
+      <a routerLink="/home" class="primary-action">Continue Shopping</a>
+    </div>
+    } @else {
+    @if (showPriceChangeNotice && hasPriceChanges()) {
+    <div class="price-change-backdrop" role="presentation">
+      <section
+        class="price-change-modal"
+        role="alertdialog"
+        aria-modal="true"
+        aria-labelledby="price-change-title"
+      >
+        <span class="price-change-kicker">PRICE UPDATE</span>
+
+        <h2 id="price-change-title">The price has changed</h2>
+
+        <p>
+          The admin changed the price of a product in your cart. Do you want to
+          continue with the new price?
+        </p>
+
+        <div class="price-change-list">
+          @for (item of getChangedItems(); track item.product._id) {
+          <div class="price-change-row">
+            <div>
+              <strong>{{ item.product.name }}</strong>
+              <span>Old: LE {{ item.priceAtAdd }}</span>
+            </div>
+
+            <strong>New: LE {{ item.product.price }}</strong>
+          </div>
+          }
+        </div>
+
+        <div class="price-change-actions">
+          <button
+            type="button"
+            class="price-change-decline"
+            [disabled]="isAcceptingPriceChange"
+            (click)="rejectPriceChange()"
+          >
+            {{ isAcceptingPriceChange ? 'CLEARING...' : 'NO, CLEAR CART' }}
+          </button>
+
+          <button
+            type="button"
+            class="price-change-accept"
+            [disabled]="isAcceptingPriceChange"
+            (click)="acceptPriceChange()"
+          >
+            {{ isAcceptingPriceChange ? 'SAVING...' : 'YES, CONTINUE' }}
+          </button>
+        </div>
+      </section>
+    </div>
+    }
+
+    <div class="cart-layout">
+      <div class="cart-list">
+        @for (item of cart.items; track item.product._id) {
+        <article class="cart-item">
+          <a [routerLink]="['/product', item.product.slug]" class="item-image">
+            <img [src]="item.product.image" [alt]="item.product.name" />
+          </a>
+
+          <div class="item-info">
+            <div class="item-heading">
+              <div>
+                <h2>{{ item.product.name }}</h2>
+                <p>LE {{ item.priceAtAdd || item.product.price }}</p>
+              </div>
+              <button
+                type="button"
+                class="remove-btn"
+                (click)="remove(item.product._id)"
+                aria-label="Remove product"
+              >
+                ×
+              </button>
+            </div>
+
+            <div class="item-footer">
+              <div class="quantity">
+                <button
+                  type="button"
+                  (click)="decrease(item.product._id, item.quantity)"
+                >
+                  −
+                </button>
+                <span>{{ item.quantity }}</span>
+                <button
+                  type="button"
+                  (click)="increase(item.product._id, item.quantity)"
+                >
+                  +
+                </button>
+              </div>
+              <strong
+                >LE {{ (item.priceAtAdd || item.product.price) * item.quantity
+                }}</strong
+              >
+            </div>
+          </div>
+        </article>
+        }
+      </div>
+
+      <aside class="summary-card">
+        <div class="summary-heading">
+          <span>ORDER SUMMARY</span>
+          <span
+            >{{ cart.items.length }} {{ cart.items.length === 1 ? 'ITEM' :
+            'ITEMS' }}</span
+          >
+        </div>
+
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <strong>LE {{ getSubtotal() }}</strong>
+        </div>
+
+        <p class="checkout-note">
+          Login is only required when you continue to checkout and place the
+          order.
+        </p>
+
+        <a
+          routerLink="/checkout"
+          class="checkout-action"
+          [class.checkout-disabled]="hasPriceChanges()"
+          [attr.aria-disabled]="hasPriceChanges()"
+          [attr.tabindex]="hasPriceChanges() ? -1 : 0"
+          (click)="hasPriceChanges() && $event.preventDefault()"
+        >
+          Checkout <span>→</span>
+        </a>
+        >
+        <button type="button" class="clear-action" (click)="clear()">
+          Clear Cart
+        </button>
+      </aside>
+    </div>
+    }
+  </div>
+</section>

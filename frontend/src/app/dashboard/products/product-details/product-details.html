@@ -1,0 +1,155 @@
+<section class="product-details-page">
+  <header class="details-header">
+    <div>
+      <span class="eyebrow"> NATURAL / CATALOG / PRODUCT </span>
+
+      <h1>
+        PRODUCT
+        <strong>DETAILS.</strong>
+      </h1>
+
+      <p>Review product information, availability and inventory.</p>
+    </div>
+
+    <a routerLink="/dashboard/products" class="back-btn">
+      ← BACK TO PRODUCTS
+    </a>
+  </header>
+
+  @if (errorMessage) {
+
+  <div class="state-card">
+    <strong> {{ errorMessage }} </strong>
+
+    <a routerLink="/dashboard/products"> BACK TO PRODUCTS </a>
+  </div>
+
+  } @if (product) {
+
+  <main class="details-card">
+    <section class="product-media">
+      <div class="image-frame">
+        @if (product.image) {
+
+        <img [src]="getImageUrl(product.image)" [alt]="product.name" />
+
+        } @else {
+
+        <div class="image-placeholder">
+          <i class="fa-solid fa-shirt"></i>
+        </div>
+
+        }
+      </div>
+
+      <span class="media-label"> PRODUCT IMAGE </span>
+    </section>
+
+    <section class="product-info">
+      <div class="top-line">
+        <div class="status-group">
+          <span
+            class="status"
+            [class.active]="product.isActive"
+            [class.inactive]="!product.isActive"
+          >
+            {{ product.isActive ? 'ACTIVE' : 'INACTIVE' }}
+          </span>
+
+          @if (product.stock <= 0) {
+
+          <span class="stock-status out"> OUT OF STOCK </span>
+
+          } @else if (product.stock <= 5) {
+
+          <span class="stock-status low"> LOW STOCK </span>
+
+          } @else {
+
+          <span class="stock-status"> IN STOCK </span>
+
+          }
+        </div>
+
+        <span class="product-id">
+          #{{ product._id.slice(-8).toUpperCase() }}
+        </span>
+      </div>
+
+      <div class="product-heading">
+        <div>
+          <span class="category"> {{ getCategoryName() }} </span>
+
+          <h2>{{ product.name }}</h2>
+
+          <span class="slug"> /{{ product.slug }} </span>
+        </div>
+
+        <div class="price">
+          {{ product.price }}
+
+          <small> EGP </small>
+        </div>
+      </div>
+
+      <p class="description">
+        {{ product.description || 'No description available.' }}
+      </p>
+
+      <div class="details-grid">
+        <div class="detail-item">
+          <span> CATEGORY </span>
+
+          <strong> {{ getCategoryName() }} </strong>
+        </div>
+
+        <div class="detail-item">
+          <span> SUBCATEGORY </span>
+
+          <strong> {{ getSubcategoryName() }} </strong>
+        </div>
+
+        <div class="detail-item">
+          <span> STOCK </span>
+
+          <strong> {{ product.stock }} </strong>
+        </div>
+
+        <div class="detail-item">
+          <span> RATING </span>
+
+          <strong> ★ {{ product.rating || 0 }} </strong>
+        </div>
+      </div>
+
+      <div class="flags">
+        @if (product.isNewArrival) {
+
+        <span class="new"> NEW ARRIVAL </span>
+
+        } @if (product.isTopSeller) {
+
+        <span class="top"> TOP SELLER </span>
+
+        }
+      </div>
+
+      <div class="actions">
+        <a
+          class="edit-btn"
+          [routerLink]="[
+              '/dashboard/products',
+              product._id,
+              'edit'
+            ]"
+        >
+          EDIT PRODUCT
+        </a>
+
+        <a class="back-secondary" routerLink="/dashboard/products"> BACK </a>
+      </div>
+    </section>
+  </main>
+
+  }
+</section>

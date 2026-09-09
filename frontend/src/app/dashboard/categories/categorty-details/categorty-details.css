@@ -1,0 +1,234 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.category-details-page {
+  width: 100%;
+}
+
+.details-header {
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 25px;
+}
+
+.eyebrow {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #95ad00;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.14em;
+}
+
+.details-header h1 {
+  margin: 0;
+
+  color: #151515;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: clamp(32px, 4vw, 52px);
+
+  line-height: 0.9;
+}
+
+.details-header h1 span {
+  color: #95ad00;
+}
+
+.back-btn {
+  min-height: 42px;
+
+  padding: 0 14px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 6px;
+
+  background: #fff;
+
+  color: #555;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+.details-card {
+  display: grid;
+
+  grid-template-columns: 300px 1fr;
+
+  gap: 24px;
+
+  padding: 20px;
+
+  border: 1px solid #e3e3de;
+
+  border-radius: 8px;
+
+  background: #fff;
+}
+
+.category-image {
+  min-height: 350px;
+
+  overflow: hidden;
+
+  border-radius: 7px;
+
+  background: #f0f0eb;
+}
+
+.category-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.category-info {
+  padding-top: 5px;
+}
+
+.label {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #aaa;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+}
+
+.category-info h2 {
+  margin: 0 0 20px;
+
+  color: #222;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 28px;
+}
+
+.category-info p {
+  margin: 0 0 20px;
+
+  color: #666;
+
+  font-size: 12px;
+
+  line-height: 1.7;
+}
+
+.status {
+  display: inline-block;
+
+  padding: 7px 9px;
+
+  border-radius: 4px;
+
+  background: #c8ff1a;
+
+  color: #293000;
+
+  font-size: 12px;
+
+  font-weight: 900;
+}
+
+.actions {
+  display: flex;
+
+  gap: 7px;
+
+  margin-top: 25px;
+}
+
+.edit-btn,
+.delete-btn {
+  min-height: 40px;
+
+  padding: 0 14px;
+
+  border-radius: 6px;
+
+  font-size: 12px;
+
+  font-weight: 900;
+
+  cursor: pointer;
+}
+
+.edit-btn {
+  border: 1px solid #c8ff1a;
+
+  background: #c8ff1a;
+
+  color: #293000;
+}
+
+.delete-btn {
+  border: 1px solid #ddd;
+
+  background: #fff;
+
+  color: #666;
+}
+
+.state-card {
+  min-height: 220px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #e3e3de;
+
+  border-radius: 8px;
+
+  background: #fff;
+
+  color: #777;
+
+  font-size: 12px;
+}
+
+@media (max-width: 750px) {
+  .details-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .back-btn {
+    width: 100%;
+  }
+
+  .details-card {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,29 @@
+<div class="refund-list">
+  @if (errorMessage) {
+
+  <div class="state-card error-state">
+    <strong> {{ errorMessage }} </strong>
+
+    <button type="button" (click)="getRefunds()">RETRY</button>
+  </div>
+
+  } @if ( !errorMessage && refunds.length === 0 ) {
+
+  <div class="state-card">
+    <strong> NO REFUND REQUESTS </strong>
+
+    <span> There are no refund requests yet. </span>
+  </div>
+
+  } @if ( !errorMessage && refunds.length > 0 ) {
+
+  <div class="refunds-grid">
+    @for ( refund of refunds; track refund._id ) {
+
+    <app-refund-card [refund]="refund"></app-refund-card>
+
+    }
+  </div>
+
+  }
+</div>

@@ -1,0 +1,134 @@
+<article class="product-card" [class.inactive]="!product.isActive">
+  <div class="product-image">
+    @if (product.image) {
+
+    <img [src]="getImageUrl(product.image)" [alt]="product.name" />
+
+    } @else {
+
+    <div class="image-placeholder">
+      <i class="fa-solid fa-shirt"></i>
+    </div>
+
+    }
+
+ 
+
+    <div class="badges">
+      @if (product.isNewArrival) {
+
+      <span class="badge new"> NEW </span>
+
+      } @if (product.isTopSeller) {
+
+      <span class="badge top"> TOP </span>
+
+      }
+    </div>
+  </div>
+
+  <div class="product-content">
+    <div class="product-top">
+      <div class="product-title">
+        <span> PRODUCT </span>
+
+        <h3>{{ product.name }}</h3>
+
+        <small> /{{ product.slug }} </small>
+      </div>
+
+      <div class="rating">★ {{ product.rating || 0 }}</div>
+    </div>
+
+    <p class="description">
+      {{ product.description || 'No product description available.' }}
+    </p>
+
+    <div class="meta">
+      <div>
+        <span> PRICE </span>
+
+        <strong> {{ product.price }} EGP </strong>
+      </div>
+
+      <div class="stock">
+        <span> STOCK </span>
+
+        <strong
+          [class.low]="
+            product.stock > 0 &&
+            product.stock <= 5
+          "
+          [class.out]="
+            product.stock <= 0
+          "
+        >
+          {{ product.stock }}
+        </strong>
+      </div>
+    </div>
+
+    <div class="settings">
+      <button
+        type="button"
+        class="setting-btn"
+        [class.active]="product.isActive"
+        [class.inactive]="!product.isActive"
+        (click)="toggleActive()"
+      >
+        <span class="dot"></span>
+
+        {{ product.isActive ? 'ACTIVE' : 'HIDDEN' }}
+      </button>
+
+      <button
+        type="button"
+        class="setting-btn"
+        [class.selected]="product.isNewArrival"
+        (click)="toggleNew()"
+      >
+        NEW
+
+        <span> {{ product.isNewArrival ? '✓' : '+' }} </span>
+      </button>
+
+      <button
+        type="button"
+        class="setting-btn"
+        [class.selected]="product.isTopSeller"
+        (click)="toggleTopSeller()"
+      >
+        TOP SELLER
+
+        <span> {{ product.isTopSeller ? '✓' : '+' }} </span>
+      </button>
+    </div>
+
+    <div class="actions">
+      <a
+        [routerLink]="[
+          '/dashboard/products',
+          product._id
+        ]"
+        class="view-btn"
+      >
+        VIEW
+      </a>
+
+      <a
+        [routerLink]="[
+          '/dashboard/products',
+          product._id,
+          'edit'
+        ]"
+        class="edit-btn"
+      >
+        EDIT
+      </a>
+
+      <button type="button" class="delete-btn" (click)="deleteProduct()">
+        DELETE
+      </button>
+    </div>
+  </div>
+</article>

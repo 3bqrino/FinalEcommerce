@@ -1,0 +1,48 @@
+<section class="orders-page">
+  <header class="page-header">
+    <div>
+      <span class="eyebrow"> NATURAL / SALES </span>
+
+      <h1>
+        ORDER
+        <strong>MANAGEMENT.</strong>
+      </h1>
+
+      <p>Manage customer orders and track their progress.</p>
+    </div>
+  </header>
+
+  @if (errorMessage) {
+
+  <div class="state-card error-state">
+    <div>
+      <strong> {{ errorMessage }} </strong>
+
+      <span> Something went wrong while loading orders. </span>
+    </div>
+
+    <button type="button" (click)="getOrders()">RETRY</button>
+  </div>
+
+  } @if ( !errorMessage && orders.length === 0 ) {
+
+  <div class="state-card">
+    <div>
+      <strong> NO ORDERS FOUND </strong>
+
+      <span> Customer orders will appear here. </span>
+    </div>
+  </div>
+
+  } @if ( !errorMessage && orders.length > 0 ) {
+
+  <div class="orders-list">
+    @for ( order of orders; track order._id ) {
+
+    <app-order-card [order]="order"></app-order-card>
+
+    }
+  </div>
+
+  }
+</section>

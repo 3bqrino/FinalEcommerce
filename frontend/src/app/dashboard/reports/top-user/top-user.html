@@ -1,0 +1,56 @@
+<section class="top-users">
+  <header class="section-header">
+    <div>
+      <span class="eyebrow"> CUSTOMER / VALUE </span>
+
+      <h2>
+        TOP
+        <strong>USERS.</strong>
+      </h2>
+    </div>
+
+    <span class="rank-label"> TOP 5</span>
+  </header>
+
+  @if (users.length > 0) {
+
+  <div class="users-list">
+    @for ( user of users; track user._id; let i = $index ) {
+
+    <article class="user-row">
+      <span class="rank"> {{ (i + 1) .toString() .padStart(2, '0') }} </span>
+
+      <div class="avatar">{{ getInitials( user.name ) }}</div>
+
+      <div class="user-info">
+        <strong> {{ user.name }} </strong>
+
+        <span class="email"> {{ user.email }} </span>
+
+        <span>
+          {{ user.orders }} {{ user.orders === 1 ? 'ORDER' : 'ORDERS' }}
+        </span>
+      </div>
+
+      <div class="user-spending">
+        <strong> {{ user.totalSpent | number:'1.0-0' }} EGP </strong>
+
+        <span> TOTAL SPENT </span>
+      </div>
+    </article>
+
+    }
+  </div>
+
+  <footer class="users-footer">
+    <span> RANKED BY TOTAL SPENDING </span>
+
+    <span> {{ users.length }} CUSTOMERS </span>
+  </footer>
+
+  } @else {
+
+  <div class="empty-state">NO CUSTOMER DATA</div>
+
+  }
+</section>

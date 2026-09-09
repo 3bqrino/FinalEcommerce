@@ -1,0 +1,461 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+.refund-form-page {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 30px 0 60px;
+}
+
+.page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.header-copy {
+  min-width: 0;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 9px;
+
+  color: #666666;
+
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.page-header h1 {
+  margin: 0;
+
+  color: #111111;
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(38px, 5vw, 60px);
+  font-weight: 900;
+
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+}
+
+.page-header h1 strong {
+  color: #b8ff00;
+}
+
+.page-header p {
+  max-width: 520px;
+
+  margin: 12px 0 0;
+
+  color: #777777;
+
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.back-btn {
+  flex-shrink: 0;
+
+  min-height: 42px;
+
+  padding: 0 15px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  border: 1px solid #d9d9d4;
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  color: #111111;
+
+  font-size: 12px;
+  font-weight: 900;
+
+  letter-spacing: 0.05em;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.back-btn:hover {
+  background: #b8ff00;
+  border-color: #111111;
+
+  transform: translateY(-1px);
+}
+
+.message {
+  margin-bottom: 14px;
+
+  padding: 13px 15px;
+
+  border-radius: 12px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  line-height: 1.5;
+}
+
+.error-message {
+  border: 1px solid #e2c5c0;
+  background: #fff4f1;
+  color: var(--color-error);
+}
+
+.success-message {
+  border: 1px solid #d2e89d;
+  background: #f4fbe4;
+  color: var(--color-success);
+}
+
+.refund-form {
+  display: grid;
+  gap: 14px;
+}
+
+.form-card,
+.submit-card {
+  border: 1px solid #deded9;
+  border-radius: 16px;
+
+  background: #ffffff;
+
+  box-shadow: var(--shadow-sm);
+}
+
+.form-card {
+  padding: 20px;
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+
+  border-bottom: 1px solid #eeeeeb;
+}
+
+.section-head span {
+  width: 28px;
+  height: 28px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 8px;
+
+  background: #b8ff00;
+
+  color: #111111;
+
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.section-head h2 {
+  margin: 0;
+
+  color: #111111;
+
+  font-size: 12px;
+  font-weight: 950;
+
+  letter-spacing: 0.09em;
+}
+
+label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #737373;
+
+  font-size: 12px;
+  font-weight: 900;
+
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+}
+
+select,
+textarea {
+  width: 100%;
+
+  border: 1px solid #d9d9d4;
+  border-radius: 11px;
+
+  background: #fafaf7;
+
+  color: #222222;
+
+  font-size: 12px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+select {
+  min-height: 48px;
+
+  padding: 0 13px;
+
+  cursor: pointer;
+}
+
+textarea {
+  min-height: 155px;
+
+  padding: 13px;
+
+  line-height: 1.6;
+
+  resize: vertical;
+}
+
+select:focus,
+textarea:focus {
+  border-color: #111111;
+
+  background: #ffffff;
+
+  box-shadow: var(--shadow-sm);
+}
+
+select:disabled,
+textarea:disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+}
+
+.form-hint {
+  margin-top: 8px;
+
+  color: #969696;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+.empty-orders {
+  padding: 24px;
+
+  border: 1px dashed #d8d8d3;
+  border-radius: 12px;
+
+  background: #fafaf7;
+
+  text-align: center;
+}
+
+.empty-orders strong {
+  display: block;
+
+  color: #111111;
+
+  font-size: 12px;
+  font-weight: 900;
+
+  letter-spacing: 0.05em;
+}
+
+.empty-orders p {
+  margin: 6px 0 0;
+
+  color: #858585;
+
+  font-size: 12px;
+}
+
+.submit-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 22px;
+
+  padding: 18px 20px;
+}
+
+.submit-copy {
+  min-width: 0;
+}
+
+.submit-card span {
+  display: block;
+
+  color: #7c7c7c;
+
+  font-size: 12px;
+  font-weight: 900;
+
+  letter-spacing: 0.1em;
+}
+
+.submit-card p {
+  margin: 6px 0 0;
+
+  color: #777777;
+
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.submit-card button {
+  min-height: 45px;
+
+  padding: 0 18px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #111111;
+  border-radius: 10px;
+
+  background: #b8ff00;
+
+  color: #111111;
+
+  font-size: 12px;
+  font-weight: 950;
+
+  letter-spacing: 0.05em;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+.submit-card button:hover:not(:disabled) {
+  background: #111111;
+
+  color: #b8ff00;
+
+  transform: translateY(-2px);
+}
+
+.submit-card button:disabled {
+  opacity: 0.45;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+@media (max-width: 700px) {
+  .refund-form-page {
+    padding: 22px 0 40px;
+  }
+
+  .page-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 16px;
+  }
+
+  .back-btn {
+    width: 100%;
+  }
+
+  .page-header h1 {
+    font-size: clamp(34px, 11vw, 48px);
+  }
+
+  .page-header p {
+    font-size: 12px;
+  }
+
+  .form-card {
+    padding: 15px;
+  }
+
+  .submit-card {
+    align-items: stretch;
+
+    flex-direction: column;
+
+    padding: 16px;
+  }
+
+  .submit-card button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .refund-form {
+    gap: 10px;
+  }
+
+  .form-card {
+    border-radius: 13px;
+    padding: 13px;
+  }
+
+  .submit-card {
+    border-radius: 13px;
+  }
+
+  .section-head {
+    margin-bottom: 14px;
+  }
+
+  .section-head span {
+    width: 26px;
+    height: 26px;
+  }
+
+  select {
+    min-height: 46px;
+  }
+
+  textarea {
+    min-height: 135px;
+  }
+}

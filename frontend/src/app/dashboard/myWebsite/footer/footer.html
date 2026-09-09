@@ -1,0 +1,514 @@
+<section class="footer-page">
+  <header class="page-header">
+    <div class="header-copy">
+      <span class="eyebrow"> WEBSITE / FOOTER </span>
+
+      <h1>
+        Footer
+        <strong>Management.</strong>
+      </h1>
+
+      <p>Control the content and links displayed across the website footer.</p>
+    </div>
+
+    <button type="button" class="back-btn" (click)="goBack()">BACK</button>
+  </header>
+
+  @if (successMessage) {
+
+  <div class="message success-message">
+    <i class="fa-solid fa-circle-check"></i>
+
+    <span> {{ successMessage }} </span>
+  </div>
+
+  } @if (errorMessage) {
+
+  <div class="message error-message">
+    <i class="fa-solid fa-circle-exclamation"></i>
+
+    <span> {{ errorMessage }} </span>
+  </div>
+
+  }
+
+  <form class="footer-form" [formGroup]="footerForm" (ngSubmit)="saveFooter()">
+    <section class="form-section">
+      <div class="section-header">
+        <div>
+          <span class="section-number"> 01 </span>
+
+          <h2>Newsletter</h2>
+
+          <p>Manage the newsletter content displayed in the footer.</p>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="field full">
+          <label> Newsletter Title </label>
+
+          <input
+            type="text"
+            formControlName="newsletterTitle"
+            placeholder="STAY NATURAL."
+          />
+
+          @if ( footerForm.controls.newsletterTitle.touched &&
+          footerForm.controls.newsletterTitle.invalid ) {
+
+          <span class="field-error"> Newsletter title is required. </span>
+
+          }
+        </div>
+
+        <div class="field full">
+          <label> Newsletter Description </label>
+
+          <textarea
+            rows="4"
+            formControlName="newsletterDescription"
+            placeholder="DROPS, RESTOCKS, AND EXCLUSIVE COMMUNITY UPDATES."
+          ></textarea>
+        </div>
+
+        <div class="field full">
+          <label> Newsletter Note </label>
+
+          <input
+            type="text"
+            formControlName="newsletterNote"
+            placeholder="NO SPAM. EVER. UNSUBSCRIBE ANYTIME."
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="form-section">
+      <div class="section-header">
+        <div>
+          <span class="section-number"> 02 </span>
+
+          <h2>Brand</h2>
+
+          <p>Manage the footer brand identity.</p>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="field">
+          <label> Brand Name </label>
+
+          <input
+            type="text"
+            formControlName="brandName"
+            placeholder="NATURAL"
+          />
+
+          @if ( footerForm.controls.brandName.touched &&
+          footerForm.controls.brandName.invalid ) {
+
+          <span class="field-error"> Brand name is required. </span>
+
+          }
+        </div>
+
+        <div class="field">
+          <label> Brand Description </label>
+
+          <input
+            type="text"
+            formControlName="brandDescription"
+            placeholder="Streetwear built for the ones who refuse to blend in."
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="form-section">
+      <div class="section-header">
+        <div>
+          <span class="section-number"> 03 </span>
+
+          <h2>Social Links</h2>
+
+          <p>Add the social media profiles for the footer.</p>
+        </div>
+      </div>
+
+      <div class="social-grid">
+        <div class="field">
+          <label>
+            <i class="fa-brands fa-instagram"></i>
+            Instagram
+          </label>
+
+          <input
+            type="url"
+            formControlName="instagram"
+            placeholder="https://instagram.com/..."
+          />
+        </div>
+
+        <div class="field">
+          <label>
+            <i class="fa-brands fa-tiktok"></i>
+            TikTok
+          </label>
+
+          <input
+            type="url"
+            formControlName="tiktok"
+            placeholder="https://tiktok.com/@..."
+          />
+        </div>
+
+        <div class="field">
+          <label>
+            <i class="fa-brands fa-x-twitter"></i>
+            X / Twitter
+          </label>
+
+          <input
+            type="url"
+            formControlName="twitter"
+            placeholder="https://x.com/..."
+          />
+        </div>
+
+        <div class="field">
+          <label>
+            <i class="fa-brands fa-youtube"></i>
+            YouTube
+          </label>
+
+          <input
+            type="url"
+            formControlName="youtube"
+            placeholder="https://youtube.com/..."
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="form-section">
+      <div class="section-header section-header-row">
+        <div>
+          <span class="section-number"> 04 </span>
+
+          <h2>Shop Links</h2>
+
+          <p>Manage links under the Shop column.</p>
+        </div>
+
+        <button type="button" class="add-btn" (click)="addShopLink()">
+          <i class="fa-solid fa-plus"></i>
+          ADD LINK
+        </button>
+      </div>
+
+      <div class="links-list" formArrayName="shopLinks">
+        @for ( link of shopLinks.controls; track $index; let i = $index ) {
+
+        <div class="link-row" [formGroupName]="i">
+          <span class="link-number"> {{ i + 1 }} </span>
+
+          <div class="field">
+            <label> Label </label>
+
+            <input
+              type="text"
+              formControlName="label"
+              placeholder="NEW ARRIVALS"
+            />
+          </div>
+
+          <div class="field">
+            <label> Link </label>
+
+            <input
+              type="text"
+              formControlName="link"
+              placeholder="/category/men"
+            />
+          </div>
+
+          <button type="button" class="remove-btn" (click)="removeShopLink(i)">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </div>
+
+        } @if (shopLinks.length === 0) {
+
+        <div class="empty-links">No shop links added.</div>
+
+        }
+      </div>
+    </section>
+
+    <section class="form-section">
+      <div class="section-header section-header-row">
+        <div>
+          <span class="section-number"> 05 </span>
+
+          <h2>Brand Links</h2>
+
+          <p>Manage links under the Brand column.</p>
+        </div>
+
+        <button type="button" class="add-btn" (click)="addBrandLink()">
+          <i class="fa-solid fa-plus"></i>
+          ADD LINK
+        </button>
+      </div>
+
+      <div class="links-list" formArrayName="brandLinks">
+        @for ( link of brandLinks.controls; track $index; let i = $index ) {
+
+        <div class="link-row" [formGroupName]="i">
+          <span class="link-number"> {{ i + 1 }} </span>
+
+          <div class="field">
+            <label> Label </label>
+
+            <input type="text" formControlName="label" placeholder="ABOUT US" />
+          </div>
+
+          <div class="field">
+            <label> Link </label>
+
+            <input type="text" formControlName="link" placeholder="/about" />
+          </div>
+
+          <button type="button" class="remove-btn" (click)="removeBrandLink(i)">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </div>
+
+        } @if (brandLinks.length === 0) {
+
+        <div class="empty-links">No brand links added.</div>
+
+        }
+      </div>
+    </section>
+
+    <section class="form-section">
+      <div class="section-header section-header-row">
+        <div>
+          <span class="section-number"> 06 </span>
+
+          <h2>Support Links</h2>
+
+          <p>Manage links under the Support column.</p>
+        </div>
+
+        <button type="button" class="add-btn" (click)="addSupportLink()">
+          <i class="fa-solid fa-plus"></i>
+          ADD LINK
+        </button>
+      </div>
+
+      <div class="links-list" formArrayName="supportLinks">
+        @for ( link of supportLinks.controls; track $index; let i = $index ) {
+
+        <div class="link-row" [formGroupName]="i">
+          <span class="link-number"> {{ i + 1 }} </span>
+
+          <div class="field">
+            <label> Label </label>
+
+            <input type="text" formControlName="label" placeholder="CONTACT" />
+          </div>
+
+          <div class="field">
+            <label> Link </label>
+
+            <input type="text" formControlName="link" placeholder="/contact" />
+          </div>
+
+          <button
+            type="button"
+            class="remove-btn"
+            (click)="removeSupportLink(i)"
+          >
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </div>
+
+        } @if (supportLinks.length === 0) {
+
+        <div class="empty-links">No support links added.</div>
+
+        }
+      </div>
+    </section>
+
+    <section class="form-section">
+      <div class="section-header">
+        <div>
+          <span class="section-number"> 07 </span>
+
+          <h2>Shipping Badge</h2>
+
+          <p>Manage the highlighted shipping message.</p>
+        </div>
+      </div>
+
+      <div class="shipping-editor">
+        <div class="shipping-preview">
+          <span class="preview-number">
+            {{ footerForm.controls.shippingBadgeNumber.value || '24' }}
+          </span>
+
+          <span class="preview-symbol"> + </span>
+
+          <strong>
+            {{ footerForm.controls.shippingBadgeTitle.value || 'FREE' }}
+          </strong>
+
+          <span>
+            {{ footerForm.controls.shippingBadgeText.value || 'SHIPPING ON
+            ORDERS OVER $100' }}
+          </span>
+        </div>
+
+        <div class="form-grid">
+          <div class="field">
+            <label> Badge Number </label>
+
+            <input
+              type="text"
+              formControlName="shippingBadgeNumber"
+              placeholder="24"
+            />
+          </div>
+
+          <div class="field">
+            <label> Badge Title </label>
+
+            <input
+              type="text"
+              formControlName="shippingBadgeTitle"
+              placeholder="FREE"
+            />
+          </div>
+
+          <div class="field full">
+            <label> Badge Text </label>
+
+            <textarea
+              rows="3"
+              formControlName="shippingBadgeText"
+              placeholder="SHIPPING ON ORDERS OVER $100"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="form-section">
+      <div class="section-header">
+        <div>
+          <span class="section-number"> 08 </span>
+
+          <h2>Bottom Bar</h2>
+
+          <p>Manage copyright and policy links.</p>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="field">
+          <label> Copyright Text </label>
+
+          <input
+            type="text"
+            formControlName="copyrightText"
+            placeholder="© 2026 NATURAL."
+          />
+        </div>
+
+        <div class="field">
+          <label> Rights Text </label>
+
+          <input
+            type="text"
+            formControlName="rightsText"
+            placeholder="ALL RIGHTS RESERVED."
+          />
+        </div>
+
+        <div class="field">
+          <label> Privacy Label </label>
+
+          <input
+            type="text"
+            formControlName="privacyLabel"
+            placeholder="PRIVACY POLICY"
+          />
+        </div>
+
+        <div class="field">
+          <label> Privacy Link </label>
+
+          <input
+            type="text"
+            formControlName="privacyLink"
+            placeholder="/privacy"
+          />
+        </div>
+
+        <div class="field">
+          <label> Terms Label </label>
+
+          <input
+            type="text"
+            formControlName="termsLabel"
+            placeholder="TERMS OF SERVICE"
+          />
+        </div>
+
+        <div class="field">
+          <label> Terms Link </label>
+
+          <input type="text" formControlName="termsLink" placeholder="/terms" />
+        </div>
+      </div>
+    </section>
+
+    <section class="form-section">
+      <div class="section-header">
+        <div>
+          <span class="section-number"> 09 </span>
+
+          <h2>Visibility</h2>
+
+          <p>Control whether this footer configuration is active.</p>
+        </div>
+      </div>
+
+      <label class="status-toggle">
+        <input type="checkbox" formControlName="isActive" />
+
+        <span class="toggle"></span>
+
+        <span class="status-copy">
+          <strong> Footer Active </strong>
+
+          <small> Display this footer on the public website. </small>
+        </span>
+      </label>
+    </section>
+
+    <div class="form-actions">
+      <button type="button" class="cancel-btn" (click)="goBack()">
+        CANCEL
+      </button>
+
+      <button type="submit" class="save-btn" [disabled]="isSaving">
+        @if (isSaving) { SAVING... } @else { SAVE FOOTER }
+      </button>
+    </div>
+  </form>
+</section>

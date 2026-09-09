@@ -1,0 +1,81 @@
+<header class="topbar">
+  <div class="top-left">
+    <button
+      type="button"
+      class="menu-btn"
+      aria-label="Toggle sidebar"
+      [attr.aria-expanded]="sidebarOpened"
+      (click)="toggleSidebar()"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="top-title">
+      <span class="mini-label"> NATURAL / {{ userRole | uppercase }} </span>
+
+      <strong> CONTROL CENTER </strong>
+    </div>
+  </div>
+
+  <form
+    class="top-search"
+    role="search"
+    [formGroup]="searchForm"
+    (ngSubmit)="search()"
+  >
+    <label class="sr-only" for="dashboard-search"> Dashboard search </label>
+
+    <span class="search-index" aria-hidden="true"> SEARCH </span>
+
+    <input
+      id="dashboard-search"
+      name="dashboardSearch"
+      type="search"
+      formControlName="searchTerm"
+      placeholder="Search products, orders, users..."
+      autocomplete="off"
+    />
+
+    <span class="search-shortcut" aria-hidden="true"> / </span>
+  </form>
+
+  <div class="top-right">
+    <button
+      type="button"
+      class="top-action message-action"
+      aria-label="Open messages"
+      (click)="openMessages()"
+    >
+      <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+
+      @if (messageCount > 0) {
+      <span
+        class="action-dot"
+        [attr.aria-label]="
+            messageCount > 99
+              ? '99 or more unread messages'
+              : messageCount + ' unread messages'
+          "
+      >
+        {{ messageCount > 99 ? '99+' : messageCount }}
+      </span>
+      }
+    </button>
+
+    <div class="profile">
+      <div class="profile-avatar" aria-hidden="true">{{ getInitial() }}</div>
+
+      <div class="profile-info">
+        <strong> {{ userName | uppercase }} </strong>
+
+        <span> {{ userRole | uppercase }} </span>
+      </div>
+
+      <button type="button" class="logout-btn" (click)="logout()">
+        LOG OUT
+      </button>
+    </div>
+  </div>
+</header>

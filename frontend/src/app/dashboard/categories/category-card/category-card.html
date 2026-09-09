@@ -1,0 +1,121 @@
+<article
+  class="category-card"
+  [class.inactive]="!category.isActive"
+>
+  <div class="category-image">
+    @if (category.image) {
+      <img
+        [src]="getImageUrl(category.image)"
+        [alt]="category.name"
+      />
+    } @else {
+      <div class="image-placeholder">
+        <i class="fa-solid fa-layer-group"></i>
+      </div>
+    }
+
+    <div class="image-overlay"></div>
+
+    <span class="category-status">
+      {{ category.isActive ? 'LIVE' : 'HIDDEN' }}
+    </span>
+  </div>
+
+  <div class="category-content">
+
+    <div class="category-top">
+      <div class="category-heading">
+        <span class="category-label">COLLECTION</span>
+
+        <h2>{{ category.name }}</h2>
+
+        <span class="category-slug">
+          /{{ category.slug }}
+        </span>
+      </div>
+
+      <span
+        class="status-badge"
+        [class.active]="category.isActive"
+        [class.inactive]="!category.isActive"
+      >
+        {{ category.isActive ? 'ACTIVE' : 'INACTIVE' }}
+      </span>
+    </div>
+
+    <p class="category-description">
+      {{ category.description || 'Explore this collection from Natural.' }}
+    </p>
+
+    <div class="category-meta">
+      <div class="meta-item">
+        <span>CATEGORY</span>
+        <strong>{{ category.name }}</strong>
+      </div>
+
+      <div class="meta-item">
+        <span>STATUS</span>
+        <strong>
+          {{ category.isActive ? 'VISIBLE' : 'HIDDEN' }}
+        </strong>
+      </div>
+    </div>
+
+    <div class="category-footer">
+
+      <button
+        type="button"
+        class="active-control"
+        [class.active]="category.isActive"
+        [class.inactive]="!category.isActive"
+        [attr.aria-pressed]="category.isActive"
+        (click)="toggleActive()"
+      >
+        <span class="toggle">
+          <span class="toggle-circle"></span>
+        </span>
+
+        <span class="control-text">
+          {{
+            category.isActive
+              ? 'ACTIVE '
+              : 'HIDDEN'
+          }}
+        </span>
+      </button>
+
+      <div class="category-actions">
+
+        <a
+          [routerLink]="[
+            '/dashboard/categories',
+            category._id
+          ]"
+          class="action-btn view"
+        >
+          VIEW
+        </a>
+
+        <a
+          [routerLink]="[
+            '/dashboard/categories',
+            category._id,
+            'edit'
+          ]"
+          class="action-btn edit"
+        >
+          EDIT
+        </a>
+
+        <button
+          type="button"
+          class="action-btn delete"
+          (click)="deleteCategory()"
+        >
+          DELETE
+        </button>
+
+      </div>
+    </div>
+  </div>
+</article>

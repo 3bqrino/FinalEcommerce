@@ -1,0 +1,174 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.shipping-page {
+  width: 100%;
+}
+
+.page-header {
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 8px;
+  color: #95ad00;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.page-header h1 {
+  margin: 0;
+  color: #151515;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+
+.page-header h1 strong {
+  color: #95ad00;
+}
+
+.page-header p {
+  margin: 10px 0 0;
+  color: #888;
+  font-size: 13px;
+}
+
+.message-box {
+  margin-bottom: 14px;
+  padding: 12px 14px;
+  border-radius: 7px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.error-box {
+  border: 1px solid #e3d3d3;
+  background: #faf6f6;
+  color: var(--color-error);
+}
+
+.success-box {
+  border: 1px solid #d9e2c8;
+  background: #f6faef;
+  color: var(--color-success);
+}
+
+.shipping-card {
+  max-width: 650px;
+  padding: 22px;
+  border: 1px solid #e3e3de;
+  border-radius: 9px;
+  background: #ffffff;
+}
+
+.current-fee {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #eeeeea;
+}
+
+.current-fee span {
+  color: #a1a19b;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+.current-fee strong {
+  color: #252521;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.field {
+  margin-top: 20px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 8px;
+  color: #777771;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrap input {
+  width: 100%;
+  height: 45px;
+  padding: 0 55px 0 13px;
+  border: 1px solid #ddddd8;
+  border-radius: 6px;
+  outline: none;
+  background: #ffffff;
+  color: #252521;
+  font-size: 12px;
+  transition: 0.18s ease;
+}
+
+.input-wrap input:focus {
+  border-color: #b7ca42;
+}
+
+.input-wrap span {
+  position: absolute;
+  right: 13px;
+  color: #999993;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.save-button {
+  width: 100%;
+  min-height: 43px;
+  margin-top: 15px;
+  border: 1px solid #c8ff1a;
+  border-radius: 6px;
+  background: #c8ff1a;
+  color: #293000;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.07em;
+  cursor: pointer;
+  transition: 0.18s ease;
+}
+
+.save-button:hover {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 600px) {
+  .shipping-card {
+    padding: 17px;
+  }
+
+  .current-fee {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .current-fee strong {
+    font-size: 25px;
+  }
+}

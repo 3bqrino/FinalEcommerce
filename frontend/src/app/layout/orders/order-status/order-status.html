@@ -1,0 +1,331 @@
+<section class="order-status-page">
+  <header class="status-header">
+    <div class="header-left">
+      <div class="status-eyebrow">
+        <span>MY ORDERS</span>
+        <i>/</i>
+        <span>TRACKING</span>
+      </div>
+
+      <h1>
+        ORDER
+        <span>#{{ getOrderNumber() }}</span>
+      </h1>
+
+      <p>
+        Follow your order from confirmation to final delivery.
+      </p>
+    </div>
+  </header>
+
+  @if (errorMessage) {
+    <section class="error-state">
+      <div class="error-icon">
+        !
+      </div>
+
+      <div class="error-copy">
+        <span>ORDER ERROR</span>
+
+        <strong>
+          {{ errorMessage }}
+        </strong>
+      </div>
+
+      <button
+        type="button"
+        (click)="loadOrder(route.snapshot.paramMap.get('id') || '')"
+      >
+        TRY AGAIN →
+      </button>
+    </section>
+  }
+
+  @if (order) {
+    <main class="order-content">
+      <section class="status-card">
+        <div class="status-card-bg"></div>
+
+        <div class="status-top">
+          <div class="status-heading">
+            <span class="mini-label">
+              CURRENT STATUS
+            </span>
+
+            <h2>
+              {{ getStatusLabel(order.status) }}
+            </h2>
+
+            <p>
+              {{
+                order.status === 'delivered'
+                  ? 'Your order has arrived successfully.'
+                  : order.status === 'shipped'
+                    ? 'Your order is on its way to you.'
+                    : order.status === 'processing'
+                      ? 'Your order is currently being prepared.'
+                      : order.status === 'confirmed'
+                        ? 'Your order has been confirmed.'
+                        : order.status === 'pending'
+                          ? 'Your order is waiting for confirmation.'
+                          : order.status === 'cancelled'
+                            ? 'This order has been cancelled.'
+                            : 'Your order refund has been completed.'
+              }}
+            </p>
+          </div>
+
+          <div class="status-date">
+            <span class="mini-label">
+              ORDERED
+            </span>
+
+            <strong>
+              {{
+                order.createdAt
+                  ? (order.createdAt | date: 'dd MMM yyyy')
+                  : '—'
+              }}
+            </strong>
+
+            @if (order.createdAt) {
+              <small>
+                {{ order.createdAt | date: 'hh:mm a' }}
+              </small>
+            }
+          </div>
+        </div>
+
+        @if (order.status === 'cancelled') {
+          <div class="special-status cancelled">
+            <div class="special-icon">
+              ×
+            </div>
+
+            <div>
+              <strong>
+                ORDER CANCELLED
+              </strong>
+
+              <span>
+                This order is no longer active.
+              </span>
+            </div>
+          </div>
+        } @else if (order.status === 'refunded') {
+          <div class="special-status refunded">
+            <div class="special-icon">
+              ↺
+            </div>
+
+            <div>
+              <strong>
+                ORDER REFUNDED
+              </strong>
+
+              <span>
+                The refund has been completed and this order is now closed.
+              </span>
+            </div>
+          </div>
+        } @else {
+          <div class="tracking-timeline">
+            @for (step of steps; track step; let i = $index) {
+              <div
+                class="timeline-item"
+                [class.done]="isStepDone(step)"
+                [class.current]="isCurrentStep(step)"
+              >
+                <div class="timeline-dot">
+                  @if (isStepDone(step)) {
+                    ✓
+                  } @else {
+                    {{ i + 1 }}
+                  }
+                </div>
+
+                <div class="timeline-label">
+                  <strong>
+                    {{ getStatusLabel(step) }}
+                  </strong>
+                </div>
+
+                @if (i < steps.length - 1) {
+                  <div class="timeline-line"></div>
+                }
+              </div>
+            }
+          </div>
+        }
+      </section>
+
+      <section class="overview-grid">
+        <article class="info-card summary-card">
+          <div class="card-heading">
+            <span>ORDER</span>
+
+            <strong>
+              ORDER SUMMARY
+            </strong>
+          </div>
+
+          <div class="summary-list">
+            <div class="summary-row">
+              <span>ITEMS</span>
+
+              <strong>
+                {{ getItemsCount() }}
+              </strong>
+            </div>
+
+            <div class="summary-row">
+              <span>SUBTOTAL</span>
+
+              <strong>
+                {{ order.subtotal | number: '1.0-2' }} EGP
+              </strong>
+            </div>
+
+            <div class="summary-row">
+              <span>DELIVERY</span>
+
+              <strong>
+                {{ order.deliveryFee | number: '1.0-2' }} EGP
+              </strong>
+            </div>
+
+            <div class="summary-row total-row">
+              <span>TOTAL</span>
+
+              <strong>
+                {{ order.totalAmount | number: '1.0-2' }} EGP
+              </strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="info-card shipping-card">
+          <div class="card-heading">
+            <span>DELIVERY</span>
+
+            <strong>
+              SHIPPING ADDRESS
+            </strong>
+          </div>
+
+          <div class="shipping-content">
+            <div class="shipping-name">
+              {{ order.shippingAddress.name }}
+            </div>
+
+            <div class="shipping-location">
+              <span>
+                {{ order.shippingAddress.governorate }}
+              </span>
+
+              <i>/</i>
+
+              <span>
+                {{ order.shippingAddress.city }}
+              </span>
+            </div>
+
+            <p>
+              {{ order.shippingAddress.building }},
+              {{ order.shippingAddress.street }}
+            </p>
+          </div>
+
+          <div class="address-mark">
+            ·
+          </div>
+        </article>
+      </section>
+
+      <section class="items-card">
+        <div class="items-heading">
+          <div>
+            <span>PRODUCTS</span>
+
+            <h2>
+              ITEMS IN THIS ORDER
+            </h2>
+          </div>
+
+          <strong>
+            {{
+              getItemsCount()
+                .toString()
+                .padStart(2, '0')
+            }}
+          </strong>
+        </div>
+
+        <div class="items-list">
+          @for (item of order.items; track $index; let i = $index) {
+            <article class="item-row">
+              <div class="item-index">
+                {{
+                  (i + 1)
+                    .toString()
+                    .padStart(2, '0')
+                }}
+              </div>
+
+              <div class="item-main">
+                <div class="item-name">
+                  {{ item.name }}
+                </div>
+
+                <div class="item-meta">
+                  <span>QUANTITY</span>
+
+                  <strong>
+                    {{ item.quantity }}
+                  </strong>
+
+                  <i>×</i>
+
+                  <span>PRICE</span>
+
+                  <strong>
+                    {{ item.price | number: '1.0-2' }} EGP
+                  </strong>
+                </div>
+              </div>
+
+              <div class="item-total">
+                <span>TOTAL</span>
+
+                <strong>
+                  {{ item.totalPrice | number: '1.0-2' }} EGP
+                </strong>
+              </div>
+            </article>
+          }
+        </div>
+
+        <div class="items-footer">
+          <span>
+            ORDER #{{ getOrderNumber() }}
+          </span>
+
+          <span>
+            {{ getItemsCount() }} PRODUCTS
+          </span>
+        </div>
+      </section>
+    </main>
+  }
+
+  <div class="orders-footer-nav">
+    <a
+      routerLink="/orders"
+      class="back-orders"
+    >
+      <span class="back-orders-arrow">←</span>
+
+      <span>BACK TO ORDERS</span>
+    </a>
+  </div>
+</section>

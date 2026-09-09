@@ -1,0 +1,115 @@
+<section class="address-page">
+  <header class="page-header">
+    <div class="header-copy">
+      <button type="button" class="back-link" (click)="goBackToAccount()">
+        ← BACK TO ACCOUNT
+      </button>
+      <span class="eyebrow">Account / Addresses</span>
+      <h1>MY <strong>ADDRESSES.</strong></h1>
+      <p>Manage your delivery addresses and choose your default destination.</p>
+    </div>
+
+    <a routerLink="/addresses/add" class="add-button">
+      <span>+</span> ADD ADDRESS
+    </a>
+  </header>
+
+  @if (errorMessage) {
+  <div class="state error-state">
+    <div class="state-icon">!</div>
+    <strong>SOMETHING WENT WRONG</strong>
+    <span>{{ errorMessage }}</span>
+    <button type="button" (click)="getAddresses()">TRY AGAIN</button>
+  </div>
+  } @if (!errorMessage && !isLoading && addresses.length === 0) {
+  <div class="state empty-state">
+    <span class="state-label">YOUR ADDRESS BOOK</span>
+    <strong>NO ADDRESSES YET</strong>
+    <p>Add a delivery address to make checkout faster and easier.</p>
+    <a routerLink="/addresses/add" class="empty-button">
+      ADD YOUR FIRST ADDRESS <span>→</span>
+    </a>
+  </div>
+  } @if (isLoading) {
+  <div class="state loading-state">
+    <div class="loader"></div>
+    <span>LOADING YOUR ADDRESSES...</span>
+  </div>
+  } @if (!errorMessage && !isLoading && addresses.length > 0) {
+  <div class="list-header">
+    <span
+      >{{ addresses.length }} {{ addresses.length === 1 ? 'ADDRESS' :
+      'ADDRESSES' }}</span
+    >
+    <span>SELECT YOUR DEFAULT</span>
+  </div>
+
+  <div class="address-list">
+    @for (address of addresses; track address._id; let i = $index) {
+    <article class="address-card" [class.default-card]="address.isDefault">
+      <div class="address-top">
+        <div class="address-title">
+          <span class="card-number"
+            >{{ (i + 1).toString().padStart(2, '0') }}</span
+          >
+          <div>
+            <span class="label">ADDRESS</span>
+            <h2>{{ address.name }}</h2>
+          </div>
+        </div>
+
+        @if (address.isDefault) {
+        <span class="default-badge">DEFAULT</span>
+        }
+      </div>
+
+      <div class="address-details">
+        <div class="detail-row">
+          <span>GOVERNORATE</span>
+          <strong>{{ address.governorate }}</strong>
+        </div>
+        <div class="detail-row">
+          <span>CITY</span>
+          <strong>{{ address.city }}</strong>
+        </div>
+        <div class="detail-row">
+          <span>STREET</span>
+          <strong>{{ address.street }}</strong>
+        </div>
+        <div class="detail-row">
+          <span>BUILDING</span>
+          <strong>{{ address.building }}</strong>
+        </div>
+      </div>
+
+      <div class="address-actions">
+        @if (!address.isDefault) {
+        <button
+          type="button"
+          class="default-action"
+          (click)="setDefaultAddress(address._id!)"
+        >
+          SET DEFAULT
+        </button>
+        }
+
+        <a
+          [routerLink]="['/addresses', address._id, 'edit']"
+          class="edit-action"
+        >
+          EDIT
+        </a>
+
+        <button
+          type="button"
+          class="delete-action"
+          (click)="deleteAddress(address._id!)"
+        >
+          DELETE
+        </button>
+      </div>
+    </article>
+    }
+  </div>
+  }
+</section>

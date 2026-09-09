@@ -1,0 +1,235 @@
+<section class="user-list">
+  <header class="list-header">
+    <div class="list-intro">
+      <span class="eyebrow">CUSTOMERS / USERS</span>
+      <h1>ALL <strong>USERS.</strong></h1>
+      <p>
+        Search customer accounts, review user history and manage administrator
+        access.
+      </p>
+    </div>
+
+    <div class="users-toolbar">
+      <span class="users-count" aria-live="polite">
+        {{ totalUsers }} {{ totalUsers === 1 ? 'USER' : 'USERS' }}
+      </span>
+
+      <button
+        type="button"
+        class="admin-toggle"
+        [attr.aria-expanded]="showAdminForm"
+        (click)="toggleAdminForm()"
+      >
+        {{ showAdminForm ? 'CLOSE' : 'ADD ADMIN' }}
+      </button>
+    </div>
+  </header>
+
+  <section class="search-panel" aria-labelledby="user-search-title">
+    <div class="search-copy">
+      <span class="eyebrow">DIRECTORY / SEARCH</span>
+      <h2 id="user-search-title">SEARCH USERS</h2>
+      <p>Search by name, email, phone, National ID or User ID.</p>
+    </div>
+
+    <form
+      class="users-search"
+      role="search"
+      [formGroup]="searchForm"
+      (ngSubmit)="submitSearch()"
+    >
+      <label for="user-search">Search users</label>
+      <div class="search-control">
+        <input
+          id="user-search"
+          name="userSearch"
+          type="search"
+          formControlName="searchTerm"
+          (input)="onSearchInput()"
+          placeholder="e.g. Ahmed, ahmed@example.com, or user ID"
+          autocomplete="off"
+          spellcheck="false"
+        />
+
+        @if (searchTerm) {
+        <button
+          type="button"
+          class="clear-search"
+          aria-label="Clear user search"
+          (click)="clearSearch()"
+        >
+          CLEAR
+        </button>
+        }
+      </div>
+      <button type="submit" class="search-submit">SEARCH USERS</button>
+    </form>
+  </section>
+
+  @if (showAdminForm) {
+  <section class="admin-create-card">
+    <div class="admin-create-head">
+      <div>
+        <span class="eyebrow">ADMIN / ACCESS</span>
+        <h2>CREATE <strong>ADMIN.</strong></h2>
+        <p>
+          Create another administrator with the existing dashboard access rules.
+        </p>
+      </div>
+    </div>
+
+    <form
+      [formGroup]="adminReactiveForm"
+      (ngSubmit)="createAdmin()"
+      class="admin-form"
+    >
+      <label>
+        <span>NAME</span>
+        <input type="text" name="adminName" formControlName="name" required />
+      </label>
+
+      <label>
+        <span>EMAIL</span>
+        <input
+          type="email"
+          name="adminEmail"
+          formControlName="email"
+          required
+        />
+      </label>
+
+      <label>
+        <span>PASSWORD</span>
+        <input
+          type="password"
+          name="adminPassword"
+          formControlName="password"
+          required
+        />
+      </label>
+
+      <label>
+        <span>PHONE</span>
+        <input type="text" name="adminPhone" formControlName="phone" required />
+      </label>
+
+      <label>
+        <span>NATIONAL ID</span>
+        <input
+          type="text"
+          name="adminNationalId"
+          formControlName="nationalId"
+          required
+        />
+      </label>
+
+      <label>
+        <span>GENDER</span>
+        <select name="adminGender" formControlName="gender">
+          <option value="male">MALE</option>
+          <option value="female">FEMALE</option>
+        </select>
+      </label>
+
+      <label>
+        <span>DATE OF BIRTH</span>
+        <input
+          type="date"
+          name="adminDateOfBirth"
+          formControlName="dateOfBirth"
+        />
+      </label>
+
+      <div class="admin-form-actions">
+        <button type="submit" [disabled]="isCreatingAdmin">
+          {{ isCreatingAdmin ? 'CREATING...' : 'CREATE ADMIN' }}
+        </button>
+      </div>
+    </form>
+  </section>
+  } @if (successMessage) {
+  <div class="state-card success-state" aria-live="polite">
+    <strong>{{ successMessage }}</strong>
+  </div>
+  } @if (errorMessage) {
+  <div class="state-card error-state" role="alert">
+    <div>
+      <strong>{{ errorMessage }}</strong>
+      <span>Check your connection and try again.</span>
+    </div>
+    <button type="button" (click)="loadUsers(1)">RETRY</button>
+  </div>
+  } @if (isLoading) {
+  <div class="state-card loading-state" aria-live="polite" aria-busy="true">
+    <span class="loading-bar"></span>
+    <strong>Loading users...</strong>
+    <span>Please wait while the directory updates.</span>
+  </div>
+  } @else if (!errorMessage && users.length === 0) {
+  <div class="state-card empty-state" aria-live="polite">
+    <strong>{{ searchTerm ? 'NO MATCHING USERS' : 'NO USERS FOUND' }}</strong>
+    <span>
+      {{ searchTerm ? 'Try a different name, email or identifier.' : 'Users will
+      appear here once accounts are available.' }}
+    </span>
+    @if (searchTerm) {
+    <button type="button" class="clear-empty-filters" (click)="clearSearch()">
+      CLEAR SEARCH
+    </button>
+    }
+  </div>
+  } @else if (!errorMessage) {
+  <div class="result-summary">
+    <span>
+      Showing {{ (currentPage - 1) * pageSize + 1 }}-{{ (currentPage - 1) *
+      pageSize + users.length }} of {{ totalUsers }} users
+    </span>
+    @if (searchTerm) {
+    <span>for “{{ searchTerm }}”</span>
+    }
+  </div>
+
+  <div class="users-grid">
+    @for (user of users; track user._id; let i = $index) {
+    <app-user-card
+      [user]="user"
+      [index]="(currentPage - 1) * pageSize + i"
+      (userDeleted)="removeUser($event)"
+    ></app-user-card>
+    }
+  </div>
+
+  @if (totalPages > 1) {
+  <nav class="pagination" aria-label="Users pagination">
+    <button
+      type="button"
+      [disabled]="currentPage === 1 || isLoading"
+      (click)="goToPage(currentPage - 1)"
+    >
+      PREVIOUS
+    </button>
+
+    <div class="page-list">
+      @for (page of pageNumbers; track page) {
+      <button
+        type="button"
+        [class.active]="page === currentPage"
+        [attr.aria-current]="page === currentPage ? 'page' : null"
+        [disabled]="isLoading"
+        (click)="goToPage(page)"
+      >
+        {{ page }}
+      </button>
+      }
+    </div>
+
+    <button
+      type="button"
+      [disabled]="currentPage === totalPages || isLoading"
+      (click)="goToPage(currentPage + 1)"
+    >
+      NEXT
+    </button>
+  </nav>
+  } }
+</section>

@@ -1,0 +1,78 @@
+<section class="top-products">
+  <header class="section-header">
+    <div>
+      <span class="eyebrow"> PRODUCT / PERFORMANCE </span>
+
+      <h2>
+        TOP
+        <strong>PRODUCTS.</strong>
+      </h2>
+    </div>
+
+    <span class="rank-label"> TOP 5 </span>
+  </header>
+
+  @if (products.length > 0) {
+
+  <div class="products-list">
+    @for ( product of products; track product._id; let i = $index ) {
+
+    <article class="product-row">
+      <span class="rank"> {{ (i + 1) .toString() .padStart(2, '0') }} </span>
+
+      <a
+        class="product-image"
+        [routerLink]="[
+              '/product',
+              product.slug
+            ]"
+      >
+        @if (product.image) {
+
+        <img [src]="product.image" [alt]="product.name" loading="lazy" />
+
+        } @else {
+
+        <div class="image-placeholder">NATURAL</div>
+
+        }
+      </a>
+
+      <div class="product-info">
+        <strong> {{ product.name }} </strong>
+
+        <span> {{ product.category || 'PRODUCT' }} </span>
+      </div>
+
+      <div class="product-stats">
+        <strong> {{ product.revenue | number:'1.0-0' }} EGP </strong>
+
+        <span> {{ product.sold }} SOLD </span>
+      </div>
+
+      <a
+        class="product-arrow"
+        [routerLink]="[
+              '/product',
+              product.slug
+            ]"
+      >
+        ↗
+      </a>
+    </article>
+
+    }
+  </div>
+
+  <footer class="products-footer">
+    <span> RANKED BY REVENUE </span>
+
+    <span> {{ products.length }} PRODUCTS </span>
+  </footer>
+
+  } @else {
+
+  <div class="empty-state">NO PRODUCT DATA</div>
+
+  }
+</section>

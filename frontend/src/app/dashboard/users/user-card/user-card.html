@@ -1,0 +1,78 @@
+<article class="user-card">
+  <div class="card-top">
+    <span class="user-number">
+     
+    </span>
+
+    <span
+      class="status"
+      [class.active]="getStatusClass() === 'active'"
+      [class.inactive]="getStatusClass() === 'inactive'"
+      [class.blocked]="getStatusClass() === 'blocked'"
+    >
+      {{ getStatus() }}
+    </span>
+  </div>
+
+  <div class="profile">
+    <div class="avatar" aria-hidden="true">{{ getInitial() }}</div>
+
+    <div class="profile-content">
+      <h3>{{ user.name }}</h3>
+      <p>{{ user.email }}</p>
+    </div>
+  </div>
+
+  <dl class="user-info">
+    <div class="info-item">
+      <dt>PHONE</dt>
+      <dd>{{ user.phone || '—' }}</dd>
+    </div>
+
+    <div class="info-item">
+      <dt>ROLE</dt>
+      <dd>{{ user.role }}</dd>
+    </div>
+
+    <div class="info-item">
+      <dt>GENDER</dt>
+      <dd>{{ user.gender || '—' }}</dd>
+    </div>
+
+    <div class="info-item">
+      <dt>JOINED</dt>
+      <dd>{{ getDate() }}</dd>
+    </div>
+  </dl>
+
+  @if (actionError) {
+  <p class="action-error" role="alert">{{ actionError }}</p>
+  }
+
+  <div class="card-actions">
+    <a [routerLink]="['/dashboard/users', user._id]" class="view-btn">
+      VIEW USER
+    </a>
+
+    <button
+      type="button"
+      class="action-btn"
+      [class.unblock]="user.isBlocked"
+      [disabled]="!!action"
+      (click)="toggleBlock()"
+    >
+      @if (action === 'blocking') { BLOCKING... } @else if (action ===
+      'unblocking') { UNBLOCKING... } @else { {{ user.isBlocked ? 'UNBLOCK' :
+      'BLOCK' }} }
+    </button>
+
+    <button
+      type="button"
+      class="delete-btn"
+      [disabled]="!!action"
+      (click)="deleteUser()"
+    >
+      {{ action === 'deleting' ? 'DELETING...' : 'DELETE' }}
+    </button>
+  </div>
+</article>

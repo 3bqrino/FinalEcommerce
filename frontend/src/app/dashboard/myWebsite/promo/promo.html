@@ -1,0 +1,183 @@
+<section class="promo-page" [formGroup]="promoForm">
+  <header class="promo-header">
+    <div class="header-copy">
+      <span class="eyebrow"> NATURAL / WEBSITE CONTROL </span>
+
+      <h1>
+        PROMO
+        <span>BANNER.</span>
+      </h1>
+
+      <p>Manage the promotional banner shown across your storefront.</p>
+    </div>
+
+    <div class="header-status">
+      <span class="status-dot" [class.active]="isActive"></span>
+
+      <div>
+        <strong> {{ isActive ? 'ACTIVE' : 'INACTIVE' }} </strong>
+
+        <small> BANNER STATUS </small>
+      </div>
+    </div>
+  </header>
+
+  @if (errorMessage) {
+
+  <div class="message error-message">{{ errorMessage }}</div>
+
+  } @if (successMessage) {
+
+  <div class="message success-message">{{ successMessage }}</div>
+
+  }
+
+  <section class="promo-layout">
+    <div class="promo-form">
+      <div class="panel-heading">
+        <div>
+          <span> PROMOTIONAL CONTENT </span>
+
+          <h2>
+            EDIT
+            <strong>PROMO.</strong>
+          </h2>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="field full">
+          <label> PROMO TEXT </label>
+
+          <input
+            type="text"
+            formControlName="text"
+            placeholder="FREE SHIPPING ON ORDERS OVER 1000 EGP"
+          />
+        </div>
+
+        <div class="field">
+          <label> DISCOUNT </label>
+
+          <div class="number-field">
+            <input
+              type="number"
+              min="0"
+              formControlName="discount"
+              placeholder="20"
+            />
+
+            <span>%</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label> LINK </label>
+
+          <input type="text" formControlName="link" placeholder="/products" />
+        </div>
+
+        <div class="field full">
+          <label> VISIBILITY </label>
+
+          <button
+            type="button"
+            class="status-button"
+            [class.active]="isActive"
+            (click)="toggleActive()"
+          >
+            <span class="button-dot"></span>
+
+            <span> {{ isActive ? 'ACTIVE PROMO' : 'INACTIVE PROMO' }} </span>
+
+            <i
+              class="fa-solid"
+              [class.fa-eye]="isActive"
+              [class.fa-eye-slash]="!isActive"
+            ></i>
+          </button>
+        </div>
+      </div>
+
+      <button type="button" class="save-btn" (click)="savePromo()">
+        SAVE PROMO
+      </button>
+    </div>
+
+    <aside class="promo-preview">
+      <div class="preview-heading">
+        <div>
+          <span> LIVE PREVIEW </span>
+
+          <h2>
+            STOREFRONT
+            <strong>BANNER.</strong>
+          </h2>
+        </div>
+
+        <span class="preview-badge">
+          {{ isActive ? 'VISIBLE' : 'HIDDEN' }}
+        </span>
+      </div>
+
+      <div class="preview-banner" [class.inactive]="!isActive">
+        <div class="preview-top">
+          <span class="preview-label"> NATURAL / PROMOTION </span>
+
+          <span class="preview-status">
+            {{ isActive ? 'ACTIVE' : 'HIDDEN' }}
+          </span>
+        </div>
+
+        <div class="preview-content">
+          <p>{{ text || 'YOUR PROMO TEXT' }}</p>
+
+          @if (discount !== null) {
+
+          <strong> {{ discount }}% OFF </strong>
+
+          }
+        </div>
+
+        @if (link) {
+
+        <a [href]="link" class="preview-link"> SHOP NOW </a>
+
+        } @else {
+
+        <span class="preview-link disabled"> SHOP NOW </span>
+
+        }
+      </div>
+
+      <div class="preview-info">
+        <div>
+          <span> TEXT </span>
+
+          <strong> {{ text ? 'SET' : 'EMPTY' }} </strong>
+        </div>
+
+        <div>
+          <span> DISCOUNT </span>
+
+          <strong> {{ discount !== null ? discount + '%' : 'NONE' }} </strong>
+        </div>
+
+        <div>
+          <span> LINK </span>
+
+          <strong> {{ link ? 'SET' : 'NONE' }} </strong>
+        </div>
+      </div>
+
+      <div class="preview-note">
+        <span> PROMO GUIDELINE </span>
+
+        <p>
+          Keep the message short and clear. This banner is managed globally and
+          appears wherever the storefront uses it.
+        </p>
+      </div>
+    </aside>
+  </section>
+</section>

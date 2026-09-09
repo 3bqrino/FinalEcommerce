@@ -1,0 +1,283 @@
+<div
+  class="cart-overlay"
+  aria-hidden="true"
+  (click)="close()"
+></div>
+
+<aside
+  class="cart-drawer"
+  aria-label="Shopping cart"
+>
+  <div class="cart-header">
+    <div class="header-content">
+      <div class="header-copy">
+        <span class="eyebrow">
+          SHOPPING BAG
+        </span>
+
+        <h2>
+          YOUR CART
+        </h2>
+      </div>
+
+      <div class="header-right">
+        @if (cart) {
+          <span class="item-count">
+            {{ cart.items.length }}
+            {{ cart.items.length === 1 ? 'ITEM' : 'ITEMS' }}
+          </span>
+        }
+
+        <button
+          type="button"
+          class="close-button"
+          aria-label="Close cart"
+          (click)="close()"
+        >
+          <i
+            class="fa-solid fa-xmark"
+            aria-hidden="true"
+          ></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cart-content">
+    @if (!cart) {
+      <div class="cart-state error-state">
+        <div class="state-icon error-state-icon">
+          <i
+            class="fa-solid fa-triangle-exclamation"
+            aria-hidden="true"
+          ></i>
+        </div>
+
+        <strong>
+          UNABLE TO LOAD CART
+        </strong>
+
+        <span>
+          Please try again.
+        </span>
+      </div>
+    } @else if (cart.items.length === 0) {
+      <div class="cart-state">
+        <div class="state-icon">
+          <i
+            class="fa-solid fa-bag-shopping"
+            aria-hidden="true"
+          ></i>
+        </div>
+
+        <strong>
+          YOUR CART IS EMPTY
+        </strong>
+
+        <span>
+          Add something you love.
+        </span>
+
+        <a
+          routerLink="/home"
+          class="continue-shopping"
+          (click)="close()"
+        >
+          <span>
+            CONTINUE SHOPPING
+          </span>
+
+          <i
+            class="fa-solid fa-arrow-right"
+            aria-hidden="true"
+          ></i>
+        </a>
+      </div>
+    } @else {
+      @if (showPriceChangeNotice && hasPriceChanges()) {
+        <div class="price-change-backdrop" role="presentation">
+          <section
+            class="price-change-modal"
+            role="alertdialog"
+            aria-modal="true"
+            aria-labelledby="drawer-price-change-title"
+          >
+            <span class="price-change-kicker">PRICE UPDATE</span>
+
+            <h2 id="drawer-price-change-title">The price has changed</h2>
+
+            <p>
+              The admin changed the price of a product in your cart. Do you want
+              to continue with the new price?
+            </p>
+
+            <div class="price-change-list">
+              @for (item of getChangedItems(); track item.product._id) {
+                <div class="price-change-row">
+                  <div>
+                    <strong>{{ item.product.name }}</strong>
+                    <span>Old: LE {{ item.priceAtAdd }}</span>
+                  </div>
+
+                  <strong>New: LE {{ item.product.price }}</strong>
+                </div>
+              }
+            </div>
+
+            <div class="price-change-actions">
+              <button
+                type="button"
+                class="price-change-decline"
+                [disabled]="isAcceptingPriceChange"
+                (click)="rejectPriceChange()"
+              >
+                {{ isAcceptingPriceChange ? 'CLEARING...' : 'NO, CLEAR CART' }}
+              </button>
+
+              <button
+                type="button"
+                class="price-change-accept"
+                [disabled]="isAcceptingPriceChange"
+                (click)="acceptPriceChange()"
+              >
+                {{ isAcceptingPriceChange ? 'SAVING...' : 'YES, CONTINUE' }}
+              </button>
+            </div>
+          </section>
+        </div>
+      }
+
+      <div class="cart-items">
+        @for (item of cart.items; track item.product._id) {
+          <article class="cart-item">
+            <div class="cart-item-image">
+              <img
+                [src]="item.product.image"
+                [alt]="item.product.name"
+              />
+            </div>
+
+            <div class="item-info">
+              <div class="item-top">
+                <div class="item-main-copy">
+                  <h3>
+                    {{ item.product.name }}
+                  </h3>
+
+                  <span class="cart-price">
+                    LE {{ item.priceAtAdd }}
+                  </span>
+                </div>
+
+                <button
+                  type="button"
+                  class="remove"
+                  aria-label="Remove product from cart"
+                  [attr.title]="'Remove ' + item.product.name"
+                  (click)="remove(item.product._id)"
+                >
+                  <i
+                    class="fa-regular fa-trash-can"
+                    aria-hidden="true"
+                  ></i>
+                </button>
+              </div>
+
+              <div class="item-bottom">
+                <div class="quantity">
+                  <button
+                    type="button"
+                    aria-label="Decrease quantity"
+                    [attr.title]="'Decrease quantity'"
+                    (click)="decrease(item.product._id, item.quantity)"
+                  >
+                    <i
+                      class="fa-solid fa-minus"
+                      aria-hidden="true"
+                    ></i>
+                  </button>
+
+                  <span>
+                    {{ item.quantity }}
+                  </span>
+
+                  <button
+                    type="button"
+                    aria-label="Increase quantity"
+                    [attr.title]="'Increase quantity'"
+                    (click)="increase(item.product._id, item.quantity)"
+                  >
+                    <i
+                      class="fa-solid fa-plus"
+                      aria-hidden="true"
+                    ></i>
+                  </button>
+                </div>
+
+                <span class="item-subtotal">
+                  LE {{ item.priceAtAdd * item.quantity }}
+                </span>
+              </div>
+            </div>
+          </article>
+        }
+      </div>
+    }
+  </div>
+
+  @if (cart && cart.items.length > 0) {
+    <div class="cart-footer">
+      <div class="total">
+        <div class="total-label">
+          <span>
+            TOTAL
+          </span>
+
+          <small>
+            {{ cart.items.length }}
+            {{ cart.items.length === 1 ? 'ITEM' : 'ITEMS' }}
+          </small>
+        </div>
+
+        <strong>
+          LE {{ getTotal() }}
+        </strong>
+      </div>
+
+      <div class="cart-actions">
+        <button
+          type="button"
+          class="clear-btn"
+          (click)="clear()"
+        >
+          <i
+            class="fa-regular fa-trash-can"
+            aria-hidden="true"
+          ></i>
+
+          <span>
+            CLEAR CART
+          </span>
+        </button>
+
+        <a
+          routerLink="/checkout"
+          class="checkout-btn"
+          [class.checkout-disabled]="hasPriceChanges()"
+          [attr.aria-disabled]="hasPriceChanges()"
+          [attr.tabindex]="hasPriceChanges() ? -1 : 0"
+          (click)="hasPriceChanges() ? $event.preventDefault() : close()"
+        >
+          <span>
+            CHECKOUT
+          </span>
+
+          <i
+            class="fa-solid fa-arrow-right"
+            aria-hidden="true"
+          ></i>
+        </a>
+      </div>
+    </div>
+  }
+</aside>

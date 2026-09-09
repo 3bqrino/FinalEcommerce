@@ -1,0 +1,116 @@
+<div class="auth-page">
+  <div class="auth-side">
+    <a routerLink="/home" class="brand"> NATURAL<span>.</span> </a>
+
+    <div class="side-content">
+      <h1>WELCOME <strong>BACK.</strong></h1>
+      <p>Sign in to access your account, orders and addresses.</p>
+    </div>
+  </div>
+
+  <div class="auth-content">
+    <a routerLink="/home" class="mobile-brand"> NATURAL<span>.</span> </a>
+
+    <div class="form-wrapper">
+      <h2>LOGIN</h2>
+      <p class="form-description">
+        Enter your credentials to access your account.
+      </p>
+
+      <form
+        class="auth-form"
+        [formGroup]="loginForm"
+        (ngSubmit)="login()"
+        novalidate
+      >
+        <div
+          class="field"
+          [class.has-error]="email.invalid && (email.touched || submitted)"
+          [class.has-success]="email.valid && email.touched"
+        >
+          <label for="email">EMAIL</label>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            placeholder="you@example.com"
+            autocomplete="email"
+          />
+
+          @if (email.invalid && (email.touched || submitted)) {
+          <div class="field-error">
+            @if (email.errors?.['required']) {
+            <span>Email is required.</span>
+            } @if (email.errors?.['email']) {
+            <span>Enter a valid email address.</span>
+            }
+          </div>
+          }
+        </div>
+
+        <div
+          class="field"
+          [class.has-error]="password.invalid && (password.touched || submitted)"
+          [class.has-success]="password.valid && password.touched"
+        >
+          <label for="password">PASSWORD</label>
+          <input
+            id="password"
+            type="password"
+            formControlName="password"
+            placeholder="Enter your password"
+            autocomplete="current-password"
+          />
+
+          @if (password.invalid && (password.touched || submitted)) {
+          <div class="field-error">
+            @if (password.errors?.['required']) {
+            <span>Password is required.</span>
+            } @if (password.errors?.['minlength']) {
+            <span>Password must be at least 6 characters.</span>
+            }
+          </div>
+          }
+        </div>
+
+        <div class="form-row">
+          <label class="remember">
+            <input type="checkbox" formControlName="rememberMe" />
+            <span>Remember me</span>
+          </label>
+
+          <a routerLink="/forgot-password" class="forgot-link"
+            >Forgot password?</a
+          >
+        </div>
+
+        @if (errorMessage) {
+        <p class="error-message">{{ errorMessage }}</p>
+        }
+
+        <button
+          type="submit"
+          class="submit-button"
+          [disabled]="loginForm.invalid || isSubmitting"
+        >
+          <span>{{ isSubmitting ? 'SIGNING IN...' : 'SIGN IN' }}</span>
+          <span class="submit-arrow">→</span>
+        </button>
+      </form>
+
+      <div class="divider">
+        <span>OR</span>
+      </div>
+
+      <div class="signup-link">
+        <span>Don't have an account?</span>
+        <a
+          routerLink="/signup"
+          [queryParams]="returnUrl ? { returnUrl: returnUrl } : null"
+        >
+          CREATE ACCOUNT
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

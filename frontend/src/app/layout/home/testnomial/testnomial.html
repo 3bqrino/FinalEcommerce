@@ -1,0 +1,185 @@
+<section class="testimonials-section">
+  <div class="testimonials-container">
+
+    <header class="section-head">
+      <div class="section-copy">
+        <span class="eyebrow">
+          CUSTOMER REVIEWS
+        </span>
+
+        <h2>
+          WHAT PEOPLE
+          <strong>SAY.</strong>
+        </h2>
+
+        <p>
+          Honest words from customers who chose NATURAL.
+        </p>
+      </div>
+    </header>
+
+    @if (testimonials.length > 0) {
+
+      <div class="testimonials-slider">
+
+        <button
+          type="button"
+          class="testimonial-arrow testimonial-arrow-left"
+          [disabled]="currentSlide === 0"
+          [class.disabled]="currentSlide === 0"
+          aria-label="Previous testimonials"
+          (click)="previousSlide()"
+        >
+          <i
+            class="fa-solid fa-arrow-left"
+            aria-hidden="true"
+          ></i>
+        </button>
+
+        <div class="testimonials-grid">
+
+          @for (
+            testimonial of visibleTestimonials;
+            track testimonial._id;
+            let i = $index
+          ) {
+
+            <article
+              class="testimonial-card"
+              [class.featured]="currentSlide === 0 && i === 0"
+            >
+
+              <div class="card-top">
+
+                <div
+                  class="rating"
+                  aria-label="Rating"
+                >
+                  @for (
+                    star of [1, 2, 3, 4, 5];
+                    track star
+                  ) {
+                    <i
+                      class="fa-solid fa-star"
+                      [class.active]="star <= testimonial.rating"
+                      aria-hidden="true"
+                    ></i>
+                  }
+                </div>
+
+                <span class="review-number">
+                  {{
+                    (currentSlide + i + 1)
+                      .toString()
+                      .padStart(2, "0")
+                  }}
+                </span>
+
+              </div>
+
+              <div class="comment-area">
+
+                <span class="quote-icon">
+                  <i
+                    class="fa-solid fa-quote-left"
+                    aria-hidden="true"
+                  ></i>
+                </span>
+
+                <p class="comment">
+                  {{ testimonial.comment }}
+                </p>
+
+              </div>
+
+              <div class="card-footer">
+
+                <div class="customer">
+
+                  <div class="customer-avatar">
+                    {{
+                      testimonial.name
+                        .charAt(0)
+                        .toUpperCase()
+                    }}
+                  </div>
+
+                  <div class="customer-data">
+
+                    <h3>
+                      {{ testimonial.name }}
+                    </h3>
+
+                    <span class="verified">
+                      <i
+                        class="fa-solid fa-circle-check"
+                        aria-hidden="true"
+                      ></i>
+
+                      VERIFIED CUSTOMER
+                    </span>
+
+                  </div>
+
+                </div>
+
+                @if (testimonial.rating >= 5) {
+                  <span class="top-review">
+                    TOP REVIEW
+                  </span>
+                }
+
+              </div>
+
+            </article>
+
+          }
+
+        </div>
+
+        <button
+          type="button"
+          class="testimonial-arrow testimonial-arrow-right"
+          [disabled]="currentSlide >= maxSlide"
+          [class.disabled]="currentSlide >= maxSlide"
+          aria-label="Next testimonials"
+          (click)="nextSlide()"
+        >
+          <i
+            class="fa-solid fa-arrow-right"
+            aria-hidden="true"
+          ></i>
+        </button>
+
+      </div>
+
+    } @else if (errorMessage) {
+
+      <div class="state error-state">
+        <i
+          class="fa-solid fa-circle-exclamation"
+          aria-hidden="true"
+        ></i>
+
+        <span>
+          {{ errorMessage }}
+        </span>
+      </div>
+
+    } @else {
+
+      <div class="state">
+        <i
+          class="fa-regular fa-message"
+          aria-hidden="true"
+        ></i>
+
+        <span>
+          No testimonials available.
+        </span>
+      </div>
+
+    }
+
+  </div>
+</section>

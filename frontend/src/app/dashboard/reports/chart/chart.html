@@ -1,0 +1,154 @@
+<section class="chart-panel">
+  <div class="chart-header">
+    <div class="title-group">
+      <span class="eyebrow"> REVENUE / PERFORMANCE </span>
+
+      <h2>
+        SALES
+        <span>OVERVIEW.</span>
+      </h2>
+    </div>
+
+    <div class="chart-controls">
+      <button
+        type="button"
+        class="period-btn"
+        [class.active]="selectedPeriod === 6"
+        (click)="selectPeriod(6)"
+      >
+        6 MONTHS
+      </button>
+
+      <button
+        type="button"
+        class="period-btn"
+        [class.active]="selectedPeriod === 12"
+        (click)="selectPeriod(12)"
+      >
+        12 MONTHS
+      </button>
+    </div>
+  </div>
+
+  <div class="chart-highlights">
+    <div class="highlight">
+      <span> REVENUE </span>
+
+      <strong> {{ formatRevenue(totalRevenue) }} EGP </strong>
+    </div>
+
+    <div class="highlight">
+      <span> ITEMS SOLD </span>
+
+      <strong> {{ totalItemsSold }} </strong>
+    </div>
+
+    <div class="highlight">
+      <span> ORDERS </span>
+
+      <strong> {{ totalOrders }} </strong>
+    </div>
+
+    <div class="growth-badge" [class.negative]="growth < 0">
+      {{ growth >= 0 ? '+' : '' }} {{ growth | number:'1.1-1' }}%
+    </div>
+  </div>
+
+  <div class="chart-area" *ngIf="chartData.length > 0">
+    <div class="y-axis">
+      <span> {{ formatRevenue(maxRevenue) }} </span>
+
+      <span> {{ formatRevenue(maxRevenue * 0.8) }} </span>
+
+      <span> {{ formatRevenue(maxRevenue * 0.6) }} </span>
+
+      <span> {{ formatRevenue(maxRevenue * 0.4) }} </span>
+
+      <span> {{ formatRevenue(maxRevenue * 0.2) }} </span>
+
+      <span> 0 </span>
+    </div>
+
+    <div class="graph">
+      <div class="grid-lines">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <svg class="sales-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <polygon
+          class="chart-area-fill"
+          [attr.points]="
+            getAreaPoints()
+          "
+        ></polygon>
+
+        <polyline
+          class="chart-line"
+          [attr.points]="
+            getLinePoints()
+          "
+        ></polyline>
+
+        <ng-container
+          *ngFor="
+            let item of chartData;
+            let i = index
+          "
+        >
+          <circle
+            class="chart-point"
+            [attr.cx]="
+              chartData.length === 1
+                ? 50
+                : (
+                    i /
+                    (chartData.length - 1)
+                  ) * 100
+            "
+            [attr.cy]="
+              getPointPosition(
+                item.revenue
+              )
+            "
+            r="1.5"
+          ></circle>
+        </ng-container>
+      </svg>
+
+      <div class="chart-tooltip" *ngIf="chartData.length > 0">
+        <span> {{ chartData[ chartData.length - 1 ].label }} </span>
+
+        <strong>
+          {{ formatRevenue( chartData[ chartData.length - 1 ].revenue ) }} EGP
+        </strong>
+      </div>
+
+      <div class="x-axis">
+        <span
+          *ngFor="
+            let item of chartData
+          "
+        >
+          {{ item.label }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-empty" *ngIf="chartData.length === 0">NO SALES DATA</div>
+
+  <div class="chart-footer">
+    <div class="footer-status">
+      <span class="live-dot"></span>
+
+      LIVE PERFORMANCE DATA
+    </div>
+
+    <span> LAST {{ selectedPeriod }} MONTHS </span>
+  </div>
+</section>

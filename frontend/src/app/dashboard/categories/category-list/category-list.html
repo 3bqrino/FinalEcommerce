@@ -1,0 +1,47 @@
+<section class="categories-page">
+  <header class="categories-header">
+    <div>
+      <h1>CATEGORY <span>MANAGEMENT.</span></h1>
+
+      <p>Manage your store categories.</p>
+    </div>
+
+    <a routerLink="/dashboard/categories/add" class="add-btn">
+      + ADD CATEGORY
+    </a>
+  </header>
+
+  @if (errorMessage) {
+
+  <div class="state-card">
+    <strong> {{ errorMessage }} </strong>
+
+    <button type="button" (click)="getCategories()">RETRY</button>
+  </div>
+
+  } @if (!errorMessage && categories.length === 0) {
+
+  <div class="state-card">
+    <strong> NO CATEGORIES FOUND </strong>
+
+    <span> Add your first category. </span>
+
+    <a routerLink="/dashboard/categories/add" class="add-btn"> ADD CATEGORY </a>
+  </div>
+
+  } @if (!errorMessage && categories.length > 0) {
+
+  <div class="categories-grid">
+    @for ( category of categories; track category._id ) {
+
+    <app-category-card
+      [category]="category"
+      (deleteClicked)="deleteCategory($event)"
+      (activeChanged)="toggleActive($event)"
+    ></app-category-card>
+
+    }
+  </div>
+
+  }
+</section>

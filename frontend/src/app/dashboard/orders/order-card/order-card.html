@@ -1,0 +1,91 @@
+<article class="order-card">
+  <div class="card-top">
+    <div class="order-reference">
+
+      <div>
+        <span class="label"> ORDER </span>
+
+        <strong> #{{ getOrderNumber() }} </strong>
+      </div>
+    </div>
+
+    <span
+      class="status"
+      [class.pending]="order.status === 'pending'"
+      [class.processing]="order.status === 'processing'"
+      [class.confirmed]="order.status === 'confirmed'"
+      [class.shipped]="order.status === 'shipped'"
+      [class.delivered]="order.status === 'delivered'"
+      [class.cancelled]="order.status === 'cancelled'"
+      [class.refunded]="order.status === 'refunded'"
+    >
+      {{ getStatusLabel() }}
+    </span>
+  </div>
+
+  <div class="customer-section">
+    <div class="avatar">{{ getInitial() }}</div>
+
+    <div class="customer-info">
+      <strong> {{ getCustomerName() }} </strong>
+
+      <span> {{ getCustomerEmail() }} </span>
+    </div>
+  </div>
+
+  <div class="order-info">
+    <div class="info-item">
+      <span> DATE </span>
+
+      <strong> {{ getOrderDate() }} </strong>
+    </div>
+
+    <div class="info-item">
+      <span> ITEMS </span>
+
+      <strong> {{ getItemsCount() }} </strong>
+    </div>
+
+    <div class="info-item">
+      <span> TOTAL </span>
+
+      <strong class="total"> {{ order.totalAmount }} EGP </strong>
+    </div>
+  </div>
+
+  <div class="progress-section">
+    <div class="progress-head">
+      <span> ORDER PROGRESS </span>
+
+      <strong> {{ getProgressStep() }} </strong>
+    </div>
+
+    <div class="progress-track">
+      <span class="progress-fill" [style.width.%]="getProgress()"></span>
+    </div>
+  </div>
+
+  <div class="card-actions">
+    <a
+      [routerLink]="[
+        '/dashboard/orders',
+        order._id
+      ]"
+      class="view-btn"
+    >
+      VIEW ORDER
+    </a>
+
+    <a
+      [routerLink]="[
+        '/dashboard/orders',
+        order._id
+      ]"
+      class="status-btn"
+    >
+      MANAGE STATUS
+
+      <i class="fa-solid fa-sliders"></i>
+    </a>
+  </div>
+</article>

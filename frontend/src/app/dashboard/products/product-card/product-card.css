@@ -1,0 +1,528 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.product-card {
+  display: grid;
+
+  grid-template-columns: 150px minmax(0, 1fr);
+
+  min-height: 215px;
+
+  overflow: hidden;
+
+  border: 1px solid #e1e1db;
+
+  border-radius: 10px;
+
+  background: #fff;
+
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.product-card:hover {
+  border-color: #d0d0c7;
+
+  box-shadow: var(--shadow-sm);
+}
+
+.product-card.inactive {
+  opacity: 0.72;
+}
+
+.product-image {
+  position: relative;
+
+  width: 150px;
+  height: 100%;
+
+  min-height: 215px;
+
+  overflow: hidden;
+
+  background: #f1f1eb;
+}
+
+.product-image img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  transition: transform 0.35s ease;
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.025);
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #aaa99f;
+
+  font-size: 24px;
+}
+
+.product-index {
+  position: absolute;
+
+  top: 10px;
+  left: 10px;
+
+  width: 29px;
+  height: 29px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.92);
+
+  color: #36372f;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+.badges {
+  position: absolute;
+
+  left: 10px;
+  bottom: 10px;
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 4px;
+}
+
+.badge {
+  min-height: 44px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 0 16px;
+
+  border-radius: 4px;
+
+  font-size: 12px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.07em;
+}
+
+.badge.new {
+  background: #dce8bc;
+
+  color: #5d703f;
+}
+
+.badge.top {
+  background: rgba(255, 255, 255, 0.92);
+
+  color: #52544d;
+}
+
+.product-content {
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  padding: 17px;
+}
+
+.product-top {
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 12px;
+}
+
+.product-title {
+  min-width: 0;
+}
+
+.product-title > span {
+  color: #a0a197;
+
+  font-size: 12px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.12em;
+}
+
+.product-title h3 {
+  margin: 5px 0 0;
+
+  overflow: hidden;
+
+  color: #292a25;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 19px;
+
+  line-height: 1.05;
+
+  letter-spacing: -0.03em;
+
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+}
+
+.product-title small {
+  display: block;
+
+  margin-top: 5px;
+
+  overflow: hidden;
+
+  color: #a0a098;
+
+  font-size: 12px;
+
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+}
+
+.rating {
+  flex: 0 0 auto;
+
+  color: #76786e;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+.description {
+  margin: 10px 0 13px;
+
+  color: #888981;
+
+  font-size: 12px;
+
+  line-height: 1.55;
+
+  display: -webkit-box;
+
+  -webkit-box-orient: vertical;
+
+  -webkit-line-clamp: 2;
+
+  overflow: hidden;
+}
+
+.meta {
+  display: grid;
+
+  grid-template-columns: 1fr 80px;
+
+  gap: 15px;
+
+  padding: 11px 0;
+
+  border-top: 1px solid #eeeeea;
+
+  border-bottom: 1px solid #eeeeea;
+}
+
+.meta > div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.meta span {
+  color: #a2a39a;
+
+  font-size: 12px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.1em;
+}
+
+.meta strong {
+  color: #35362f;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 14px;
+}
+
+.stock {
+  text-align: right;
+}
+
+.stock strong {
+  color: #718052;
+}
+
+.stock strong.low {
+  color: #8a7b3e;
+}
+
+.stock strong.out {
+  color: #8b554b;
+}
+
+.settings {
+  display: grid;
+
+  grid-template-columns: 1fr 0.75fr 1fr;
+
+  gap: 5px;
+
+  margin-top: 10px;
+}
+
+.setting-btn {
+  min-width: 0;
+
+  min-height: 30px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 4px;
+
+  padding: 0 16px;
+
+  border: 1px solid #dedfd8;
+
+  border-radius: 5px;
+
+  background: #fff;
+
+  color: #85877d;
+
+  font-size: 6.5px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.03em;
+
+  cursor: pointer;
+
+  transition: 0.16s ease;
+}
+
+.setting-btn:hover {
+  border-color: #cdd4ba;
+
+  background: #fafbf6;
+}
+
+.setting-btn.active,
+.setting-btn.selected {
+  border-color: #cbd7a7;
+
+  background: #f4f7ea;
+
+  color: #657447;
+}
+
+.setting-btn.inactive {
+  background: #f4f4f0;
+
+  color: #999b92;
+}
+
+.setting-btn .dot {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: currentColor;
+}
+
+.setting-btn > span:last-child:not(.dot) {
+  font-size: 12px;
+}
+
+.actions {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr 1fr;
+
+  gap: 5px;
+
+  margin-top: 8px;
+}
+
+.actions a,
+.actions button {
+  min-height: 31px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 5px;
+
+  font-size: 12px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.05em;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition: 0.16s ease;
+}
+
+.view-btn {
+  border: 1px solid #d8ddd0;
+
+  background: #f8faf5;
+
+  color: #69765c;
+}
+
+.edit-btn {
+  border: 1px solid #dfdfd8;
+
+  background: #fff;
+
+  color: #696b64;
+}
+
+.delete-btn {
+  border: 1px solid #e1e1db;
+
+  background: #fafaf7;
+
+  color: #8b817d;
+}
+
+.view-btn:hover,
+.edit-btn:hover {
+  border-color: #cbd4b7;
+
+  background: #f5f8ee;
+}
+
+.delete-btn:hover {
+  border-color: #dccac5;
+
+  background: #faf4f2;
+
+  color: #84584e;
+}
+
+@media (max-width: 950px) {
+  .product-card {
+    grid-template-columns: 125px minmax(0, 1fr);
+  }
+
+  .product-image {
+    width: 125px;
+
+    min-height: 205px;
+  }
+
+  .settings {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .setting-btn:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 650px) {
+  .product-card {
+    grid-template-columns: 105px minmax(0, 1fr);
+  }
+
+  .product-image {
+    width: 105px;
+
+    min-height: 200px;
+  }
+
+  .product-content {
+    padding: 13px;
+  }
+
+  .product-title h3 {
+    font-size: 16px;
+  }
+
+  .description {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 470px) {
+  .product-card {
+    grid-template-columns: 1fr;
+  }
+
+  .product-image {
+    width: 100%;
+
+    height: 185px;
+
+    min-height: 185px;
+  }
+
+  .product-content {
+    padding: 14px;
+  }
+
+  .product-title h3 {
+    font-size: 18px;
+  }
+
+  .settings {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .setting-btn:first-child {
+    grid-column: auto;
+  }
+}

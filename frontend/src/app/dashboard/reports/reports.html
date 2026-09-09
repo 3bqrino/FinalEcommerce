@@ -1,0 +1,265 @@
+<section class="reports-page">
+  <header class="reports-header">
+    <div class="header-copy">
+      <span class="eyebrow"> NATURAL / STORE ANALYTICS </span>
+
+      <h1>
+        STORE
+        <span>REPORTS.</span>
+      </h1>
+
+      <p>
+        A clear overview of your customers, products, orders and store
+        performance.
+      </p>
+    </div>
+
+    <div class="header-meta">
+
+  
+    </div>
+  </header>
+
+  @if (errorMessage) {
+
+  <div class="state-card error-state">
+    <div>
+      <span class="state-label"> SYSTEM / ERROR </span>
+
+      <strong> {{ errorMessage }} </strong>
+    </div>
+
+    <button type="button" (click)="getReports()">RETRY</button>
+  </div>
+
+  } @if (loading && !report) {
+
+  <div class="state-card">
+    <span class="state-label"> STORE / ANALYTICS </span>
+
+    <strong> LOADING REPORTS... </strong>
+  </div>
+
+  } @if (report) {
+
+  <section class="metrics-grid">
+    <article class="metric-card featured">
+      <div class="metric-top">
+        <span> TOTAL SALES </span>
+
+
+      </div>
+
+      <div class="metric-main">
+        <strong>
+          {{ report.totalSales | number:'1.0-2' }}
+
+          <small> EGP </small>
+        </strong>
+      </div>
+
+      <div class="metric-footer">
+        <span> STORE REVENUE </span>
+
+      </div>
+    </article>
+
+    <article class="metric-card">
+      <div class="metric-top">
+        <span> TOTAL ORDERS </span>
+
+
+      </div>
+
+      <div class="metric-main">
+        <strong> {{ report.totalOrders }} </strong>
+      </div>
+
+      <div class="metric-footer">
+        <span> ALL ORDERS </span>
+
+
+      </div>
+    </article>
+
+    <article class="metric-card">
+      <div class="metric-top">
+        <span> ITEMS SOLD </span>
+
+      </div>
+
+      <div class="metric-main">
+        <strong> {{ report.totalItemsSold }} </strong>
+      </div>
+
+      <div class="metric-footer">
+        <span>UNITS SOLD </span>
+      </div>
+    </article>
+
+    <article class="metric-card">
+      <div class="metric-top">
+        <span> AVG. ORDER </span>
+
+   
+      </div>
+
+      <div class="metric-main">
+        <strong>
+          {{ report.averageOrderValue | number:'1.0-2' }}
+
+          <small> EGP </small>
+        </strong>
+      </div>
+
+      <div class="metric-footer">
+        <span> PER ORDER </span>
+      </div>
+    </article>
+  </section>
+
+  <section class="overview-strip">
+    <div class="overview-item">
+      <span> CUSTOMERS </span>
+
+      <strong> {{ report.totalUsers }} </strong>
+    </div>
+
+    <div class="overview-item">
+      <span> PRODUCTS </span>
+
+      <strong> {{ report.totalProducts }} </strong>
+    </div>
+
+    <div class="overview-item">
+      <span> STORE STATUS </span>
+
+      <strong class="warning"> ACTIVE </strong>
+    </div>
+  </section>
+
+  <app-low-stock> </app-low-stock>
+
+  <section class="analytics-grid">
+    <app-chart [report]="report"> </app-chart>
+
+    <app-top-products
+      [products]="
+          report.topProducts || []
+        "
+    >
+    </app-top-products>
+
+    <app-top-user
+      [users]="
+          report.topUsers || []
+        "
+    >
+    </app-top-user>
+  </section>
+
+  <section class="status-section">
+    <div class="section-header">
+      <div>
+        <span class="eyebrow"> ORDERS / PIPELINE </span>
+
+        <h2>
+          ORDER
+          <strong>STATUS.</strong>
+        </h2>
+      </div>
+
+    </div>
+
+    <div class="status-grid">
+      <article class="status-card pending">
+        <div class="status-top">
+          <span> PENDING </span>
+
+        </div>
+
+        <strong> {{ report.pendingOrders }} </strong>
+      </article>
+
+      <article class="status-card confirmed">
+        <div class="status-top">
+          <span> CONFIRMED </span>
+
+        </div>
+
+        <strong> {{ report.confirmedOrders }} </strong>
+      </article>
+
+      <article class="status-card processing">
+        <div class="status-top">
+          <span> PROCESSING </span>
+
+        </div>
+
+        <strong> {{ report.processingOrders }} </strong>
+      </article>
+
+      <article class="status-card shipped">
+        <div class="status-top">
+          <span> SHIPPED </span>
+
+        </div>
+
+        <strong> {{ report.shippedOrders }} </strong>
+      </article>
+
+      <article class="status-card delivered">
+        <div class="status-top">
+          <span> DELIVERED </span>
+
+
+        </div>
+
+        <strong> {{ report.deliveredOrders }} </strong>
+      </article>
+
+      <article class="status-card cancelled">
+        <div class="status-top">
+          <span> CANCELLED </span>
+
+
+        </div>
+
+        <strong> {{ report.cancelledOrders }} </strong>
+      </article>
+
+      <article class="status-card refunded">
+        <div class="status-top">
+          <span> REFUNDED </span>
+
+
+        </div>
+
+        <strong> {{ report.refundedOrders }} </strong>
+      </article>
+    </div>
+  </section>
+
+  <section class="inventory-alert">
+    <div class="inventory-copy">
+      <span> INVENTORY / MONITOR </span>
+
+      <h2>
+        STOCK
+        <strong>MONITOR.</strong>
+      </h2>
+
+      <p>
+        Low stock products are shown above with their current inventory count.
+      </p>
+    </div>
+
+    <div class="inventory-value">
+      <strong> LIVE </strong>
+
+      <span> PRODUCT DATA </span>
+    </div>
+  </section>
+
+  }
+</section>

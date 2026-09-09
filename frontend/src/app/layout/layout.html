@@ -1,0 +1,9 @@
+<app-nav-bar (cartClick)="openCart()"></app-nav-bar>
+
+<main class="page-content">
+  <router-outlet></router-outlet>
+</main>
+
+@if (cartOpen) {
+<app-cart-drawer (closeDrawer)="closeCart()"></app-cart-drawer>
+}

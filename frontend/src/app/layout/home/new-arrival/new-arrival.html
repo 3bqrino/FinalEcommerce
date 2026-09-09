@@ -1,0 +1,177 @@
+<section class="new-arrival-section">
+
+  <header class="new-arrival-header">
+    <span class="header-line"></span>
+
+    <h2>New Arrivals</h2>
+
+    <span class="header-line"></span>
+  </header>
+
+  @if (products.length > 0) {
+
+    <div class="new-arrivals-wrapper">
+
+      <!-- LEFT ARROW -->
+      <button
+        type="button"
+        class="slider-arrow slider-arrow-left"
+        [disabled]="currentSlide === 0"
+        [class.disabled]="currentSlide === 0"
+        (click)="previousSlide()"
+        aria-label="Previous products"
+      >
+        <i
+          class="fa-solid fa-chevron-left"
+          aria-hidden="true"
+        ></i>
+      </button>
+
+      <!-- PRODUCTS -->
+      <div class="new-arrivals-grid">
+
+        @for (
+          product of visibleProducts;
+          track product._id;
+          let i = $index
+        ) {
+
+          <article class="arrival-card">
+
+            <div class="arrival-image">
+
+              <a
+                class="product-link"
+                [routerLink]="['/product', product.slug]"
+              >
+                <img
+                  [src]="product.image"
+                  [alt]="product.name"
+                  loading="lazy"
+                />
+              </a>
+
+              <!-- NEW -->
+              <span class="new-badge">
+                <i
+                  class="fa-solid fa-sparkles"
+                  aria-hidden="true"
+                ></i>
+
+                <span>NEW</span>
+              </span>
+
+              <!-- SOLD OUT -->
+              @if ((product.stock || 0) <= 0) {
+
+                <span class="sold-out-badge">
+                  <span>SOLD OUT</span>
+                </span>
+
+              }
+
+              <!-- HOVER ACTIONS -->
+              <div class="arrival-hover">
+
+                <a
+                  class="quick-view"
+                  [routerLink]="['/product', product.slug]"
+                >
+                  <i
+                    class="fa-regular fa-eye"
+                    aria-hidden="true"
+                  ></i>
+
+                  <span>QUICK VIEW</span>
+                </a>
+
+                <a
+                  class="view-product"
+                  [routerLink]="['/product', product.slug]"
+                >
+                  <span>VIEW PRODUCT</span>
+
+                  <i
+                    class="fa-solid fa-arrow-up-right-from-square"
+                    aria-hidden="true"
+                  ></i>
+                </a>
+
+              </div>
+
+            </div>
+
+            <!-- INFO -->
+            <div class="arrival-info">
+
+              <h3 class="arrival-name">
+
+                <a
+                  [routerLink]="['/product', product.slug]"
+                >
+                  {{ product.name }}
+                </a>
+
+              </h3>
+
+              <div class="arrival-price">
+                LE {{ product.price | number: "1.0-2" }}
+              </div>
+
+              @if ((product.stock || 0) > 0) {
+
+                <div class="arrival-stock">
+                  <span></span>
+                  {{ product.stock }} AVAILABLE
+                </div>
+
+              } @else {
+
+                <div class="arrival-stock sold-text">
+
+                  SOLD OUT
+
+                </div>
+
+              }
+
+            </div>
+
+          </article>
+
+        }
+
+      </div>
+
+      <!-- RIGHT ARROW -->
+      <button
+        type="button"
+        class="slider-arrow slider-arrow-right"
+        [disabled]="currentSlide >= maxSlide"
+        [class.disabled]="currentSlide >= maxSlide"
+        (click)="nextSlide()"
+        aria-label="Next products"
+      >
+        <i
+          class="fa-solid fa-chevron-right"
+          aria-hidden="true"
+        ></i>
+      </button>
+
+    </div>
+
+  } @else if (errorMessage) {
+
+    <div class="state error-state">
+      {{ errorMessage }}
+    </div>
+
+  } @else {
+
+    <div class="state">
+      No new arrivals available.
+    </div>
+
+  }
+
+</section>

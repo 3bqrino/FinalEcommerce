@@ -1,0 +1,99 @@
+<section class="low-stock">
+  <div class="section-head">
+    <div class="title-block">
+      <span class="eyebrow"> INVENTORY / ALERT </span>
+
+      <h2>LOW <span>STOCK.</span></h2>
+    </div>
+
+    <a routerLink="/dashboard/products" class="manage-link">
+      MANAGE INVENTORY
+    </a>
+  </div>
+
+  <div class="stock-summary">
+    <div class="summary-number">
+      {{ products.length.toString().padStart(2, '0') }}
+    </div>
+
+    <div class="summary-copy">
+      <strong> PRODUCTS NEED ATTENTION </strong>
+
+      <span> Review stock levels before products run out. </span>
+    </div>
+  </div>
+
+  <div class="stock-list">
+    @if ( errorMessage ) {
+
+    <article class="stock-item">{{ errorMessage }}</article>
+
+    } @if ( !errorMessage && products.length === 0 ) {
+
+    <article class="stock-item">
+      <div class="product-copy">
+        <strong> STOCK LOOKS GOOD </strong>
+
+        <span> NO PRODUCTS BELOW THE THRESHOLD </span>
+      </div>
+    </article>
+
+    } @for ( product of products; track product._id; let i = $index ) {
+
+    <article class="stock-item">
+      <div class="item-number">{{ (i + 1).toString().padStart(2, '0') }}</div>
+
+      <div class="product-info">
+        <div class="product-image">
+          @if (product.image) {
+
+          <img [src]="getImageUrl(product.image)" [alt]="product.name" />
+
+          }
+        </div>
+
+        <div class="product-copy">
+          <strong> {{ product.name }} </strong>
+
+          <span> {{ getCategoryName(product) }} </span>
+
+          <small> STOCK / {{ product.stock }} </small>
+        </div>
+      </div>
+
+      <div class="stock-level">
+        <span> AVAILABLE </span>
+
+        <strong [class.danger]="product.stock <= 5">
+          {{ product.stock }}
+        </strong>
+      </div>
+
+      <div
+        class="stock-status"
+        [class.danger]="
+            getStockStatus(product.stock) === 'danger'
+          "
+        [class.warning]="
+            getStockStatus(product.stock) === 'warning'
+          "
+      >
+        {{ getStockLabel(product.stock) }}
+      </div>
+    </article>
+
+    }
+  </div>
+
+  <div class="stock-footer">
+    <div class="footer-line">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <span> STOCK THRESHOLD / 10 UNITS </span>
+
+    <span> LIVE DATA </span>
+  </div>
+</section>

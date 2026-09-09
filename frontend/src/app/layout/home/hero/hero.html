@@ -1,0 +1,188 @@
+<section class="hero">
+  @if (currentHero) {
+    <div class="hero-background">
+      @for (hero of heroes; track hero._id; let i = $index) {
+        <div
+          class="hero-background-slide"
+          [class.active]="currentSlide === i"
+        >
+          <img
+            [src]="hero.image"
+            [alt]="hero.title + ' ' + hero.accent"
+          />
+        </div>
+      }
+    </div>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-container">
+      <div class="hero-main">
+        <div class="hero-copy">
+          @if (currentHero.eyebrow) {
+            <div class="hero-eyebrow">
+              <span class="eyebrow-dot"></span>
+
+              <span>
+                {{ currentHero.eyebrow }}
+              </span>
+            </div>
+          }
+
+          @if (currentHero.drop) {
+            <div class="hero-drop">
+              <span>DROP</span>
+
+              <strong>
+                {{ currentHero.drop }}
+              </strong>
+            </div>
+          }
+
+          <h1 class="hero-title">
+            <span class="title-main">
+              {{ currentHero.title }}
+            </span>
+
+            @if (currentHero.accent) {
+              <span class="title-accent">
+                {{ currentHero.accent }}
+              </span>
+            }
+          </h1>
+
+          @if (currentHero.description) {
+            <p class="hero-description">
+              {{ currentHero.description }}
+            </p>
+          }
+
+          <div class="hero-actions">
+            <a
+              routerLink="/category/men"
+              class="hero-primary-btn"
+            >
+              <span class="hero-btn-icon">
+                <i class="fa-solid fa-shirt" aria-hidden="true"></i>
+              </span>
+
+              <span>
+                SHOP MEN
+              </span>
+            </a>
+
+            <a
+              routerLink="/category/women"
+              class="hero-secondary-btn"
+            >
+              <span class="hero-btn-icon">
+                <i
+                  class="fa-solid fa-bag-shopping"
+                  aria-hidden="true"
+                ></i>
+              </span>
+
+              <span>
+                SHOP WOMEN
+              </span>
+
+              
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-image-frame">
+            @for (hero of heroes; track hero._id; let i = $index) {
+              <div
+                class="hero-image-slide"
+                [class.active]="currentSlide === i"
+              >
+                <img
+                  [src]="hero.image"
+                  [alt]="hero.title + ' ' + hero.accent"
+                />
+              </div>
+            }
+
+            <div class="hero-image-label">
+              <span>
+                COLLECTION
+              </span>
+
+              <strong>
+                {{ currentNumber }}
+              </strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-bottom">
+      <div class="hero-bottom-left">
+        <div class="hero-counter">
+          <span class="counter-current">
+            {{ currentNumber }}
+          </span>
+
+          <span class="counter-divider"></span>
+
+          <span class="counter-total">
+            {{ totalNumber }}
+          </span>
+        </div>
+
+        <div class="hero-progress">
+          <div class="progress-track">
+            <div
+              class="progress-bar"
+              [style.width.%]="progress"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      @if (heroes.length > 1) {
+       
+       
+   
+      }
+    </div>
+
+    @if (heroes.length > 1) {
+      <div class="hero-dots">
+        @for (hero of heroes; track hero._id; let i = $index) {
+          <button
+            type="button"
+            [class.active]="currentSlide === i"
+            [attr.aria-label]="'Go to slide ' + (i + 1)"
+            [attr.aria-current]="currentSlide === i ? 'true' : null"
+            (click)="goToSlide(i)"
+          >
+            <span></span>
+          </button>
+        }
+      </div>
+    }
+  } @else {
+    <div class="hero-empty">
+      <div class="hero-empty-inner">
+        <span>
+          STORE FRONT
+        </span>
+
+        <h1>
+          NO HERO
+          <strong>
+            AVAILABLE.
+          </strong>
+        </h1>
+
+        <p>
+          {{ errorMessage || 'The homepage hero is currently unavailable.' }}
+        </p>
+      </div>
+    </div>
+  }
+</section>

@@ -1,0 +1,665 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a,
+button {
+  font-family: inherit;
+}
+
+.refund-list {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 30px 0 60px;
+}
+
+.page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.header-copy {
+  min-width: 0;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 9px;
+  color: #666666;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.page-header h1 {
+  margin: 0;
+  color: #111111;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(38px, 5vw, 60px);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+}
+
+.page-header h1 strong {
+  color: #b8ff00;
+}
+
+.page-header p {
+  max-width: 520px;
+  margin: 12px 0 0;
+  color: #777777;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+}
+
+.back-btn {
+  min-height: 42px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #d8d8d3;
+  border-radius: 10px;
+
+  background: #ffffff;
+  color: #111111;
+
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.back-btn:hover {
+  border-color: #111111;
+  background: #b8ff00;
+  transform: translateY(-1px);
+}
+
+.request-btn {
+  min-height: 42px;
+  padding: 0 15px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #111111;
+  border-radius: 10px;
+
+  background: #b8ff00;
+  color: #111111;
+
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.request-btn:hover {
+  background: #111111;
+  color: #b8ff00;
+  transform: translateY(-1px);
+}
+
+.refunds-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.refund-card {
+  position: relative;
+  overflow: hidden;
+
+  padding: 20px;
+
+  border: 1px solid #e1e1dc;
+  border-radius: 18px;
+
+  background: #ffffff;
+
+  box-shadow: var(--shadow-sm);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.refund-card::before {
+  content: "AURA / REFUND";
+
+  position: absolute;
+  top: 16px;
+  right: 18px;
+
+  color: #111111;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+
+  opacity: 0.25;
+
+  pointer-events: none;
+}
+
+.refund-card::after {
+  content: "";
+
+  position: absolute;
+  width: 120px;
+  height: 120px;
+
+  top: -70px;
+  left: -70px;
+
+  border-radius: 50%;
+
+  background: #b8ff00;
+
+  opacity: 0;
+
+  transition: opacity 0.3s ease;
+
+  pointer-events: none;
+}
+
+.refund-card:hover {
+  transform: translateY(-6px);
+
+  border-color: #b8ff00;
+
+  box-shadow: var(--shadow-sm);
+}
+
+.refund-card:hover::after {
+  opacity: 0.12;
+}
+
+.card-head {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 18px;
+
+  padding-bottom: 16px;
+
+  border-bottom: 1px solid #eeeeeb;
+}
+
+.card-head > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.card-head div span {
+  color: #888888;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.card-head strong {
+  color: #111111;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+.card-head strong::before {
+  content: "#";
+  margin-right: 2px;
+  color: #b8ff00;
+
+  transition: color 0.2s ease;
+}
+
+.refund-card:hover .card-head strong::before {
+  color: #111111;
+}
+
+.status {
+  position: relative;
+  z-index: 3;
+
+  min-height: 44px;
+
+  padding: 0 10px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: 0.07em;
+
+  white-space: nowrap;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.refund-card:hover .status {
+  transform: translateY(-2px);
+}
+
+.status.pending {
+  background: #f0f0ea;
+  color: var(--color-warning);
+  border: 1px solid #deded5;
+}
+
+.status.rejected {
+  background: #faece9;
+  color: #8a4b42;
+  border: 1px solid #edd4ce;
+}
+
+.status.refunded {
+  background: #b8ff00;
+  color: #111111;
+  border: 1px solid #111111;
+
+  box-shadow: var(--shadow-sm);
+}
+
+.amount {
+  position: relative;
+  z-index: 2;
+
+  margin: 20px 0;
+
+  padding: 17px;
+
+  border: 1px solid #eeeeeb;
+  border-radius: 14px;
+
+  background: #f7f7f3;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.refund-card:hover .amount {
+  background: #b8ff00;
+  border-color: #b8ff00;
+  transform: translateX(3px);
+}
+
+.amount span {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #777777;
+
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+}
+
+.amount strong {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+
+  color: #111111;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.amount small {
+  color: #777777;
+
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.meta {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 10px;
+
+  padding: 14px 0;
+
+  border-top: 1px solid #eeeeeb;
+  border-bottom: 1px solid #eeeeeb;
+}
+
+.meta > div {
+  padding: 12px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  border: 1px solid #ededed;
+  border-radius: 11px;
+
+  background: #ffffff;
+
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.refund-card:hover .meta > div {
+  border-color: #dddddd;
+}
+
+.meta span {
+  display: block;
+
+  color: #8c8c86;
+
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+.meta strong,
+.meta p {
+  margin: 0;
+
+  color: #111111;
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.reason {
+  position: relative;
+  z-index: 2;
+
+  padding-top: 15px;
+}
+
+.reason > span {
+  display: block;
+
+  color: #8c8c86;
+
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+.reason p {
+  margin: 7px 0 0;
+
+  color: #6f6f69;
+
+  font-size: 12px;
+  line-height: 1.6;
+
+  word-break: break-word;
+}
+
+.admin-note {
+  position: relative;
+  z-index: 2;
+
+  margin-top: 13px;
+
+  padding: 12px;
+
+  border: 1px solid #dce8bd;
+  border-left: 3px solid #b8ff00;
+
+  border-radius: 10px;
+
+  background: #f4f9e9;
+}
+
+.admin-note > span {
+  display: block;
+
+  color: #777b6b;
+
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+.admin-note p {
+  margin: 7px 0 0;
+
+  color: #64685b;
+
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.state-card {
+  min-height: 250px;
+
+  padding: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  gap: 8px;
+
+  border: 1px solid #deded9;
+  border-radius: 16px;
+
+  background: #ffffff;
+
+  text-align: center;
+
+  box-shadow: var(--shadow-sm);
+}
+
+.state-card strong {
+  color: #222222;
+
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.state-card span {
+  color: #888888;
+
+  font-size: 12px;
+}
+
+.error-state {
+  border-color: var(--color-error);
+  background: #fff8f6;
+}
+
+.error-state strong {
+  color: #7b4038;
+}
+
+.state-card button,
+.empty-btn {
+  margin-top: 7px;
+
+  min-height: 37px;
+
+  padding: 0 14px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #111111;
+  border-radius: 9px;
+
+  background: #b8ff00;
+  color: #111111;
+
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: 0.05em;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.state-card button:hover,
+.empty-btn:hover {
+  background: #111111;
+  color: #b8ff00;
+
+  transform: translateY(-1px);
+}
+
+@media (max-width: 800px) {
+  .refund-list {
+    padding: 22px 0 45px;
+  }
+
+  .page-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .header-actions {
+    width: 100%;
+  }
+
+  .back-btn,
+  .request-btn {
+    flex: 1;
+  }
+
+  .refunds-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 550px) {
+  .page-header h1 {
+    font-size: clamp(34px, 11vw, 48px);
+  }
+
+  .page-header p {
+    font-size: 12px;
+  }
+
+  .header-actions {
+    flex-direction: column;
+  }
+
+  .back-btn,
+  .request-btn {
+    width: 100%;
+  }
+
+  .refund-card {
+    padding: 16px;
+    border-radius: 15px;
+  }
+
+  .refund-card::before {
+    display: none;
+  }
+
+  .card-head {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .status {
+    align-self: flex-start;
+  }
+
+  .meta {
+    grid-template-columns: 1fr;
+  }
+
+  .amount strong {
+    font-size: 27px;
+  }
+
+  .reason p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .refund-list {
+    padding-bottom: 35px;
+  }
+
+  .refund-card {
+    padding: 13px;
+  }
+
+  .amount {
+    padding: 14px;
+  }
+
+  .amount strong {
+    font-size: 24px;
+  }
+
+  .card-head strong {
+    font-size: 15px;
+  }
+}

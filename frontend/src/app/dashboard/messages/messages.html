@@ -1,0 +1,94 @@
+<section class="messages-page">
+  <header class="page-header">
+    <div>
+      <span class="eyebrow"> NATURAL / NOTIFICATIONS </span>
+
+      <h1>YOUR <strong>MESSAGES.</strong></h1>
+
+      <p>Stay updated with orders, testimonials and store activity.</p>
+    </div>
+
+    <div class="header-actions">
+      <button type="button" (click)="markAllRead()">MARK ALL READ</button>
+
+      <button type="button" (click)="deleteAllRead()">DELETE READ</button>
+    </div>
+  </header>
+
+  @if (errorMessage) {
+
+  <div class="error-box">{{ errorMessage }}</div>
+
+  } @if (messages.length === 0) {
+
+  <div class="empty-state">
+    <strong> NO MESSAGES </strong>
+
+    <span> New orders and testimonials will appear here. </span>
+  </div>
+
+  } @if (messages.length > 0) {
+
+  <div class="messages-list">
+    @for ( message of messages; track message._id ) {
+
+    <article class="message-card" [class.unread]="!message.isRead">
+      <div class="message-icon">
+        @switch (message.type) { @case ('new_order') {
+        <i class="fa-solid fa-bag-shopping"></i>
+        } @case ('new_testimonial') {
+        <i class="fa-solid fa-star"></i>
+        } @case ('order_status') {
+        <i class="fa-solid fa-box"></i>
+        } @case ('refund_completed') {
+        <i class="fa-solid fa-money-bill"></i>
+        } @default {
+        <i class="fa-solid fa-bell"></i>
+        } }
+      </div>
+
+      <div class="message-content">
+        <div class="message-top">
+          <span class="message-type"> {{ getTypeLabel(message.type) }} </span>
+
+          <span class="message-date">
+            {{ message.createdAt ? (message.createdAt | date:'dd MMM yyyy,
+            HH:mm') : '—' }}
+          </span>
+        </div>
+
+        <h2>{{ message.title }}</h2>
+
+        <p>{{ message.message }}</p>
+
+        @if (!message.isRead) {
+
+        <span class="unread-label"> UNREAD </span>
+
+        }
+      </div>
+
+      <div class="message-actions">
+        @if (!message.isRead) {
+
+        <button type="button" class="read-btn" (click)="markRead(message._id)">
+          READ
+        </button>
+
+        }
+
+        <button
+          type="button"
+          class="delete-btn"
+          (click)="deleteMessage(message._id)"
+        >
+          DELETE
+        </button>
+      </div>
+    </article>
+
+    }
+  </div>
+
+  }
+</section>

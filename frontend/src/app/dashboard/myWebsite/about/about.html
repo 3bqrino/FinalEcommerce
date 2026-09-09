@@ -1,0 +1,324 @@
+<section class="about-page" [formGroup]="aboutForm">
+  <header class="about-header">
+    <div class="header-copy">
+      <span class="eyebrow"> NATURAL / WEBSITE CONTROL </span>
+
+      <h1>
+        ABOUT
+        <span>MANAGEMENT.</span>
+      </h1>
+
+      <p>
+        Manage the story, founder information and images shown on your website.
+      </p>
+    </div>
+
+    <div class="header-status">
+      <span class="status-dot" [class.active]="isActive"></span>
+
+      <div>
+        <strong> {{ isActive ? 'ACTIVE' : 'INACTIVE' }} </strong>
+
+        <small> ABOUT STATUS </small>
+      </div>
+    </div>
+  </header>
+
+  @if (errorMessage) {
+
+  <div class="message error-message">{{ errorMessage }}</div>
+
+  } @if (successMessage) {
+
+  <div class="message success-message">{{ successMessage }}</div>
+
+  }
+
+  <section class="about-layout">
+    <div class="about-form">
+      <div class="panel-heading">
+        <div>
+          <span> BRAND CONTENT </span>
+
+          <h2>
+            ABOUT
+            <strong>STORY.</strong>
+          </h2>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="field full">
+          <label> TITLE </label>
+
+          <input
+            type="text"
+            formControlName="title"
+            placeholder="WEAR YOUR AURA."
+          />
+        </div>
+
+        <div class="field full">
+          <label> DESCRIPTION </label>
+
+          <textarea
+            formControlName="description"
+            placeholder="Tell your customers about the brand..."
+          ></textarea>
+        </div>
+
+        <div class="field">
+          <label> FOUNDER NAME </label>
+
+          <input
+            type="text"
+            formControlName="founderName"
+            placeholder="Founder name"
+          />
+        </div>
+
+        <div class="field">
+          <label> FOUNDER ROLE </label>
+
+          <input
+            type="text"
+            formControlName="founderRole"
+            placeholder="Creative Director"
+          />
+        </div>
+
+        <div class="field full">
+          <label> MANIFESTO </label>
+
+          <textarea
+            formControlName="manifesto"
+            placeholder="Write the brand manifesto..."
+          ></textarea>
+        </div>
+
+        <div class="field full">
+          <label> VISIBILITY </label>
+
+          <button
+            type="button"
+            class="status-button"
+            [class.active]="isActive"
+            (click)="toggleActive()"
+          >
+            <span class="button-dot"></span>
+
+            <span> {{ isActive ? 'ACTIVE ABOUT' : 'INACTIVE ABOUT' }} </span>
+
+            <i
+              class="fa-solid"
+              [class.fa-eye]="isActive"
+              [class.fa-eye-slash]="!isActive"
+            ></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="media-form">
+      <div class="panel-heading">
+        <div>
+          <span> BRAND MEDIA </span>
+
+          <h2>
+            ABOUT
+            <strong>IMAGES.</strong>
+          </h2>
+        </div>
+      </div>
+
+      <div class="image-field">
+        <label> MAIN IMAGE </label>
+
+        <label class="upload-box">
+          @if (imagePreview) {
+
+          <img [src]="imagePreview" alt="About main image" />
+
+          <div class="upload-overlay">
+            <i class="fa-solid fa-camera"></i>
+
+            <span> CHANGE IMAGE </span>
+          </div>
+
+          } @else {
+
+          <div class="upload-placeholder">
+            <i class="fa-solid fa-image"></i>
+
+            <strong> UPLOAD MAIN IMAGE </strong>
+
+            <small> JPG / PNG / WEBP · MAX 2MB </small>
+          </div>
+
+          }
+
+          <input
+            type="file"
+            accept=".jpg,.jpeg,.png,.webp"
+            (change)="onImageChange($event)"
+          />
+        </label>
+      </div>
+
+      <div class="image-field">
+        <label> SECONDARY IMAGE </label>
+
+        <label class="upload-box small-box">
+          @if (secondaryImagePreview) {
+
+          <img [src]="secondaryImagePreview" alt="Secondary about image" />
+
+          <div class="upload-overlay">
+            <i class="fa-solid fa-camera"></i>
+
+            <span> CHANGE IMAGE </span>
+          </div>
+
+          } @else {
+
+          <div class="upload-placeholder">
+            <i class="fa-solid fa-image"></i>
+
+            <strong> UPLOAD SECONDARY IMAGE </strong>
+
+            <small> JPG / PNG / WEBP · MAX 2MB </small>
+          </div>
+
+          }
+
+          <input
+            type="file"
+            accept=".jpg,.jpeg,.png,.webp"
+            (change)="onSecondaryImageChange($event)"
+          />
+        </label>
+      </div>
+
+      <div class="image-field">
+        <label> FOUNDER IMAGE </label>
+
+        <label class="upload-box small-box">
+          @if (founderImagePreview) {
+
+          <img [src]="founderImagePreview" alt="Founder image" />
+
+          <div class="upload-overlay">
+            <i class="fa-solid fa-camera"></i>
+
+            <span> CHANGE IMAGE </span>
+          </div>
+
+          } @else {
+
+          <div class="upload-placeholder">
+            <i class="fa-solid fa-user"></i>
+
+            <strong> UPLOAD FOUNDER IMAGE </strong>
+
+            <small> JPG / PNG / WEBP · MAX 2MB </small>
+          </div>
+
+          }
+
+          <input
+            type="file"
+            accept=".jpg,.jpeg,.png,.webp"
+            (change)="onFounderImageChange($event)"
+          />
+        </label>
+      </div>
+    </div>
+
+    <div class="actions-panel">
+      <button type="button" class="save-btn" (click)="saveAbout()">
+        {{ about ? 'UPDATE ABOUT' : 'CREATE ABOUT' }}
+      </button>
+    </div>
+
+    <aside class="about-preview">
+      <div class="preview-heading">
+        <div>
+          <span> LIVE PREVIEW </span>
+
+          <h2>
+            WEBSITE
+            <strong>ABOUT.</strong>
+          </h2>
+        </div>
+
+        <span class="preview-badge">
+          {{ isActive ? 'VISIBLE' : 'HIDDEN' }}
+        </span>
+      </div>
+
+      <div class="preview-main">
+        @if (imagePreview) {
+
+        <img [src]="imagePreview" alt="About preview" />
+
+        } @else {
+
+        <div class="preview-empty">
+          <i class="fa-solid fa-image"></i>
+
+          <span> MAIN IMAGE </span>
+        </div>
+
+        }
+
+        <div class="preview-overlay"></div>
+
+        <div class="preview-content">
+          <span> {{ founderRole || 'OUR STORY' }} </span>
+
+          <h2>{{ title || 'ABOUT NATURAL.' }}</h2>
+
+          <p>{{ description || 'Your brand description will appear here.' }}</p>
+        </div>
+      </div>
+
+      <div class="founder-preview">
+        @if (founderImagePreview) {
+
+        <img [src]="founderImagePreview" alt="Founder" />
+
+        } @else {
+
+        <div class="founder-empty">
+          <i class="fa-solid fa-user"></i>
+        </div>
+
+        }
+
+        <div>
+          <span> FOUNDER </span>
+
+          <strong> {{ founderName || 'Founder Name' }} </strong>
+
+          <small> {{ founderRole || 'Creative Director' }} </small>
+        </div>
+      </div>
+
+      @if (secondaryImagePreview) {
+
+      <div class="secondary-preview">
+        <img [src]="secondaryImagePreview" alt="Secondary about image" />
+      </div>
+
+      } @if (manifesto) {
+
+      <div class="manifesto-preview">
+        <span> MANIFESTO </span>
+
+        <p>{{ manifesto }}</p>
+      </div>
+
+      }
+    </aside>
+  </section>
+</section>

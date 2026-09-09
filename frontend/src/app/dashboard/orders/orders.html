@@ -1,0 +1,70 @@
+<section class="orders-page">
+  <header class="page-header">
+    <div>
+      <span class="eyebrow"> NATURAL / MANAGEMENT </span>
+
+      <h1>
+        CUSTOMER
+        <strong>ORDERS.</strong>
+      </h1>
+
+      <p>Review and manage all customer orders.</p>
+    </div>
+  </header>
+
+  @if (errorMessage) {
+
+  <div class="message error-message">
+    <strong> {{ errorMessage }} </strong>
+
+    <button type="button" (click)="getOrders()">RETRY</button>
+  </div>
+
+  }
+
+  <div class="order-stats">
+    <article class="stat-card">
+      <span> TOTAL ORDERS </span>
+
+      <strong> {{ totalOrders }} </strong>
+    </article>
+
+    <article class="stat-card">
+      <span> PENDING </span>
+
+      <strong> {{ pendingOrders }} </strong>
+    </article>
+
+    <article class="stat-card">
+      <span> PROCESSING </span>
+
+      <strong> {{ processingOrders }} </strong>
+    </article>
+
+    <article class="stat-card">
+      <span> SHIPPED </span>
+
+      <strong> {{ shippedOrders }} </strong>
+    </article>
+
+    <article class="stat-card featured">
+      <span> DELIVERED </span>
+
+      <strong> {{ deliveredOrders }} </strong>
+    </article>
+
+    <article class="stat-card">
+      <span> CANCELLED </span>
+
+      <strong> {{ cancelledOrders }} </strong>
+    </article>
+
+    <article class="stat-card">
+      <span> REFUNDED </span>
+
+      <strong> {{ refundedOrders }} </strong>
+    </article>
+  </div>
+
+  <app-order-list></app-order-list>
+</section>

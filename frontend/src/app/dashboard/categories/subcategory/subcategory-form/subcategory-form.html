@@ -1,0 +1,222 @@
+<section class="subcategory-form-page" [formGroup]="subcategoryForm">
+  <header class="form-header">
+    <div class="header-copy">
+      <span class="eyebrow"> NATURAL / CATALOG </span>
+
+      <div class="title-row">
+        <h1>
+          {{ isEditMode ? 'EDIT' : 'ADD' }}
+          <span>SUBCATEGORY.</span>
+        </h1>
+
+        <span class="form-badge" [class.new]="!isEditMode">
+          {{ isEditMode ? 'EDITING' : 'NEW SUBCATEGORY' }}
+        </span>
+      </div>
+
+      <p>
+        {{ isEditMode ? 'Update subcategory information and visibility.' :
+        'Create a new subcategory inside one of your store categories.' }}
+      </p>
+    </div>
+
+    <button type="button" class="back-btn" (click)="cancel()">
+      BACK TO SUBCATEGORIES
+    </button>
+  </header>
+
+  @if (errorMessage) {
+
+  <div class="error-box">
+    <span class="error-icon"> ! </span>
+
+    <div>
+      <strong> Something went wrong </strong>
+
+      <p>{{ errorMessage }}</p>
+    </div>
+  </div>
+
+  }
+
+  <main class="form-layout">
+    <div class="main-column">
+      <section class="form-panel">
+        <div class="panel-heading">
+          <div>
+            <span class="panel-eyebrow"> SUBCATEGORY INFORMATION </span>
+
+            <h2>SUBCATEGORY <span>DETAILS.</span></h2>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="subcategory-name"> SUBCATEGORY NAME </label>
+
+            <input
+              id="subcategory-name"
+              type="text"
+              formControlName="name"
+              placeholder="e.g. T-Shirts"
+            />
+
+            <small> The name customers will see. </small>
+          </div>
+
+          <div class="field">
+            <label for="subcategory-slug"> SLUG </label>
+
+            <div class="slug-input">
+              <span>/</span>
+
+              <input
+                id="subcategory-slug"
+                type="text"
+                formControlName="slug"
+                placeholder="t-shirts"
+              />
+            </div>
+
+            <small> Used in the subcategory URL. </small>
+          </div>
+
+          <div class="field full">
+            <label for="subcategory-category"> CATEGORY </label>
+
+            <div class="category-select-wrapper">
+              <select id="subcategory-category" formControlName="categoryId">
+                <option value="" disabled>SELECT A CATEGORY</option>
+
+                @for ( category of categories; track category._id ) {
+
+                <option [value]="category._id">{{ category.name }}</option>
+
+                }
+              </select>
+            </div>
+
+            <small> Choose an existing active category from your store. </small>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-panel">
+        <div class="panel-heading">
+          <span class="panel-number"> 02 </span>
+
+          <div>
+            <span class="panel-eyebrow"> CATEGORY RELATIONSHIP </span>
+
+            <h2>PARENT <span>CATEGORY.</span></h2>
+          </div>
+        </div>
+
+        @if (categoryId) {
+
+        <div class="selected-category">
+          <div class="category-icon">
+            <i class="fa-solid fa-layer-group"></i>
+          </div>
+
+          <div>
+            <span> SELECTED CATEGORY </span>
+
+            <strong> {{ getSelectedCategoryName() }} </strong>
+          </div>
+        </div>
+
+        } @else {
+
+        <div class="selected-category empty">
+          <div class="category-icon">
+            <i class="fa-solid fa-layer-group"></i>
+          </div>
+
+          <div>
+            <span> CATEGORY </span>
+
+            <strong> Select a category above </strong>
+          </div>
+        </div>
+
+        }
+      </section>
+    </div>
+
+    <aside class="side-column">
+      <section class="status-panel">
+        <div class="panel-heading compact">
+          <span class="panel-number"> 03 </span>
+
+          <div>
+            <span class="panel-eyebrow"> STORE VISIBILITY </span>
+
+            <h2>STATUS.</h2>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          class="status-card"
+          [class.active]="isActive"
+          [class.inactive]="!isActive"
+          (click)="toggleActive()"
+        >
+          <span class="status-switch">
+            <span class="status-thumb"></span>
+          </span>
+
+          <span class="status-copy">
+            <strong>
+              {{ isActive ? 'ACTIVE SUBCATEGORY' : 'INACTIVE SUBCATEGORY' }}
+            </strong>
+
+            <small>
+              {{ isActive ? 'Visible on the public website.' : 'Hidden from the
+              public website.' }}
+            </small>
+          </span>
+        </button>
+      </section>
+
+      <section class="summary-panel">
+        <span class="panel-eyebrow"> QUICK PREVIEW </span>
+
+        <h3>SUBCATEGORY <span>SUMMARY.</span></h3>
+
+        <div class="summary-row">
+          <span> NAME </span>
+
+          <strong> {{ name || 'Not set' }} </strong>
+        </div>
+
+        <div class="summary-row">
+          <span> SLUG </span>
+
+          <strong> {{ slug ? '/' + slug : 'Not set' }} </strong>
+        </div>
+
+        <div class="summary-row">
+          <span> PARENT CATEGORY </span>
+
+          <strong>
+            @if (categoryId) { SELECTED } @else { NOT SELECTED }
+          </strong>
+        </div>
+      </section>
+    </aside>
+  </main>
+
+  <footer class="form-actions">
+    <button type="button" class="cancel-btn" (click)="cancel()">CANCEL</button>
+
+    <button type="button" class="save-btn" (click)="saveSubcategory()">
+      <span>
+        {{ isEditMode ? 'UPDATE SUBCATEGORY' : 'SAVE SUBCATEGORY' }}
+      </span>
+
+      <span> → </span>
+    </button>
+  </footer>
+</section>

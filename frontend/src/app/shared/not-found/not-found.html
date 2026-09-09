@@ -1,0 +1,98 @@
+<div class="not-found-page">
+  <section class="not-found-side">
+    <a
+      routerLink="/home"
+      class="brand"
+    >
+      NATURAL<span>.</span>
+    </a>
+
+    <div class="side-content">
+      <span class="side-kicker">
+        SYSTEM / 404
+      </span>
+
+      <h1>
+        LOST
+        <strong>YOUR WAY?</strong>
+      </h1>
+
+      <p>
+        Looks like the page you're looking for doesn't exist
+        or has been moved somewhere else.
+      </p>
+    </div>
+
+    <div class="side-meta">
+      <span>ERROR 404</span>
+      <i></i>
+      <span>PAGE NOT FOUND</span>
+    </div>
+  </section>
+
+  <main class="not-found-content">
+    <div class="mobile-brand">
+      <button
+        type="button"
+        class="mobile-brand-button"
+        (click)="goHome()"
+      >
+        NATURAL<span>.</span>
+      </button>
+    </div>
+
+    <div class="error-wrapper">
+      <div class="error-topline">
+        <span>ERROR</span>
+        <span>04 / 04</span>
+      </div>
+
+      <div class="error-number">
+        <span class="error-four">4</span>
+        <span class="error-zero">0</span>
+        <span class="error-four">4</span>
+      </div>
+
+      <div class="error-copy">
+        <span class="error-kicker">
+          PAGE UNAVAILABLE
+        </span>
+
+        <h2>
+          PAGE
+          <strong>NOT FOUND.</strong>
+        </h2>
+
+        <p>
+          The page you're trying to reach may have been moved,
+          removed, or never existed.
+        </p>
+
+        <button
+          type="button"
+          class="home-button"
+          (click)="goHome()"
+        >
+          <span>
+            BACK TO HOME
+          </span>
+
+          <span class="arrow">
+            <i
+              class="fa-solid fa-arrow-right"
+              aria-hidden="true"
+            ></i>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-footer">
+      <span>404</span>
+
+      <span>
+        RETURN TO NATURAL
+      </span>
+    </div>
+  </main>
+</div>

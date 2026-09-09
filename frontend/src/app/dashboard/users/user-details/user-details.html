@@ -1,0 +1,263 @@
+<section class="user-details-page">
+  <header class="page-header">
+    <div>
+      <span class="eyebrow"> NATURAL / CUSTOMERS / USER </span>
+
+      <h1>
+        USER
+        <strong>DETAILS.</strong>
+      </h1>
+
+      <p>Review customer information and account status.</p>
+    </div>
+
+    <button type="button" class="back-btn" (click)="goBack()">
+      BACK TO USERS
+    </button>
+  </header>
+
+  @if (errorMessage) {
+
+  <div class="state-card error-state">
+    <strong> {{ errorMessage }} </strong>
+
+    @if (userId) {
+
+    <button type="button" (click)="getUser(userId)">RETRY</button>
+
+    }
+  </div>
+
+  } @if (user) {
+
+  <main class="details-layout">
+    <section class="details-main">
+      <article class="details-card profile-card">
+        <div class="profile-top">
+          <div class="profile-avatar">{{ getInitial() }}</div>
+
+          <div class="profile-heading">
+            <span> CUSTOMER </span>
+
+            <h2>{{ user.name }}</h2>
+
+            <p>{{ user.email }}</p>
+          </div>
+
+          <span
+            class="status"
+            [class.active]="getStatusClass() === 'active'"
+            [class.inactive]="getStatusClass() === 'inactive'"
+            [class.blocked]="getStatusClass() === 'blocked'"
+          >
+            {{ getStatus() }}
+          </span>
+        </div>
+      </article>
+
+      <article class="details-card">
+        <div class="section-head">
+          <span> </span>
+
+          <h3>ACCOUNT INFORMATION</h3>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-item">
+            <span> FULL NAME </span>
+
+            <strong> {{ user.name }} </strong>
+          </div>
+
+          <div class="info-item">
+            <span> EMAIL </span>
+
+            <strong> {{ user.email }} </strong>
+          </div>
+
+          <div class="info-item">
+            <span> PHONE </span>
+
+            <strong> {{ user.phone || '—' }} </strong>
+          </div>
+
+          <div class="info-item">
+            <span> NATIONAL ID </span>
+
+            <strong> {{ user.nationalId || '—' }} </strong>
+          </div>
+
+          <div class="info-item">
+            <span> GENDER </span>
+
+            <strong> {{ user.gender }} </strong>
+          </div>
+
+          <div class="info-item">
+            <span> ROLE </span>
+
+            <strong> {{ user.role }} </strong>
+          </div>
+
+          <div class="info-item">
+            <span> DATE OF BIRTH </span>
+
+            <strong>
+              {{ user.dateOfBirth ? (user.dateOfBirth | date:'dd MMM yyyy') :
+              '—' }}
+            </strong>
+          </div>
+
+          <div class="info-item">
+            <span> JOINED </span>
+
+            <strong>
+              {{ user.createdAt ? (user.createdAt | date:'dd MMM yyyy') : '—' }}
+            </strong>
+          </div>
+        </div>
+      </article>
+
+      <article class="details-card">
+        <div class="section-head">
+          <span> </span>
+
+          <h3>ADDRESSES</h3>
+        </div>
+
+        @if (user.address.length > 0) {
+
+        <div class="addresses">
+          @for ( address of user.address; track address._id ) {
+
+          <div class="address-card">
+            <div class="address-title">
+              <strong> {{ address.name }} </strong>
+
+              @if (address.isDefault) {
+
+              <span> DEFAULT </span>
+
+              }
+            </div>
+
+            <p>
+              {{ address.building }}, {{ address.street }}, {{ address.city }},
+              {{ address.governorate }}
+            </p>
+          </div>
+
+          }
+        </div>
+
+        } @else {
+
+        <div class="empty-address">NO ADDRESSES AVAILABLE</div>
+
+        }
+      </article>
+
+      <article class="details-card">
+        <div class="section-head">
+          <span>03</span>
+          <h3>USER HISTORY</h3>
+        </div>
+
+        <div class="history-grid">
+          <div class="history-stat">
+            <span>ORDERS</span>
+            <strong>{{ history.orders.length }}</strong>
+          </div>
+
+          <div class="history-stat">
+            <span>REFUNDS</span>
+            <strong>{{ history.refunds.length }}</strong>
+          </div>
+
+          <div class="history-stat">
+            <span>TESTIMONIALS</span>
+            <strong>{{ history.testimonials.length }}</strong>
+          </div>
+        </div>
+
+        @if (history.orders.length > 0) {
+        <div class="history-list">
+          @for (order of history.orders; track order._id) {
+          <div class="history-row">
+            <div>
+              <strong> ORDER #{{ order._id.slice(-6).toUpperCase() }} </strong>
+
+              <span>
+                {{ order.createdAt ? (order.createdAt | date:'dd MMM yyyy') :
+                '—' }}
+              </span>
+            </div>
+
+            <div>
+              <strong> {{ order.status.toUpperCase() }} </strong>
+
+              <span> {{ order.totalAmount }} </span>
+            </div>
+          </div>
+          }
+        </div>
+        } @else {
+        <div class="empty-address">NO ORDER HISTORY</div>
+        }
+      </article>
+    </section>
+
+    <aside class="details-sidebar">
+      <article class="details-card summary-card">
+        <span class="side-label"> ACCOUNT SUMMARY </span>
+
+        <div class="summary-row">
+          <span> ROLE </span>
+
+          <strong> {{ user.role }} </strong>
+        </div>
+
+        <div class="summary-row">
+          <span> STATUS </span>
+
+          <strong> {{ getStatus() }} </strong>
+        </div>
+
+        <div class="summary-row">
+          <span> ADDRESSES </span>
+
+          <strong> {{ user.address.length }} </strong>
+        </div>
+
+        <div class="summary-row">
+          <span> ACTIVE </span>
+
+          <strong> {{ user.isActive ? 'YES' : 'NO' }} </strong>
+        </div>
+
+        <div class="summary-row">
+          <span> BLOCKED </span>
+
+          <strong> {{ user.isBlocked ? 'YES' : 'NO' }} </strong>
+        </div>
+      </article>
+
+      <article class="details-card status-card">
+        <span class="side-label"> ACCOUNT STATE </span>
+
+        <div
+          class="state-indicator"
+          [class.active]="getStatusClass() === 'active'"
+          [class.inactive]="getStatusClass() === 'inactive'"
+          [class.blocked]="getStatusClass() === 'blocked'"
+        >
+          <span></span>
+
+          {{ getStatus() }}
+        </div>
+      </article>
+    </aside>
+  </main>
+
+  }
+</section>

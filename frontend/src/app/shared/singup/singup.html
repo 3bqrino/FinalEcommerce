@@ -1,0 +1,211 @@
+<div class="auth-page">
+  <section class="auth-side">
+    <a routerLink="/home" class="brand"> NATURAL<span>.</span> </a>
+
+    <div class="side-content">
+      <h1>JOIN <strong>US.</strong></h1>
+      <p>
+        Create your account and discover the latest pieces in our collection.
+      </p>
+    </div>
+  </section>
+
+  <main class="auth-content">
+    <a routerLink="/home" class="mobile-brand"> NATURAL<span>.</span> </a>
+
+    <div class="form-wrapper">
+      <h2>CREATE ACCOUNT</h2>
+      <p class="form-description">Enter your details to create your account.</p>
+
+      <form
+        class="auth-form"
+        [formGroup]="signupForm"
+        (ngSubmit)="signup()"
+        novalidate
+      >
+        <div
+          class="field"
+          [class.has-error]="name.invalid && (name.touched || submitted)"
+          [class.has-success]="name.valid && name.touched"
+        >
+          <label for="name">NAME</label>
+          <input
+            id="name"
+            type="text"
+            formControlName="name"
+            placeholder="Your name"
+            autocomplete="name"
+          />
+
+          @if (name.invalid && (name.touched || submitted)) {
+          <div class="field-error">
+            @if (name.errors?.['required']) {
+            <span>Name is required.</span>
+            } @if (name.errors?.['minlength']) {
+            <span>Name must be at least 2 characters.</span>
+            }
+          </div>
+          }
+        </div>
+
+        <div
+          class="field"
+          [class.has-error]="email.invalid && (email.touched || submitted)"
+          [class.has-success]="email.valid && email.touched"
+        >
+          <label for="email">EMAIL</label>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            placeholder="you@example.com"
+            autocomplete="email"
+          />
+
+          @if (email.invalid && (email.touched || submitted)) {
+          <div class="field-error">
+            @if (email.errors?.['required']) {
+            <span>Email is required.</span>
+            } @if (email.errors?.['email']) {
+            <span>Enter a valid email address.</span>
+            }
+          </div>
+          }
+        </div>
+
+        <div
+          class="field"
+          [class.has-error]="password.invalid && (password.touched || submitted)"
+          [class.has-success]="password.valid && password.touched"
+        >
+          <label for="password">PASSWORD</label>
+          <input
+            id="password"
+            type="password"
+            formControlName="password"
+            placeholder="Create a password"
+            autocomplete="new-password"
+          />
+
+          @if (password.invalid && (password.touched || submitted)) {
+          <div class="field-error">
+            @if (password.errors?.['required']) {
+            <span>Password is required.</span>
+            } @if (password.errors?.['minlength']) {
+            <span>Password must be at least 6 characters.</span>
+            }
+          </div>
+          }
+        </div>
+
+        <div
+          class="field"
+          [class.has-error]="phone.invalid && (phone.touched || submitted)"
+          [class.has-success]="phone.valid && phone.touched"
+        >
+          <label for="phone">PHONE</label>
+          <input
+            id="phone"
+            type="tel"
+            formControlName="phone"
+            placeholder="01xxxxxxxxx"
+            autocomplete="tel"
+            inputmode="numeric"
+          />
+
+          @if (phone.invalid && (phone.touched || submitted)) {
+          <div class="field-error">
+            @if (phone.errors?.['required']) {
+            <span>Phone number is required.</span>
+            } @if (phone.errors?.['pattern']) {
+            <span>Enter a valid Egyptian phone number.</span>
+            }
+          </div>
+          }
+        </div>
+
+        <div
+          class="field"
+          [class.has-error]="nationalId.invalid && (nationalId.touched || submitted)"
+          [class.has-success]="nationalId.valid && nationalId.touched"
+        >
+          <label for="nationalId">NATIONAL ID</label>
+          <input
+            id="nationalId"
+            type="text"
+            formControlName="nationalId"
+            placeholder="National ID"
+            autocomplete="off"
+            inputmode="numeric"
+          />
+
+          @if (nationalId.invalid && (nationalId.touched || submitted)) {
+          <div class="field-error">
+            @if (nationalId.errors?.['required']) {
+            <span>National ID is required.</span>
+            } @if (nationalId.errors?.['pattern']) {
+            <span>National ID must contain 14 digits.</span>
+            }
+          </div>
+          }
+        </div>
+
+        <div
+          class="field"
+          [class.has-error]="gender.invalid && (gender.touched || submitted)"
+          [class.has-success]="gender.valid && gender.touched"
+        >
+          <label for="gender">GENDER</label>
+          <select id="gender" formControlName="gender">
+            <option value="" disabled>Select gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+
+          @if (gender.invalid && (gender.touched || submitted)) {
+          <div class="field-error">
+            @if (gender.errors?.['required']) {
+            <span>Please select your gender.</span>
+            }
+          </div>
+          }
+        </div>
+
+        <label class="terms">
+          <input type="checkbox" formControlName="terms" />
+          <span>
+            I agree to the <a routerLink="/terms">Terms of Service</a> and
+            <a routerLink="/privacy">Privacy Policy</a>.
+          </span>
+        </label>
+
+        @if (terms.invalid && (terms.touched || submitted)) {
+        <div class="terms-error">You must accept the terms to continue.</div>
+        } @if (errorMessage) {
+        <p class="error-message">{{ errorMessage }}</p>
+        }
+
+        <button
+          type="submit"
+          class="submit-button"
+          [disabled]="signupForm.invalid || isSubmitting"
+        >
+          <span
+            >{{ isSubmitting ? 'CREATING ACCOUNT...' : 'CREATE ACCOUNT' }}</span
+          >
+          <span>→</span>
+        </button>
+      </form>
+
+      <div class="login-link">
+        <span>Already have an account?</span>
+        <a
+          routerLink="/login"
+          [queryParams]="returnUrl ? { returnUrl: returnUrl } : null"
+        >
+          SIGN IN
+        </a>
+      </div>
+    </div>
+  </main>
+</div>

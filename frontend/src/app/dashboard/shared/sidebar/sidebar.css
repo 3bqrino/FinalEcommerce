@@ -1,0 +1,316 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.dashboard-sidebar {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 28px 14px 16px;
+
+  background: #ffffff;
+  color: #181818;
+}
+
+.sidebar-brand {
+  padding: 6px 12px 26px;
+}
+
+.brand {
+  display: inline-block;
+
+  text-decoration: none;
+
+  color: #111111;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 28px;
+  font-weight: 700;
+
+  line-height: 1;
+
+  letter-spacing: -0.05em;
+}
+
+.brand span {
+  color: #c8ff1a;
+}
+
+.brand-label {
+  display: block;
+
+  margin-top: 9px;
+
+  color: #9a9a94;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+}
+
+.sidebar-profile {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 11px 12px;
+
+  margin: 4px 0 20px;
+
+  border: 1px solid #e7e7e2;
+  border-radius: 10px;
+
+  background: #fafaf8;
+}
+
+.profile-avatar {
+  width: 34px;
+  height: 34px;
+
+  flex: 0 0 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #c8ff1a;
+
+  color: #111111;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.profile-content {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.profile-content strong {
+  color: #222222;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.profile-content span {
+  color: #9b9b95;
+
+  font-size: 12px;
+
+  letter-spacing: 0.1em;
+}
+
+.profile-status {
+  width: 7px;
+  height: 7px;
+
+  flex: 0 0 7px;
+
+  margin-left: auto;
+
+  border-radius: 50%;
+
+  background: #c8ff1a;
+}
+
+.sidebar-nav {
+  flex: 1;
+
+  overflow-y: auto;
+
+  scrollbar-width: none;
+}
+
+.sidebar-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-label {
+  display: block;
+
+  padding: 14px 12px 9px;
+
+  color: #aaa9a3;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+}
+
+.nav-label:first-child {
+  padding-top: 8px;
+}
+
+.nav-item {
+  width: 100%;
+  min-height: 46px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  margin-bottom: 3px;
+  padding: 0 12px;
+
+  border: 1px solid transparent;
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: #73736e;
+
+  text-decoration: none;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  letter-spacing: -0.01em;
+
+  cursor: pointer;
+
+  transition:
+    color 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.nav-item:hover {
+  color: #181818;
+  background: #f7f7f3;
+  border-color: #edede8;
+}
+
+.nav-item.active {
+  background: #c8ff1a;
+
+  border-color: #c8ff1a;
+
+  color: var(--color-success);
+
+  font-weight: 700;
+}
+
+.nav-icon {
+  width: 18px;
+
+  display: flex;
+  justify-content: center;
+
+  font-size: 12px;
+}
+
+.nav-text {
+  flex: 1;
+}
+
+.message-count {
+  min-width: 19px;
+  height: 19px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #c8ff1a;
+
+  color: #111111;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.sidebar-bottom {
+  padding-top: 16px;
+
+  border-top: 1px solid #e8e8e3;
+}
+
+.sidebar-version {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  padding: 0 2px 11px;
+}
+
+.sidebar-version span {
+  color: #353531;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+}
+
+.sidebar-version small {
+  color: #9b9b95;
+
+  font-size: 12px;
+
+  letter-spacing: 0.08em;
+}
+
+.logout-btn {
+  width: 100%;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 12px;
+
+  border: 1px solid #e1e1dc;
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #777771;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+
+  cursor: pointer;
+
+  transition: 0.18s ease;
+}
+
+.logout-btn:hover {
+  color: #111111;
+  border-color: #c8ff1a;
+  background: #fbfff0;
+}

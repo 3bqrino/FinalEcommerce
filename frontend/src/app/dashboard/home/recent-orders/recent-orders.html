@@ -1,0 +1,84 @@
+<section class="recent-orders">
+  <div class="section-head">
+    <div class="section-title">
+      <span class="section-eyebrow"> ACTIVITY / LATEST </span>
+
+      <h2>RECENT <span>ORDERS</span></h2>
+    </div>
+
+    <a routerLink="/dashboard/orders" class="view-all"> VIEW ALL </a>
+  </div>
+
+  <div class="orders-card">
+    <div class="orders-head">
+      <span>ORDER</span>
+      <span>CUSTOMER</span>
+      <span>ITEMS</span>
+      <span>TOTAL</span>
+      <span>STATUS</span>
+    </div>
+
+    @if (errorMessage) {
+
+    <div class="order-row">{{ errorMessage }}</div>
+
+    } @if ( !errorMessage && orders.length === 0 ) {
+
+    <div class="order-row">No orders found.</div>
+
+    } @for ( order of orders; track order._id; let i = $index ) {
+
+    <article class="order-row">
+      <div class="order-reference">
+        <span class="order-number"> {{ getOrderNumber(i) }} </span>
+
+        <div>
+          <strong> #{{ order._id.slice(-6).toUpperCase() }} </strong>
+
+          <small> {{ formatDate(order.createdAt) }} </small>
+        </div>
+      </div>
+
+      <div class="customer">
+        <div class="customer-avatar">{{ getInitials(order.user.name) }}</div>
+
+        <div>
+          <strong> {{ order.user.name }} </strong>
+
+          <small> {{ order.user.email }} </small>
+        </div>
+      </div>
+
+      <div class="order-items">{{ getItemLabel(order.items.length) }}</div>
+
+      <strong class="order-total">
+        {{ order.totalAmount | number }} EGP
+      </strong>
+
+      <span
+        class="order-status"
+        [class.pending]="order.status === 'pending'"
+        [class.confirmed]="order.status === 'confirmed'"
+        [class.progress]="order.status === 'processing'"
+        [class.shipped]="order.status === 'shipped'"
+        [class.received]="order.status === 'delivered'"
+        [class.cancelled]="order.status === 'cancelled'"
+        [class.cancelled]="order.status === 'refunded'"
+      >
+        {{ order.status | uppercase }}
+      </span>
+    </article>
+
+    }
+  </div>
+
+  <div class="orders-footer">
+    <div class="footer-status">
+      <span class="live-dot"></span>
+
+      <span> LIVE ORDER ACTIVITY </span>
+    </div>
+
+    <span> SHOWING {{ orders.length }} RECENT ORDERS </span>
+  </div>
+</section>

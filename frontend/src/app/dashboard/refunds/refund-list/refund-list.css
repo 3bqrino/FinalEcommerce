@@ -1,0 +1,89 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.refund-list {
+  width: 100%;
+}
+
+.refunds-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 16px;
+}
+
+.state-card {
+  min-height: 240px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+
+  gap: 7px;
+
+  padding: 30px;
+
+  border: 1px solid #e2e2dc;
+
+  border-radius: 11px;
+
+  background: #ffffff;
+
+  text-align: center;
+}
+
+.state-card strong {
+  color: #33332e;
+
+  font-size: 13px;
+
+  font-weight: 900;
+}
+
+.state-card span {
+  color: #999991;
+
+  font-size: 12px;
+}
+
+.error-state strong {
+  color: #7b4237;
+}
+
+.state-card button {
+  min-height: 40px;
+
+  margin-top: 8px;
+
+  padding: 0 16px;
+
+  border: 1px solid #c8ff1a;
+
+  border-radius: 6px;
+
+  background: #c8ff1a;
+
+  color: #293000;
+
+  font-size: 12px;
+
+  font-weight: 900;
+
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .refunds-grid {
+    grid-template-columns: 1fr;
+  }
+}

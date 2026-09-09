@@ -1,0 +1,42 @@
+<section class="refunds-page">
+  <header class="page-header">
+    <div>
+      <span class="eyebrow"> NATURAL / MANAGEMENT </span>
+
+      <h1>
+        REFUND
+        <strong>REQUESTS.</strong>
+      </h1>
+
+      <p>Review and manage customer refund requests.</p>
+    </div>
+  </header>
+
+  <div class="refund-stats">
+    <article class="stat-card">
+      <span> TOTAL REQUESTS </span>
+
+      <strong> {{ totalRefunds }} </strong>
+    </article>
+
+    <article class="stat-card">
+      <span> PENDING </span>
+
+      <strong> {{ pendingRefunds }} </strong>
+    </article>
+
+    <article class="stat-card">
+      <span> REJECTED </span>
+
+      <strong> {{ rejectedRefunds }} </strong>
+    </article>
+
+    <article class="stat-card featured">
+      <span> REFUNDED </span>
+
+      <strong> {{ completedRefunds }} </strong>
+    </article>
+  </div>
+
+  <app-refund-list></app-refund-list>
+</section>

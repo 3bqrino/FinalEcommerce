@@ -1,0 +1,76 @@
+<section class="testimonial-details-page">
+  <header class="details-header">
+    <div>
+      <span class="eyebrow"> NATURAL / CUSTOMER VOICE </span>
+
+      <h1>TESTIMONIAL <strong>DETAILS.</strong></h1>
+    </div>
+
+    <button type="button" class="back-btn" (click)="goBack()">← BACK</button>
+  </header>
+
+  @if (errorMessage) {
+
+  <div class="state-card">{{ errorMessage }}</div>
+
+  } @if (testimonial) {
+
+  <section class="details-card">
+    <div class="customer">
+      <span class="label"> CUSTOMER </span>
+
+      <h2>{{ testimonial.name }}</h2>
+
+      @if (testimonial.user.email) {
+
+      <p>{{ testimonial.user.email }}</p>
+
+      }
+    </div>
+
+    <div class="rating">
+      @for ( star of [1, 2, 3, 4, 5]; track star ) {
+
+      <span [class.active]="star <= testimonial.rating"> ★ </span>
+
+      }
+    </div>
+
+    <div class="comment">
+      <span class="label"> COMMENT </span>
+
+      <p>{{ testimonial.comment }}</p>
+    </div>
+
+    <div class="status">
+      <span class="label"> STATUS </span>
+
+      <strong>
+        @switch (testimonial.status) { @case ('accepted') { ACCEPTED } @case
+        ('rejected') { REJECTED } @default { PENDING } }
+      </strong>
+    </div>
+
+    <div class="actions">
+      @if (testimonial.status !== 'accepted') {
+
+      <button type="button" class="accept-btn" (click)="acceptTestimonial()">
+        ACCEPT
+      </button>
+
+      } @if (testimonial.status === 'accepted') {
+
+      <button type="button" class="reject-btn" (click)="rejectTestimonial()">
+        REJECT
+      </button>
+
+      }
+
+      <button type="button" class="delete-btn" (click)="deleteTestimonial()">
+        DELETE
+      </button>
+    </div>
+  </section>
+
+  }
+</section>

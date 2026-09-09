@@ -1,0 +1,311 @@
+<section class="product-form-page">
+  <header class="form-header">
+    <div>
+      <span class="eyebrow"> NATURAL / CATALOG </span>
+
+      <h1>
+        {{ productId ? 'EDIT' : 'ADD' }}
+
+        <strong> PRODUCT. </strong>
+      </h1>
+
+      <p>
+        {{ productId ? 'Update product information and store settings.' :
+        'Create a new product for your catalog.' }}
+      </p>
+    </div>
+
+    <a routerLink="/dashboard/products" class="back-btn">
+      ← BACK TO PRODUCTS
+    </a>
+  </header>
+
+  @if (errorMessage) {
+
+  <div class="message error-message">
+    <span> {{ errorMessage }} </span>
+
+    <button type="button" (click)="errorMessage = ''">×</button>
+  </div>
+
+  } @if (successMessage) {
+
+  <div class="message success-message">{{ successMessage }}</div>
+
+  }
+
+  <form
+    class="product-form"
+    [formGroup]="productForm"
+    (ngSubmit)="saveProduct()"
+  >
+    <div class="form-main">
+      <section class="form-card">
+        <div class="card-head">
+          <div>
+            <span> 01 </span>
+
+            <h2>PRODUCT INFORMATION</h2>
+          </div>
+        </div>
+
+        <div class="fields-grid">
+          <div class="field full">
+            <label for="name"> PRODUCT NAME </label>
+
+            <input
+              id="name"
+              type="text"
+              name="name"
+              formControlName="name"
+              placeholder="Enter product name"
+            />
+          </div>
+
+          <div class="field">
+            <label for="slug"> SLUG </label>
+
+            <input
+              id="slug"
+              type="text"
+              name="slug"
+              formControlName="slug"
+              placeholder="product-slug"
+            />
+          </div>
+
+          <div class="field">
+            <label for="price"> PRICE </label>
+
+            <div class="unit-input">
+              <input
+                id="price"
+                type="number"
+                name="price"
+                min="0"
+                formControlName="price"
+                placeholder="0"
+              />
+
+              <span> EGP </span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="stock"> STOCK </label>
+
+            <input
+              id="stock"
+              type="number"
+              name="stock"
+              min="0"
+              formControlName="stock"
+              placeholder="0"
+            />
+          </div>
+
+          <div class="field full">
+            <label for="description"> DESCRIPTION </label>
+
+            <textarea
+              id="description"
+              name="description"
+              rows="5"
+              formControlName="description"
+              placeholder="Describe the product..."
+            ></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-card">
+        <div class="card-head">
+          <div>
+            <span> 02 </span>
+
+            <h2>CATEGORY</h2>
+          </div>
+        </div>
+
+        <div class="fields-grid">
+          <div class="field">
+            <label for="category"> CATEGORY </label>
+
+            <select id="category" name="category" formControlName="category">
+              <option value="">Select category</option>
+
+              @for ( item of categories; track item._id ) {
+
+              <option [value]="item._id">{{ item.name }}</option>
+
+              }
+            </select>
+
+            @if (categories.length === 0) {
+
+            <small> No active categories available. </small>
+
+            }
+          </div>
+
+          <div class="field">
+            <label for="subCategory"> SUBCATEGORY </label>
+
+            <select
+              id="subCategory"
+              name="subCategory"
+              formControlName="subCategory"
+              [disabled]="!category"
+            >
+              <option value="">
+                {{ category ? 'Select subcategory' : 'Select category first' }}
+              </option>
+
+              @for ( item of availableSubcategories; track item._id ) {
+
+              <option [value]="item._id">{{ item.name }}</option>
+
+              }
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-card">
+        <div class="card-head">
+          <div>
+            <span> 03 </span>
+
+            <h2>PRODUCT IMAGE</h2>
+          </div>
+        </div>
+
+        <div class="image-area">
+          @if (imagePreview) {
+
+          <div class="image-preview">
+            <img [src]="imagePreview" [alt]="name || 'Product image'" />
+
+            <button type="button" class="remove-image" (click)="removeImage()">
+              REMOVE
+            </button>
+          </div>
+
+          } @else {
+
+          <label for="productImage" class="upload-box">
+            <span> + </span>
+
+            <strong> UPLOAD PRODUCT IMAGE </strong>
+
+            <small> JPG, PNG OR WEBP </small>
+          </label>
+
+          <input
+            id="productImage"
+            type="file"
+            accept="image/*"
+            hidden
+            (change)="onImageSelected($event)"
+          />
+
+          }
+        </div>
+      </section>
+    </div>
+
+    <aside class="form-side">
+      <section class="side-card">
+        <span class="side-label"> STORE STATUS </span>
+
+        <label class="toggle-row">
+          <div>
+            <strong> ACTIVE </strong>
+
+            <small> Show product in store. </small>
+          </div>
+
+          <input type="checkbox" name="isActive" formControlName="isActive" />
+
+          <span class="toggle"></span>
+        </label>
+
+        <label class="toggle-row">
+          <div>
+            <strong> NEW ARRIVAL </strong>
+
+            <small> Mark as a new product. </small>
+          </div>
+
+          <input
+            type="checkbox"
+            name="isNewArrival"
+            formControlName="isNewArrival"
+          />
+
+          <span class="toggle"></span>
+        </label>
+
+        <label class="toggle-row">
+          <div>
+            <strong> TOP SELLER </strong>
+
+            <small> Show in best sellers. </small>
+          </div>
+
+          <input
+            type="checkbox"
+            name="isTopSeller"
+            formControlName="isTopSeller"
+          />
+
+          <span class="toggle"></span>
+        </label>
+      </section>
+
+      <section class="side-card">
+        <span class="side-label"> PRODUCT SUMMARY </span>
+
+        <div class="summary-row">
+          <span> NAME </span>
+
+          <strong> {{ name || 'Not specified' }} </strong>
+        </div>
+
+        <div class="summary-row">
+          <span> CATEGORY </span>
+
+          <strong> {{ getCategoryName() }} </strong>
+        </div>
+
+        <div class="summary-row">
+          <span> SUBCATEGORY </span>
+
+          <strong> {{ getSubcategoryName() }} </strong>
+        </div>
+
+        <div class="summary-row">
+          <span> PRICE </span>
+
+          <strong> {{ price || 0 }} EGP </strong>
+        </div>
+
+        <div class="summary-row">
+          <span> STOCK </span>
+
+          <strong> {{ stock || 0 }} </strong>
+        </div>
+      </section>
+
+      <div class="form-actions">
+        <button type="button" class="cancel-btn" (click)="cancel()">
+          CANCEL
+        </button>
+
+        <button type="submit" class="save-btn" [disabled]="saving">
+          {{ productId ? 'UPDATE PRODUCT' : 'SAVE PRODUCT' }}
+        </button>
+      </div>
+    </aside>
+  </form>
+</section>

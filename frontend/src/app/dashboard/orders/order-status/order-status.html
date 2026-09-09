@@ -1,0 +1,83 @@
+<section class="status-box">
+  <header class="status-header">
+    <div>
+      <span class="eyebrow"> ORDER / WORKFLOW </span>
+
+      <h2>
+        CHANGE
+        <span>STATUS.</span>
+      </h2>
+
+      <p>Select the current stage of this order.</p>
+    </div>
+
+    <span class="current-label"> CURRENT </span>
+  </header>
+
+  @if (errorMessage) {
+
+  <div class="message error-message">{{ errorMessage }}</div>
+
+  } @if (successMessage) {
+
+  <div class="message success-message">{{ successMessage }}</div>
+
+  }
+
+  <div class="current-status">
+    <span class="current-dot"></span>
+
+    <div>
+      <small> CURRENT STATUS </small>
+
+      <strong> {{ getStatusLabel() }} </strong>
+    </div>
+  </div>
+
+  <div class="status-list">
+    @for ( status of statuses; track status.value ) {
+
+    <button
+      type="button"
+      class="status-option"
+      [class.selected]="
+          selectedStatus === status.value
+        "
+      (click)="selectStatus(status.value)"
+    >
+      <span class="option-index">
+        {{ $index + 1 < 10 ? '0' + ($index + 1) : $index + 1 }}
+      </span>
+
+      <span class="option-indicator"></span>
+
+      <span class="option-copy">
+        <strong> {{ status.label }} </strong>
+
+        <small> {{ status.description }} </small>
+      </span>
+
+      <span class="option-check">
+        {{ selectedStatus === status.value ? '✓' : '' }}
+      </span>
+    </button>
+
+    }
+  </div>
+
+  <div class="status-actions">
+    <button type="button" class="cancel-btn" (click)="cancel()">CANCEL</button>
+
+    <button
+      type="button"
+      class="save-btn"
+      [disabled]="
+        saving ||
+        selectedStatus === currentStatus
+      "
+      (click)="saveStatus()"
+    >
+      UPDATE STATUS
+    </button>
+  </div>
+</section>

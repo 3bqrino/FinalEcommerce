@@ -1,0 +1,16 @@
+<div
+  class="products-list"
+  [class.list-view]="view === 'list'"
+  [class.grid2-view]="view === 'grid2'"
+  [class.grid3-view]="view === 'grid3'"
+  [class.grid4-view]="view === 'grid4'"
+>
+  @for (product of products; track product._id) {
+  <app-product-card
+    [product]="product"
+    [categoryName]="categoryName"
+    [categorySlug]="categorySlug"
+    [view]="view === 'list' ? 'list' : 'grid'"
+  ></app-product-card>
+  }
+</div>

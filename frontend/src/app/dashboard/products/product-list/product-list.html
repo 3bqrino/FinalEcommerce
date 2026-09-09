@@ -1,0 +1,50 @@
+<section class="product-list">
+  <div class="list-header">
+    <div>
+      <span> CATALOG </span>
+
+      <h2>ALL PRODUCTS</h2>
+    </div>
+
+    <a routerLink="/dashboard/products/add" class="add-btn"> + ADD PRODUCT </a>
+  </div>
+
+  @if (errorMessage) {
+
+  <div class="state error-state">
+    <strong> {{ errorMessage }} </strong>
+
+    <button type="button" (click)="getProducts()">RETRY</button>
+  </div>
+
+  } @if ( !errorMessage && products.length === 0 ) {
+
+  <div class="state">
+    <i class="fa-solid fa-box-open"></i>
+
+    <strong> NO PRODUCTS FOUND </strong>
+
+    <span> Your catalog is currently empty. </span>
+
+    <a routerLink="/dashboard/products/add"> ADD PRODUCT </a>
+  </div>
+
+  } @if ( !errorMessage && products.length > 0 ) {
+
+  <div class="products-grid">
+    @for ( product of products; track product._id; let i = $index ) {
+
+    <app-product-card
+      [product]="product"
+      [index]="i"
+      (activeChanged)="toggleActive($event)"
+      (newArrivalChanged)="toggleNewArrival($event)"
+      (topSellerChanged)="toggleTopSeller($event)"
+      (deleteClicked)="deleteProduct($event)"
+    ></app-product-card>
+
+    }
+  </div>
+
+  }
+</section>

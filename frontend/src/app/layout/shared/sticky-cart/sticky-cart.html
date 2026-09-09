@@ -1,0 +1,47 @@
+@if (product) {
+  <aside class="sticky-bar">
+    <div class="sticky-inner">
+
+      <div class="sticky-product">
+        <div class="sticky-image">
+          <img
+            [src]="product.image"
+            [alt]="product.name"
+          />
+        </div>
+
+        <div class="sticky-product-info">
+          <span class="sticky-category">
+            {{ getVariantLabel() }}
+          </span>
+
+          <strong>
+            {{ product.name }}
+          </strong>
+        </div>
+      </div>
+
+
+
+      <div class="sticky-quantity">
+        <app-quantity-selector
+          [quantity]="quantity"
+          [max]="getStock()"
+          (quantityChange)="onQuantityChange($event)"
+        ></app-quantity-selector>
+      </div>
+
+      <button
+        type="button"
+        class="sticky-add"
+        [disabled]="getStock() <= 0"
+        (click)="addToCart()"
+      >
+        <span>
+          {{ getStock() <= 0 ? 'SOLD OUT' : 'ADD TO CART' }}
+        </span>
+      </button>
+
+    </div>
+  </aside>
+}

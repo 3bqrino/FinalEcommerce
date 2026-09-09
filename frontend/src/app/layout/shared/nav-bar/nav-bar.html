@@ -1,0 +1,136 @@
+<div class="navigation-shell">
+  <app-promo-banner></app-promo-banner>
+
+  <header class="site-header">
+    <div class="nav-container">
+      <a
+        routerLink="/home"
+        class="logo"
+        (click)="closeMenu()"
+      >
+        NATURAL<span>.</span>
+      </a>
+
+      <nav
+        class="navbar"
+        [class.open]="menuOpen"
+        [attr.aria-hidden]="!menuOpen"
+      >
+        <a
+          routerLink="/home"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="closeMenu()"
+        >
+          Home
+        </a>
+
+        @for (category of categories; track category._id) {
+          <a
+            [routerLink]="['/category', category.slug]"
+            routerLinkActive="active"
+            (click)="closeMenu()"
+          >
+            {{ category.name }}
+          </a>
+        }
+
+        @if (user?.role === 'admin') {
+          <a
+            routerLink="/dashboard"
+            class="dashboard-mobile-link"
+            routerLinkActive="active"
+            (click)="closeMenu()"
+          >
+            Dashboard
+          </a>
+        }
+      </nav>
+
+      <div class="nav-actions">
+        @if (user) {
+          <a
+            routerLink="/account"
+            class="account-link"
+            (click)="closeMenu()"
+          >
+            <span class="account-label">
+              Hi,
+            </span>
+
+            <span class="account-name">
+              {{ user.name }}
+            </span>
+          </a>
+
+          <a
+            routerLink="/orders"
+            class="orders-link"
+            routerLinkActive="active"
+            (click)="closeMenu()"
+          >
+            Orders
+          </a>
+
+          @if (user.role === 'admin') {
+            <a
+              routerLink="/dashboard"
+              class="dashboard-link"
+              routerLinkActive="active"
+              (click)="closeMenu()"
+            >
+              Dashboard
+            </a>
+          }
+        } @else {
+          <a
+            routerLink="/login"
+            class="account-button"
+            aria-label="Login"
+            (click)="closeMenu()"
+          >
+            <i class="fa-regular fa-user"></i>
+          </a>
+        }
+
+        <button
+          type="button"
+          class="cart-button"
+          aria-label="Cart"
+          (click)="openCart()"
+        >
+          <i class="fa-solid fa-bag-shopping"></i>
+
+          @if (cartCount > 0) {
+            <span class="cart-count">
+              {{ cartCount }}
+            </span>
+          }
+        </button>
+
+        @if (user) {
+          <button
+            type="button"
+            class="logout-button"
+            (click)="logout()"
+          >
+            Logout
+          </button>
+        }
+
+        <button
+          type="button"
+          class="menu-toggle"
+          [class.open]="menuOpen"
+          [attr.aria-expanded]="menuOpen"
+          aria-label="Toggle navigation menu"
+          (click)="toggleMenu()"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+</div>

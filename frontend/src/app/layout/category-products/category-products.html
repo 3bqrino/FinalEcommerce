@@ -1,0 +1,614 @@
+<section
+  class="category-products-page"
+  [class.theme-men]="categoryTheme === 'theme-men'"
+  [class.theme-women]="categoryTheme === 'theme-women'"
+  [class.theme-default]="categoryTheme === 'theme-default'"
+>
+  <header class="category-hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <span class="hero-kicker">
+          {{ subcategoryName ? 'SUBCATEGORY' : 'COLLECTION' }}
+        </span>
+
+        <h1>
+          {{ subcategoryName || categoryName || 'CATEGORY' }}
+        </h1>
+
+        <div class="hero-breadcrumb">
+          <span>
+            {{ categoryName }}
+          </span>
+
+          @if (subcategoryName) {
+            <i
+              class="fa-solid fa-chevron-right separator-icon"
+              aria-hidden="true"
+            ></i>
+
+            <strong>
+              {{ subcategoryName }}
+            </strong>
+          }
+        </div>
+
+        <p>
+          @if (subcategoryName) {
+            Discover the latest pieces from our
+            {{ subcategoryName }}
+            collection.
+          } @else {
+            Discover the latest pieces from our
+            {{ categoryName || 'selected' }}
+            collection.
+          }
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <section class="shop-toolbar">
+    <div class="toolbar-container">
+      <div class="collection-count">
+        <span>PRODUCTS</span>
+
+        <strong>
+          {{ filteredProducts.length }}
+
+          <small>/</small>
+
+          {{ getScopedProducts().length }}
+        </strong>
+
+        <em>
+          AVAILABLE
+        </em>
+      </div>
+
+      <div class="toolbar-actions">
+        <div
+          class="view-switcher"
+          role="tablist"
+          aria-label="Change products view"
+        >
+          <button
+            type="button"
+            class="view-btn"
+            [class.active]="currentView === 'list'"
+            [attr.aria-selected]="currentView === 'list'"
+            aria-label="List view"
+            title="List view"
+            (click)="setView('list')"
+          >
+            <i
+              class="fa-solid fa-list"
+              aria-hidden="true"
+            ></i>
+          </button>
+
+          <button
+            type="button"
+            class="view-btn"
+            [class.active]="currentView === 'grid2'"
+            [attr.aria-selected]="currentView === 'grid2'"
+            aria-label="2 columns"
+            title="2 columns"
+            (click)="setView('grid2')"
+          >
+            <i
+              class="fa-solid fa-table-cells-large"
+              aria-hidden="true"
+            ></i>
+          </button>
+
+          <button
+            type="button"
+            class="view-btn"
+            [class.active]="currentView === 'grid3'"
+            [attr.aria-selected]="currentView === 'grid3'"
+            aria-label="3 columns"
+            title="3 columns"
+            (click)="setView('grid3')"
+          >
+            <i
+              class="fa-solid fa-grip"
+              aria-hidden="true"
+            ></i>
+          </button>
+
+          <button
+            type="button"
+            class="view-btn"
+            [class.active]="currentView === 'grid4'"
+            [attr.aria-selected]="currentView === 'grid4'"
+            aria-label="4 columns"
+            title="4 columns"
+            (click)="setView('grid4')"
+          >
+            <i
+              class="fa-solid fa-border-all"
+              aria-hidden="true"
+            ></i>
+          </button>
+        </div>
+
+        <div class="sort-control">
+          <span class="control-label">
+            SORT BY
+          </span>
+
+          <div class="sort-box">
+            <button
+              type="button"
+              class="sort-trigger"
+              [class.open]="isSortOpen"
+              [attr.aria-expanded]="isSortOpen"
+              (click)="toggleSort()"
+            >
+              <span>
+                {{ getSortLabel() }}
+              </span>
+
+              <i
+                class="fa-solid fa-chevron-down sort-arrow"
+                aria-hidden="true"
+              ></i>
+            </button>
+
+            @if (isSortOpen) {
+              <div class="sort-menu">
+                <button
+                  type="button"
+                  [class.selected]="sortBy === 'newest'"
+                  (click)="selectSort('newest')"
+                >
+                  <span>NEWEST</span>
+
+                  @if (sortBy === 'newest') {
+                    <i
+                      class="fa-solid fa-check"
+                      aria-hidden="true"
+                    ></i>
+                  }
+                </button>
+
+                <button
+                  type="button"
+                  [class.selected]="sortBy === 'price-low'"
+                  (click)="selectSort('price-low')"
+                >
+                  <span>PRICE: LOW TO HIGH</span>
+
+                  @if (sortBy === 'price-low') {
+                    <i
+                      class="fa-solid fa-check"
+                      aria-hidden="true"
+                    ></i>
+                  }
+                </button>
+
+                <button
+                  type="button"
+                  [class.selected]="sortBy === 'price-high'"
+                  (click)="selectSort('price-high')"
+                >
+                  <span>PRICE: HIGH TO LOW</span>
+
+                  @if (sortBy === 'price-high') {
+                    <i
+                      class="fa-solid fa-check"
+                      aria-hidden="true"
+                    ></i>
+                  }
+                </button>
+
+                <button
+                  type="button"
+                  [class.selected]="sortBy === 'name'"
+                  (click)="selectSort('name')"
+                >
+                  <span>NAME</span>
+
+                  @if (sortBy === 'name') {
+                    <i
+                      class="fa-solid fa-check"
+                      aria-hidden="true"
+                    ></i>
+                  }
+                </button>
+              </div>
+            }
+          </div>
+        </div>
+
+        <button
+          type="button"
+          class="filter-toggle"
+          [class.has-filters]="getActiveFilterCount() > 0"
+          (click)="toggleFilters()"
+        >
+          <i
+            class="fa-solid fa-sliders"
+            aria-hidden="true"
+          ></i>
+
+          <span>FILTERS</span>
+
+          @if (getActiveFilterCount() > 0) {
+            <span class="filter-count">
+              {{ getActiveFilterCount() }}
+            </span>
+          }
+        </button>
+      </div>
+    </div>
+  </section>
+
+  @if (isFilterOpen) {
+    <button
+      type="button"
+      class="filter-backdrop"
+      aria-label="Close filters"
+      (click)="closeFilters()"
+    ></button>
+  }
+
+  <section class="shop-section">
+    <div class="shop-container">
+      <aside
+        class="sidebar"
+        [class.open]="isFilterOpen"
+      >
+        <div class="sidebar-header">
+          <div>
+            <span>BROWSE</span>
+
+            <h2>
+              FILTERS
+            </h2>
+          </div>
+
+          <button
+            type="button"
+            class="close-filters"
+            aria-label="Close filters"
+            (click)="closeFilters()"
+          >
+            <i
+              class="fa-solid fa-xmark"
+              aria-hidden="true"
+            ></i>
+          </button>
+        </div>
+
+        <div class="filter-section">
+          <div class="filter-title">
+            <span>CATEGORIES</span>
+          </div>
+
+          <nav class="category-links">
+            @for (item of categories; track item._id) {
+              <a
+                [routerLink]="['/category', item.slug]"
+                [class.active]="
+                  item.slug.toLowerCase() === categorySlug.toLowerCase() &&
+                  !subcategorySlug
+                "
+                (click)="closeFilters()"
+              >
+                <span>
+                  {{ item.name }}
+                </span>
+
+                <i
+                  class="fa-solid fa-chevron-right"
+                  aria-hidden="true"
+                ></i>
+              </a>
+            }
+          </nav>
+        </div>
+
+        @if (category) {
+          <div class="filter-section">
+            <div class="filter-title">
+              <span>SUBCATEGORIES</span>
+            </div>
+
+            <nav class="category-links">
+              @for (
+                subcategory of subcategories;
+                track subcategory._id
+              ) {
+                @if (
+                  getSubcategoryCategoryId(subcategory.category) ===
+                  category._id
+                ) {
+                  <a
+                    [routerLink]="['/category', categorySlug]"
+                    [queryParams]="{
+                      subcategory: subcategory.slug
+                    }"
+                    [class.active]="
+                      subcategory.slug.toLowerCase() ===
+                      subcategorySlug.toLowerCase()
+                    "
+                    (click)="closeFilters()"
+                  >
+                    <span>
+                      {{ subcategory.name }}
+                    </span>
+
+                    <i
+                      class="fa-solid fa-chevron-right"
+                      aria-hidden="true"
+                    ></i>
+                  </a>
+                }
+              }
+            </nav>
+          </div>
+        }
+
+        <div class="filter-section">
+          <div class="filter-title">
+            <span>AVAILABILITY</span>
+          </div>
+
+          <button
+            type="button"
+            class="filter-option"
+            [class.checked]="filterInStock"
+            (click)="toggleStockFilter()"
+          >
+            <span class="fake-checkbox">
+              @if (filterInStock) {
+                <i
+                  class="fa-solid fa-check"
+                  aria-hidden="true"
+                ></i>
+              }
+            </span>
+
+            <span>
+              In Stock
+            </span>
+          </button>
+
+          <button
+            type="button"
+            class="filter-option"
+            [class.checked]="filterNewArrival"
+            (click)="toggleNewArrivalFilter()"
+          >
+            <span class="fake-checkbox">
+              @if (filterNewArrival) {
+                <i
+                  class="fa-solid fa-check"
+                  aria-hidden="true"
+                ></i>
+              }
+            </span>
+
+            <span>
+              New Arrival
+            </span>
+          </button>
+
+          <button
+            type="button"
+            class="filter-option"
+            [class.checked]="filterTopSeller"
+            (click)="toggleTopSellerFilter()"
+          >
+            <span class="fake-checkbox">
+              @if (filterTopSeller) {
+                <i
+                  class="fa-solid fa-check"
+                  aria-hidden="true"
+                ></i>
+              }
+            </span>
+
+            <span>
+              Top Seller
+            </span>
+          </button>
+        </div>
+
+        <div class="filter-section">
+          <div class="filter-title">
+            <span>PRICE RANGE</span>
+          </div>
+
+          <div class="price-values">
+            <span>
+              LE {{ selectedMinPrice }}
+            </span>
+
+            <span>
+              LE {{ selectedMaxPrice }}
+            </span>
+          </div>
+
+          <div class="range-wrapper">
+            <input
+              type="range"
+              class="price-range"
+              [min]="minPrice"
+              [max]="maxPrice"
+              [value]="selectedMinPrice"
+              (input)="
+                onMinPriceChange($any($event.target).value)
+              "
+            />
+
+            <input
+              type="range"
+              class="price-range price-range-max"
+              [min]="minPrice"
+              [max]="maxPrice"
+              [value]="selectedMaxPrice"
+              (input)="
+                onMaxPriceChange($any($event.target).value)
+              "
+            />
+
+            <div class="range-track">
+              <span
+                class="range-fill"
+                [style.left.%]="
+                  maxPrice > minPrice
+                    ? ((selectedMinPrice - minPrice) /
+                        (maxPrice - minPrice)) *
+                      100
+                    : 0
+                "
+                [style.right.%]="
+                  maxPrice > minPrice
+                    ? 100 -
+                      ((selectedMaxPrice - minPrice) /
+                        (maxPrice - minPrice)) *
+                        100
+                    : 0
+                "
+              ></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <div class="filter-title">
+            <span>SIZE</span>
+          </div>
+
+          @if (availableSizes.length > 0) {
+            <div class="size-options">
+              @for (size of availableSizes; track size) {
+                <button
+                  type="button"
+                  [class.active]="selectedSizes.includes(size)"
+                  (click)="toggleSize(size)"
+                >
+                  {{ size }}
+                </button>
+              }
+            </div>
+          } @else {
+            <p class="no-size-data">
+              No size data available.
+            </p>
+          }
+        </div>
+
+        <button
+          type="button"
+          class="clear-filters"
+          (click)="clearFilters()"
+        >
+          <i
+            class="fa-solid fa-rotate-left"
+            aria-hidden="true"
+          ></i>
+
+          <span>
+            CLEAR ALL FILTERS
+          </span>
+        </button>
+      </aside>
+
+      <main class="products-area">
+        @if (errorMessage) {
+          <div class="empty-state">
+            <h2>
+              NOTHING
+              <strong>HERE.</strong>
+            </h2>
+
+            <p>
+              {{ errorMessage }}
+            </p>
+          </div>
+        } @else if (filteredProducts.length > 0) {
+          <app-product-list
+            [products]="paginatedProducts"
+            [categoryName]="categoryName"
+            [categorySlug]="categorySlug"
+            [view]="currentView"
+          ></app-product-list>
+
+          @if (totalPages > 1) {
+            <nav
+              class="pagination"
+              aria-label="Product pagination"
+            >
+              <button
+                type="button"
+                class="pagination-arrow"
+                [disabled]="currentPage === 1"
+                aria-label="Previous page"
+                (click)="previousPage()"
+              >
+                <i
+                  class="fa-solid fa-arrow-left"
+                  aria-hidden="true"
+                ></i>
+              </button>
+
+              @for (page of getPageNumbers(); track page) {
+                <button
+                  type="button"
+                  class="page-number"
+                  [class.active]="currentPage === page"
+                  [attr.aria-current]="
+                    currentPage === page ? 'page' : null
+                  "
+                  (click)="goToPage(page)"
+                >
+                  {{ page }}
+                </button>
+              }
+
+              <button
+                type="button"
+                class="pagination-arrow"
+                [disabled]="currentPage === totalPages"
+                aria-label="Next page"
+                (click)="nextPage()"
+              >
+                <i
+                  class="fa-solid fa-arrow-right"
+                  aria-hidden="true"
+                ></i>
+              </button>
+            </nav>
+          }
+        } @else {
+          <div class="empty-state">
+            <h2>
+              {{ subcategoryName ? 'NO PRODUCTS.' : 'NO MATCH.' }}
+            </h2>
+
+            <p>
+              {{
+                subcategoryName
+                  ? 'There are no products available in ' +
+                    subcategoryName +
+                    ' right now.'
+                  : 'No products match your current filters.'
+              }}
+            </p>
+
+            <button
+              type="button"
+              class="clear-empty-filters"
+              (click)="clearFilters()"
+            >
+              CLEAR FILTERS
+            </button>
+          </div>
+        }
+      </main>
+    </div>
+  </section>
+</section>

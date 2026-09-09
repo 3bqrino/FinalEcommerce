@@ -1,0 +1,82 @@
+<section class="refund-list">
+  <header class="page-header">
+    <div>
+      <span class="eyebrow">My Account / Refunds</span>
+      <h1>MY <strong>REFUNDS.</strong></h1>
+      <p>Track your refund requests and their status.</p>
+    </div>
+
+    <div class="header-actions">
+      <button type="button" class="back-btn" (click)="goBack()">← BACK</button>
+
+      <a routerLink="/refund/request" class="request-btn"> REQUEST REFUND </a>
+    </div>
+  </header>
+
+  @if (errorMessage) {
+  <div class="state-card error-state">
+    <strong>{{ errorMessage }}</strong>
+    <button type="button" (click)="getRefunds()">RETRY</button>
+  </div>
+  } @if (!errorMessage && refunds.length === 0) {
+  <div class="state-card">
+    <strong>NO REFUNDS YET</strong>
+    <span>You don't have any refund requests.</span>
+    <a routerLink="/refund/request" class="empty-btn"> REQUEST A REFUND </a>
+  </div>
+  } @if (!errorMessage && refunds.length > 0) {
+  <div class="refunds-grid">
+    @for (refund of refunds; track refund._id) {
+    <article class="refund-card">
+      <div class="card-head">
+        <div>
+          <span>REFUND REQUEST</span>
+          <strong>#{{ refund._id.slice(-6).toUpperCase() }}</strong>
+        </div>
+
+        <span
+          class="status"
+          [class.pending]="refund.status === 'pending'"
+          [class.rejected]="refund.status === 'rejected'"
+          [class.refunded]="refund.status === 'refunded'"
+        >
+          {{ getStatusLabel(refund.status) }}
+        </span>
+      </div>
+
+      <div class="amount">
+        <span>REFUND AMOUNT</span>
+        <strong>{{ refund.amount }} <small>EGP</small></strong>
+      </div>
+
+      <div class="meta">
+        <div>
+          <span>ORDER</span>
+          <strong>#{{ getOrderNumber(refund) }}</strong>
+        </div>
+
+        <div>
+          <span>REQUESTED</span>
+          <strong
+            >{{ refund.createdAt ? (refund.createdAt | date:'dd MMM yyyy') : '—'
+            }}</strong
+          >
+        </div>
+      </div>
+
+      <div class="reason">
+        <span>REASON</span>
+        <p>{{ refund.reason }}</p>
+      </div>
+
+      @if (refund.adminNote) {
+      <div class="admin-note">
+        <span>ADMIN NOTE</span>
+        <p>{{ refund.adminNote }}</p>
+      </div>
+      }
+    </article>
+    }
+  </div>
+  }
+</section>

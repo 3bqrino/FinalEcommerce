@@ -1,0 +1,303 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.refund-card {
+  padding: 22px;
+
+  border: 1px solid #e0e0da;
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.refund-card:hover {
+  transform: translateY(-3px);
+
+  border-color: #cecec7;
+
+  box-shadow: var(--shadow-sm);
+}
+
+.card-top {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding-bottom: 16px;
+
+  border-bottom: 1px solid #eeeeea;
+}
+
+.reference {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+}
+
+.reference .number {
+  color: #a3a39b;
+
+  font-size: 12px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.1em;
+}
+
+.reference strong {
+  color: #22221e;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 16px;
+}
+
+.status {
+  min-height: 44px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 0 10px;
+
+  border-radius: 5px;
+
+  font-size: 12px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.07em;
+}
+
+.status.pending {
+  background: #f3f0d8;
+  color: var(--color-warning);
+}
+
+.status.approved {
+  background: #edf3d9;
+  color: #687b00;
+}
+
+.status.rejected {
+  background: #f1dfdc;
+  color: #7a463d;
+}
+
+.status.refunded {
+  background: #c8ff1a;
+  color: #273000;
+}
+
+.customer {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 18px 0;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 44px;
+
+  border-radius: 50%;
+
+  background: #c8ff1a;
+
+  color: #293000;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 14px;
+
+  font-weight: 700;
+}
+
+.customer-copy {
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.customer-copy strong {
+  overflow: hidden;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  color: #292925;
+
+  font-size: 13px;
+
+  font-weight: 800;
+}
+
+.customer-copy span {
+  overflow: hidden;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  color: #999991;
+
+  font-size: 12px;
+}
+
+.refund-meta {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 12px;
+
+  padding: 15px 0;
+
+  border-top: 1px solid #eeeeea;
+  border-bottom: 1px solid #eeeeea;
+}
+
+.refund-meta div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+.refund-meta span,
+.reason > span {
+  color: #a1a19a;
+
+  font-size: 12px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.1em;
+}
+
+.refund-meta strong {
+  color: #33332e;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 12px;
+}
+
+.refund-meta .amount {
+  color: #789000;
+}
+
+.reason {
+  padding: 17px 0 4px;
+}
+
+.reason p {
+  margin: 8px 0 0;
+
+  color: #70706a;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+
+  display: -webkit-box;
+
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+
+  overflow: hidden;
+}
+
+.card-footer {
+  margin-top: 15px;
+}
+
+.view-btn {
+  min-height: 42px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  border: 1px solid #ddddd7;
+
+  border-radius: 6px;
+
+  background: #fff;
+
+  color: #5c5c56;
+
+  font-size: 12px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.08em;
+
+  text-decoration: none;
+
+  transition: 0.18s ease;
+}
+
+.view-btn:hover {
+  border-color: #c8ff1a;
+
+  background: #fbfff0;
+
+  color: #202020;
+}
+
+@media (max-width: 550px) {
+  .refund-meta {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .refund-meta div:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 400px) {
+  .card-top {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .status {
+    align-self: flex-start;
+  }
+}

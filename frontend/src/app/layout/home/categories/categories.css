@@ -1,0 +1,279 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a,
+button {
+  font-family: inherit;
+}
+
+.categories-section {
+  width: 100%;
+  padding: 60px 0 80px;
+}
+
+.section-head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 48px;
+}
+
+.section-head h2 {
+  flex: 0 0 auto;
+  margin: 0;
+  color: #202020;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(42px, 5vw, 64px);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.055em;
+  text-align: center;
+}
+
+.section-line {
+  flex: 1;
+  height: 1px;
+  background: #ddddda;
+}
+
+.categories-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: 36px;
+  row-gap: 52px;
+}
+
+.category-group {
+  min-width: 0;
+}
+
+.category-card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.category-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #eeeeeb;
+}
+
+.category-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition:
+    transform 0.35s ease,
+    filter 0.35s ease;
+}
+
+.category-card:hover .category-image img {
+  transform: scale(1.025);
+  filter: brightness(0.98);
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: #eeeeeb;
+  color: #9a9a94;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.category-content {
+  padding: 20px 8px 0;
+  text-align: center;
+}
+
+.category-content h3 {
+  margin: 0;
+  color: #292929;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.category-content p {
+  max-width: 260px;
+  margin: 8px auto 0;
+  color: #888880;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.subcategory-area {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 16px;
+}
+
+.subcategory-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  width: 100%;
+}
+
+.subcategory-btn {
+  min-height: 36px;
+  padding: 0 13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #deded8;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #55554f;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.subcategory-btn:hover {
+  border-color: #202020;
+  background: #202020;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.state {
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dfdfd9;
+  background: #fafaf7;
+  color: #888880;
+  font-size: 13px;
+}
+
+@media (max-width: 1200px) {
+  .categories-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 28px;
+  }
+}
+
+@media (max-width: 900px) {
+  .categories-section {
+    padding: 52px 0 70px;
+  }
+
+  .section-head {
+    gap: 16px;
+    margin-bottom: 38px;
+  }
+
+  .section-head h2 {
+    font-size: 42px;
+  }
+
+  .categories-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 20px;
+    row-gap: 42px;
+  }
+}
+
+@media (max-width: 600px) {
+  .categories-section {
+    padding: 42px 0 60px;
+  }
+
+  .section-head {
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+
+  .section-head h2 {
+    font-size: 34px;
+    letter-spacing: -0.045em;
+  }
+
+  .categories-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 12px;
+    row-gap: 34px;
+  }
+
+  .category-content {
+    padding-top: 14px;
+  }
+
+  .category-content h3 {
+    font-size: 17px;
+  }
+
+  .category-content p {
+    font-size: 11px;
+    margin-top: 6px;
+  }
+
+  .subcategory-area {
+    padding-top: 11px;
+  }
+
+  .subcategory-list {
+    gap: 5px;
+  }
+
+  .subcategory-btn {
+    min-height: 34px;
+    padding: 0 10px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .section-head {
+    gap: 9px;
+  }
+
+  .section-head h2 {
+    font-size: 30px;
+  }
+
+  .categories-list {
+    column-gap: 10px;
+  }
+
+  .category-content h3 {
+    font-size: 16px;
+  }
+
+  .subcategory-btn {
+    min-height: 32px;
+    padding: 0 9px;
+    font-size: 9px;
+  }
+}

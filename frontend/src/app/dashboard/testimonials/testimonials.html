@@ -1,0 +1,49 @@
+<section class="testimonials-page">
+  <header class="page-header">
+    <div>
+      <span class="eyebrow"> NATURAL / CUSTOMER VOICES </span>
+
+      <h1>TESTIMONIAL <strong>MANAGEMENT.</strong></h1>
+
+      <p>Review and manage customer testimonials.</p>
+    </div>
+  </header>
+
+  @if (errorMessage) {
+
+  <div class="state-card error-state">
+    <strong> {{ errorMessage }} </strong>
+
+    <button type="button" (click)="getTestimonials()">RETRY</button>
+  </div>
+
+  }
+
+  <div class="testimonial-stats">
+    <article class="stat-card">
+      <span> TOTAL </span>
+
+      <strong> {{ totalTestimonials }} </strong>
+    </article>
+
+    <article class="stat-card">
+      <span> PENDING </span>
+
+      <strong> {{ pendingTestimonials }} </strong>
+    </article>
+
+    <article class="stat-card">
+      <span> ACCEPTED </span>
+
+      <strong> {{ acceptedTestimonials }} </strong>
+    </article>
+
+    <article class="stat-card">
+      <span> REJECTED </span>
+
+      <strong> {{ rejectedTestimonials }} </strong>
+    </article>
+  </div>
+
+  <app-testimonial-list></app-testimonial-list>
+</section>

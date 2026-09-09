@@ -1,0 +1,19 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.page-content {
+  width: 100%;
+  min-height: calc(100vh - 106px);
+  padding-top: 106px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 800px) {
+  .page-content {
+    padding-top: 96px;
+  }
+}

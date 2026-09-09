@@ -1,0 +1,112 @@
+<section class="low-stock-section">
+  <div class="section-header">
+    <div>
+      <span class="eyebrow"> INVENTORY / ATTENTION </span>
+
+      <h2>
+        LOW STOCK
+        <strong>PRODUCTS.</strong>
+      </h2>
+    </div>
+
+    @if (!loading) {
+
+    <span class="section-count">
+      {{ products.length }} {{ products.length === 1 ? 'PRODUCT' : 'PRODUCTS' }}
+    </span>
+
+    }
+  </div>
+
+  @if (loading) {
+
+  <div class="state">
+    <span> INVENTORY / PRODUCTS </span>
+
+    <strong> LOADING STOCK DATA... </strong>
+  </div>
+
+  } @if ( !loading && errorMessage ) {
+
+  <div class="state error">
+    <span> SYSTEM / ERROR </span>
+
+    <strong> {{ errorMessage }} </strong>
+
+    <button type="button" (click)="getLowStockProducts()">RETRY</button>
+  </div>
+
+  } @if ( !loading && !errorMessage && products.length > 0 ) {
+
+  <div class="low-stock-list">
+    @for ( product of products; track product._id; let i = $index ) {
+
+    <article class="low-stock-row">
+      <span class="stock-rank">
+      </span>
+
+      <div class="stock-image-wrapper">
+        @if (product.image) {
+
+        <img
+          class="stock-product-image"
+          [src]="product.image"
+          [alt]="product.name"
+          loading="lazy"
+        />
+
+        } @else {
+
+        <div class="stock-product-image stock-image-placeholder">NATURAL</div>
+
+        }
+      </div>
+
+      <div class="stock-product-info">
+        <strong> {{ product.name }} </strong>
+
+        <span
+          [class.critical-text]="
+                product.stock <= 2
+              "
+          [class.out-text]="
+                product.stock <= 0
+              "
+        >
+          {{ getStockStatus( product.stock ) }}
+        </span>
+      </div>
+
+      <div class="stock-product-count">
+        <strong
+          [class.critical]="
+                isCritical(
+                  product.stock
+                )
+              "
+          [class.out]="
+                product.stock <= 0
+              "
+        >
+          {{ product.stock }}
+        </strong>
+
+        <span> {{ product.stock === 1 ? 'ITEM LEFT' : 'ITEMS LEFT' }} </span>
+      </div>
+    </article>
+
+    }
+  </div>
+
+  } @if ( !loading && !errorMessage && products.length === 0 ) {
+
+  <div class="empty-state">
+    <span> INVENTORY / CLEAR </span>
+
+    <strong> NO LOW STOCK PRODUCTS </strong>
+
+    <p>All products currently have sufficient stock.</p>
+  </div>
+
+  }
+</section>

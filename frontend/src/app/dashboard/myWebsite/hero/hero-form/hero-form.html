@@ -1,0 +1,252 @@
+<section class="hero-form-page" [formGroup]="heroForm">
+  <header class="form-header">
+    <div class="header-copy">
+      <span class="eyebrow"> NATURAL / WEBSITE CONTROL </span>
+
+      <h1>
+        {{ isEditMode ? 'EDIT' : 'ADD' }}
+        <span>HERO.</span>
+      </h1>
+
+      <p>
+        {{ isEditMode ? 'Update the homepage hero content and visibility.' :
+        'Create a new homepage hero section.' }}
+      </p>
+    </div>
+
+    <button type="button" class="back-btn" (click)="cancel()">
+      BACK TO HERO
+    </button>
+  </header>
+
+  @if (errorMessage) {
+
+  <div class="message error-message">{{ errorMessage }}</div>
+
+  } @if (successMessage) {
+
+  <div class="message success-message">{{ successMessage }}</div>
+
+  }
+
+  <div class="form-layout">
+    <main class="form-main">
+      <section class="form-panel">
+        <div class="panel-heading">
+          <div class="heading-left">
+            <span class="panel-number"> 01 </span>
+
+            <div>
+              <span class="panel-eyebrow"> HERO CONTENT </span>
+
+              <h2>
+                SLIDE
+                <span>CONTENT.</span>
+              </h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="field">
+            <label> EYEBROW </label>
+
+            <input
+              type="text"
+              formControlName="eyebrow"
+              placeholder="NATURAL / NEW SEASON"
+            />
+          </div>
+
+          <div class="field">
+            <label> DROP </label>
+
+            <input type="text" formControlName="drop" placeholder="DROP 01" />
+          </div>
+
+          <div class="field full">
+            <label> TITLE </label>
+
+            <input
+              type="text"
+              formControlName="title"
+              placeholder="CITY / AFTER DARK"
+            />
+          </div>
+
+          <div class="field">
+            <label> ACCENT </label>
+
+            <input
+              type="text"
+              formControlName="accent"
+              placeholder="AFTER DARK"
+            />
+          </div>
+
+          <div class="field">
+            <label> STATUS </label>
+
+            <button
+              type="button"
+              class="status-button"
+              [class.active]="isActive"
+              (click)="toggleActive()"
+            >
+              <span class="button-dot"></span>
+
+              {{ isActive ? 'ACTIVE' : 'INACTIVE' }}
+
+              <i
+                class="fa-solid"
+                [class.fa-eye]="isActive"
+                [class.fa-eye-slash]="!isActive"
+              ></i>
+            </button>
+          </div>
+
+          <div class="field full">
+            <label> DESCRIPTION </label>
+
+            <textarea
+              formControlName="description"
+              placeholder="Write the main hero description..."
+            ></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-panel">
+        <div class="panel-heading">
+          <div class="heading-left">
+            <span class="panel-number"> 02 </span>
+
+            <div>
+              <span class="panel-eyebrow"> HERO MEDIA </span>
+
+              <h2>
+                HERO
+                <span>IMAGE.</span>
+              </h2>
+            </div>
+          </div>
+        </div>
+
+        <label class="upload-area">
+          @if (imagePreview) {
+
+          <img [src]="imagePreview" alt="Hero preview" />
+
+          <div class="upload-overlay">
+            <i class="fa-solid fa-camera"></i>
+
+            <span> CHANGE IMAGE </span>
+          </div>
+
+          } @else {
+
+          <div class="upload-placeholder">
+            <div class="upload-icon">
+              <i class="fa-solid fa-image"></i>
+            </div>
+
+            <strong> UPLOAD HERO IMAGE </strong>
+
+            <span> JPG / PNG / WEBP </span>
+
+            <small> MAX 2MB </small>
+          </div>
+
+          }
+
+          <input
+            type="file"
+            accept=".jpg,.jpeg,.png,.webp"
+            (change)="onImageChange($event)"
+          />
+        </label>
+      </section>
+
+      <div class="form-actions">
+        <button type="button" class="cancel-btn" (click)="cancel()">
+          CANCEL
+        </button>
+
+        <button type="button" class="save-btn" (click)="saveHero()">
+          {{ isEditMode ? 'UPDATE HERO' : 'CREATE HERO' }}
+        </button>
+      </div>
+    </main>
+
+    <aside class="form-side">
+      <section class="preview-panel">
+        <div class="preview-heading">
+          <div>
+            <span> LIVE PREVIEW </span>
+
+            <h2>
+              HOMEPAGE
+              <strong>HERO.</strong>
+            </h2>
+          </div>
+
+          <span class="preview-badge">
+            {{ isActive ? 'VISIBLE' : 'HIDDEN' }}
+          </span>
+        </div>
+
+        <div class="preview-card">
+          <div class="preview-image">
+            @if (imagePreview) {
+
+            <img [src]="imagePreview" alt="Hero preview" />
+
+            } @else {
+
+            <div class="preview-empty">
+              <i class="fa-solid fa-image"></i>
+
+              <span> HERO IMAGE </span>
+            </div>
+
+            }
+
+            <div class="preview-overlay"></div>
+
+            <div class="preview-copy">
+              @if (eyebrow) {
+
+              <span class="preview-eyebrow"> {{ eyebrow }} </span>
+
+              } @if (drop) {
+
+              <span class="preview-drop"> {{ drop }} </span>
+
+              }
+
+              <h3>
+                {{ title || 'YOUR HERO TITLE' }} @if (accent) {
+
+                <strong> {{ accent }} </strong>
+
+                }
+              </h3>
+
+              <p>
+                {{ description || 'Your hero description will appear here.' }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-note">
+          <span> HERO NOTE </span>
+
+          <p>
+            The preview uses only the fields supported by the current Hero API.
+          </p>
+        </div>
+      </section>
+    </aside>
+  </div>
+</section>

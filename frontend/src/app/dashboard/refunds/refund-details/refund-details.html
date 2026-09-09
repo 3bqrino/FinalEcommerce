@@ -1,0 +1,33 @@
+<section class="details-card action-card">
+  <span class="side-label"> REFUND ACTIONS </span>
+
+  @if (refund?.status === 'pending') {
+
+  <button
+    type="button"
+    class="action approve"
+    [disabled]="saving"
+    (click)="approve()"
+  >
+    @if (saving) { PROCESSING... } @else { APPROVE & REFUND }
+  </button>
+
+  <button
+    type="button"
+    class="action reject"
+    [disabled]="saving"
+    (click)="reject()"
+  >
+    REJECT REFUND
+  </button>
+
+  } @if (refund?.status === 'refunded') {
+
+  <div class="completed-box">REFUND COMPLETED</div>
+
+  } @if (refund?.status === 'rejected') {
+
+  <div class="rejected-box">REFUND REJECTED</div>
+
+  }
+</section>

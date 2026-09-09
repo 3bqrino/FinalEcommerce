@@ -1,0 +1,159 @@
+<section class="action-panel">
+  <header class="action-header">
+    <div>
+      <span class="eyebrow"> REVIEW / MODERATION </span>
+
+      <h2>REVIEW <span>ACTION.</span></h2>
+
+      <p>Choose what you want to do with this customer review.</p>
+    </div>
+
+    <button
+      type="button"
+      class="close-btn"
+      (click)="close()"
+      aria-label="Close"
+    >
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </header>
+
+  @if (testimonial) {
+
+  <div class="review-preview">
+    <div class="avatar">{{ testimonial.name.charAt(0).toUpperCase() }}</div>
+
+    <div class="preview-copy">
+      <div class="preview-top">
+        <strong> {{ testimonial.name }} </strong>
+
+        <span> ★ {{ testimonial.rating.toFixed(1) }} </span>
+      </div>
+
+      <p>{{ testimonial.comment }}</p>
+    </div>
+  </div>
+
+  <div class="actions-title">SELECT ACTION</div>
+
+  <div class="actions-list">
+    <button
+      type="button"
+      class="action-option accept"
+      [class.selected]="selectedAction === 'accept'"
+      (click)="selectAction('accept')"
+    >
+      <span class="action-icon">
+        <i class="fa-solid fa-check"></i>
+      </span>
+
+      <span class="action-copy">
+        <strong> ACCEPT REVIEW </strong>
+
+        <small> Make this review visible on the public store. </small>
+      </span>
+
+      <span class="action-check">
+        {{ selectedAction === 'accept' ? '✓' : '' }}
+      </span>
+    </button>
+
+    <button
+      type="button"
+      class="action-option reject"
+      [class.selected]="selectedAction === 'reject'"
+      (click)="selectAction('reject')"
+    >
+      <span class="action-icon">
+        <i class="fa-solid fa-xmark"></i>
+      </span>
+
+      <span class="action-copy">
+        <strong> REJECT REVIEW </strong>
+
+        <small> Keep this review hidden from the public store. </small>
+      </span>
+
+      <span class="action-check">
+        {{ selectedAction === 'reject' ? '✓' : '' }}
+      </span>
+    </button>
+
+    <button
+      type="button"
+      class="action-option delete"
+      [class.selected]="selectedAction === 'delete'"
+      (click)="selectAction('delete')"
+    >
+      <span class="action-icon">
+        <i class="fa-solid fa-trash"></i>
+      </span>
+
+      <span class="action-copy">
+        <strong> DELETE REVIEW </strong>
+
+        <small> Remove this review from the dashboard. </small>
+      </span>
+
+      <span class="action-check">
+        {{ selectedAction === 'delete' ? '✓' : '' }}
+      </span>
+    </button>
+  </div>
+
+  @if (selectedAction === 'delete') {
+
+  <div class="warning-box">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+
+    <div>
+      <strong> DELETE CONFIRMATION </strong>
+
+      <span> This action removes the review from the dashboard. </span>
+    </div>
+  </div>
+
+  } @if (errorMessage) {
+
+  <div class="action-error">{{ errorMessage }}</div>
+
+  }
+
+  <footer class="action-footer">
+    <button type="button" class="cancel-btn" (click)="close()">CANCEL</button>
+
+    <button
+      type="button"
+      class="confirm-btn"
+      [class.delete-mode]="selectedAction === 'delete'"
+      [disabled]="!selectedAction"
+      (click)="confirmAction()"
+    >
+      @if (selectedAction === 'accept') {
+
+      <span> ACCEPT REVIEW </span>
+
+      <i class="fa-solid fa-check"></i>
+
+      } @else if (selectedAction === 'reject') {
+
+      <span> REJECT REVIEW </span>
+
+      <i class="fa-solid fa-xmark"></i>
+
+      } @else if (selectedAction === 'delete') {
+
+      <span> DELETE REVIEW </span>
+
+      <i class="fa-solid fa-trash"></i>
+
+      } @else {
+
+      <span> SELECT ACTION </span>
+
+      }
+    </button>
+  </footer>
+
+  }
+</section>

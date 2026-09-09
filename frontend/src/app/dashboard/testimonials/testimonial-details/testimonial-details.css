@@ -1,0 +1,247 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.testimonial-details-page {
+  width: 100%;
+}
+
+.details-header {
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 25px;
+}
+
+.eyebrow {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #95ad00;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.14em;
+}
+
+.details-header h1 {
+  margin: 0;
+
+  color: #151515;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: clamp(32px, 4vw, 52px);
+
+  line-height: 0.9;
+}
+
+.details-header h1 strong {
+  color: #95ad00;
+}
+
+.back-btn {
+  min-height: 42px;
+
+  padding: 0 14px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 6px;
+
+  background: #fff;
+
+  color: #555;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+.details-card {
+  max-width: 850px;
+
+  padding: 22px;
+
+  border: 1px solid #e3e3de;
+
+  border-radius: 8px;
+
+  background: #fff;
+}
+
+.label {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #aaa;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+}
+
+.customer h2 {
+  margin: 0;
+
+  color: #222;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 25px;
+}
+
+.customer p {
+  margin: 5px 0 0;
+
+  color: #999;
+
+  font-size: 12px;
+}
+
+.rating {
+  display: flex;
+
+  gap: 2px;
+
+  margin: 20px 0;
+
+  padding: 15px 0;
+
+  border-top: 1px solid #eeeeea;
+
+  border-bottom: 1px solid #eeeeea;
+}
+
+.rating span {
+  color: #ddd;
+
+  font-size: 18px;
+}
+
+.rating span.active {
+  color: var(--color-success);
+}
+
+.comment {
+  margin-bottom: 20px;
+}
+
+.comment p {
+  margin: 0;
+
+  color: #555;
+
+  font-size: 12px;
+
+  line-height: 1.8;
+}
+
+.status {
+  margin-bottom: 20px;
+}
+
+.status strong {
+  color: #95ad00;
+
+  font-size: 12px;
+}
+
+.actions {
+  display: flex;
+
+  gap: 7px;
+
+  padding-top: 18px;
+
+  border-top: 1px solid #eeeeea;
+}
+
+.actions button {
+  min-height: 40px;
+
+  padding: 0 15px;
+
+  border-radius: 6px;
+
+  font-size: 12px;
+
+  font-weight: 900;
+
+  cursor: pointer;
+}
+
+.accept-btn {
+  border: 1px solid #c8ff1a;
+
+  background: #c8ff1a;
+
+  color: #293000;
+}
+
+.reject-btn,
+.delete-btn {
+  border: 1px solid #ddd;
+
+  background: #fff;
+
+  color: #666;
+}
+
+.state-card {
+  min-height: 220px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 1px solid #e3e3de;
+
+  border-radius: 8px;
+
+  background: #fff;
+
+  color: #777;
+
+  font-size: 12px;
+}
+
+@media (max-width: 600px) {
+  .details-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .back-btn {
+    width: 100%;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .actions button {
+    width: 100%;
+  }
+}

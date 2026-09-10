@@ -8692,3 +8692,19 @@ Error: Invalid email or password
 09-09-2026 20:42:27 | INFO | Product updated: T-Shirt Product 1 by admin Abdelrhman  
 09-09-2026 20:42:33 | INFO | Product updated: T-Shirt Product 1 by admin Abdelrhman  
 09-09-2026 20:56:19 | INFO | Testimonial created: 6aa19dc335e767771ed748b0 by ali  
+09-09-2026 21:17:39 | INFO | Testimonial created: 6aa1a2c3ab98ba851a113271 by ali  
+09-09-2026 21:18:39 | INFO | Message 6aa1a2c3ab98ba851a113272 deleted by Abdelrhman  
+09-09-2026 21:18:40 | INFO | Message 6aa19dc335e767771ed748b1 deleted by Abdelrhman  
+09-09-2026 21:19:05 | INFO | Users directory queried successfully  
+09-09-2026 21:19:56 | INFO | Users directory queried successfully  
+09-09-2026 21:23:38 | INFO | Product T-Shirt Product 1 added to cart by Abdelrhman  
+09-09-2026 21:24:14 | INFO | Product updated: T-Shirt Product 1 by admin Abdelrhman  
+09-09-2026 21:29:18 | INFO | Users directory queried successfully  
+09-09-2026 21:29:20 | INFO | User fetched successfully  
+09-09-2026 21:29:43 | INFO | Product T-Shirt Product 1 added to cart by Abdelrhman  
+09-09-2026 21:29:47 | INFO | Price changes accepted for cart by Abdelrhman  
+09-09-2026 21:29:48 | INFO | User addresses fetched  
+09-09-2026 21:30:04 | INFO | Address added successfully  
+09-09-2026 21:30:04 | INFO | User addresses fetched  
+09-09-2026 21:30:13 | INFO | User addresses fetched  
+09-09-2026 21:30:16 | INFO | Order created: 6aa1a5b8ab98ba851a11337d by Abdelrhman  
